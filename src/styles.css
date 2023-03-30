@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Squid Game";
+  src: url("./assets/fonts/GameOfSquids-1GMVL.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.no-padding{
+  padding-left: 0px;
+  padding-right: 0px;
+}

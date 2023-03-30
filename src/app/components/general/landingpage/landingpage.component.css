@@ -1,0 +1,62 @@
+:host{
+  overflow-x: hidden;
+}
+nav{
+  padding: 5px;
+  overflow-x: hidden;
+}
+.bg-color{
+  background-color: #333333;
+}
+h1{
+  font-family: 'Squid Game';
+  color: #fff;
+}
+form{
+  height: 50px;
+}
+form.search-form input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #fff;
+}
+form.search-form button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #ffff;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.search-form button:hover {
+  background: #fff;
+
+  color:red;
+}
+
+form.search-form::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.search-btn i{
+  font-size: 40px;
+}
+/* buttons */
+.btn-right{
+  background:transparent;
+  height:50px;
+  color: #fff;
+  font-family: 'Squid Game';
+  font-size: 20px;
+  border: none;
+}
+.btn-right:hover{
+  color:red;
+}
