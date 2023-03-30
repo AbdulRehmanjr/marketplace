@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@abacritt/angularx-social-login": "^2.0.0",
     "@angular/animations": "^15.2.5",
     "@angular/common": "^15.0.0",
     "@angular/compiler": "^15.0.0",
@@ -20,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
     "@fortawesome/fontawesome-free": "^6.4.0",
+    "angular-social-login": "^0.0.1",
     "bootstrap": "^5.2.3",
     "jquery": "^3.6.4",
     "popper.js": "^1.16.1",

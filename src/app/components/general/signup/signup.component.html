@@ -1,0 +1,27 @@
+<div class="bg">
+  <div class="box-form">
+    <div class="left">
+      <div class="overlay">
+        <h1>Multi Vendor</h1>
+        <p>Platform to Sell, Buy and Auction.</p>
+        <span>
+        </span>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="row mt-4">
+        <h6>Signup</h6>
+      </div>
+      <div class="row mt-4">
+        <form class="inputs" [formGroup]="SignupForm" (ngSubmit)="OnSubmit()">
+          <input type="email" placeholder="abc@gmail.com" required/>
+          <br />
+          <input type="password" placeholder="password" required/>
+        </form>
+        <button class="mt-4" type="submit">Sign up</button>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="bg">
+  {{user|json}}
+  <div class="box-form">
+    <div class="left">
+      <div class="overlay">
+        <h1>Multi Vendor</h1>
+        <p>Platform to Sell, Buy and Auction.</p>
+        <span>
+          <p>Login with Social Media</p>
+          <asl-google-signin-button onclick="signInWithGoogle()"></asl-google-signin-button>
+        </span>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="row mt-4">
+        <h6>Login</h6>
+      </div>
+      <div class="row mt-4">
+        <div class="inputs">
+          <input type="email" placeholder="abc@gmail.com" required/>
+          <br />
+          <input type="password" placeholder="password" required/>
+        </div>
+
+      </div>
+      <div class="row mt-4">
+        Don't have account?<a routerLink="/signup">  Sign up</a>
+      </div>
+      <button class="mt-4">Login</button>
+    </div>
+  </div>
+</div>
