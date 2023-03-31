@@ -1,0 +1,29 @@
+a{
+  text-decoration: none;
+  color: black;
+}
+.category-banner{
+  width: 100%;
+  height: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+.category-banner .logo{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  background-color: #fff;
+  z-index: 1000000;
+  height:100px;
+  width:100px;
+  border-radius: 50px;
+}
+.category-banner i {
+  font-size: 50px;
+
+}
+.category-banner:hover{
+  color:red;
+}
+h6,h2{
+  font-family: 'Squid Game';
+
+}

@@ -1,127 +1,189 @@
-<header id="header" class="fixed-top">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="d-flex flex-row">
-        <div class="col-md-1">
-          <h1>Logo</h1>
-        </div>
-        <div class="col-md-3 mx-3">
-          <form class="d-flex flex-row search-form">
-            <input class="search" type="text" placeholder="search here" required>
-          <button class="search-btn" type="submit"><i class="fa-brands fa-searchengin"></i></button>
-          </form>
-        </div>
-        <div class="col-md-2 d-sm-none d-md-block">
-          <button class="btn-right"><i class="fa-solid fa-phone"></i> Live Chat</button>
-        </div>
-        <div class="col-md-2 d-sm-none d-md-block">
-          <button class="btn-right"><i class="fa-solid fa-heart"></i>Wish List</button>
-        </div>
-        <div class="col-md-1 d-sm-none d-md-block">
-          <button class="btn-right"><i matBadge="15" matBadgeColor="warn" class="fa-solid fa-cart-shopping"></i> Cart</button>
-        </div>
-        <div class="col-md-2 d-sm-none d-md-block">
-          <button class="btn-right" routerLink="login">Login/Signup</button>
-        </div>
-    </div>
-    </div>
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li class="dropdown"><a href="#"><i class="fa-solid fa-list"></i> Catgories <i class="fa-solid fa-caret-down"></i></a>
-          <ul>
-            <li *ngFor="let c of categories">
-              <a href="#">
-              {{c.name}}
-            </a>
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="#">Drop Down 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="#">Deep Drop Down 1</a></li>
-                <li><a href="#">Deep Drop Down 2</a></li>
-                <li><a href="#">Deep Drop Down 3</a></li>
-                <li><a href="#">Deep Drop Down 4</a></li>
-                <li><a href="#">Deep Drop Down 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Drop Down 2</a></li>
-            <li><a href="#">Drop Down 3</a></li>
-            <li><a href="#">Drop Down 4</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="#">Drop Down 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="#">Deep Drop Down 1</a></li>
-                <li><a href="#">Deep Drop Down 2</a></li>
-                <li><a href="#">Deep Drop Down 3</a></li>
-                <li><a href="#">Deep Drop Down 4</a></li>
-                <li><a href="#">Deep Drop Down 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Drop Down 2</a></li>
-            <li><a href="#">Drop Down 3</a></li>
-            <li><a href="#">Drop Down 4</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="#">Drop Down 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="#">Deep Drop Down 1</a></li>
-                <li><a href="#">Deep Drop Down 2</a></li>
-                <li><a href="#">Deep Drop Down 3</a></li>
-                <li><a href="#">Deep Drop Down 4</a></li>
-                <li><a href="#">Deep Drop Down 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Drop Down 2</a></li>
-            <li><a href="#">Drop Down 3</a></li>
-            <li><a href="#">Drop Down 4</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="#">Drop Down 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="#">Deep Drop Down 1</a></li>
-                <li><a href="#">Deep Drop Down 2</a></li>
-                <li><a href="#">Deep Drop Down 3</a></li>
-                <li><a href="#">Deep Drop Down 4</a></li>
-                <li><a href="#">Deep Drop Down 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Drop Down 2</a></li>
-            <li><a href="#">Drop Down 3</a></li>
-            <li><a href="#">Drop Down 4</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="#">Drop Down 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="#">Deep Drop Down 1</a></li>
-                <li><a href="#">Deep Drop Down 2</a></li>
-                <li><a href="#">Deep Drop Down 3</a></li>
-                <li><a href="#">Deep Drop Down 4</a></li>
-                <li><a href="#">Deep Drop Down 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Drop Down 2</a></li>
-            <li><a href="#">Drop Down 3</a></li>
-            <li><a href="#">Drop Down 4</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
+<header>
+  <!-- header middle start -->
+  <div class="header-middle-area pt-20 pb-20">
+      <div class="container-fluid">
+          <div class="row align-items-center">
+              <div class="col-lg-3">
+                  <div class="brand-logo">
+                      <a href="index.html">
+                          <img src="assets/img/logo/logo.png" alt="brand logo">
+                      </a>
+                  </div>
+              </div> <!-- end logo area -->
+              <div class="col-lg-9">
+                  <div class="header-middle-right">
+                      <div class="header-middle-shipping mb-20">
+                          <div class="single-block-shipping">
+                              <div class="shipping-icon">
+                                  <i class="fa fa-clock-o"></i>
+                              </div>
+                              <div class="shipping-content">
+                                  <h5>Working time</h5>
+                                  <span>Mon- Sun: 8.00 - 18.00</span>
+                              </div>
+                          </div> <!-- end single shipping -->
+                          <div class="single-block-shipping">
+                              <div class="shipping-icon">
+                                  <i class="fa fa-truck"></i>
+                              </div>
+                              <div class="shipping-content">
+                                  <h5>free shipping</h5>
+                                  <span>On order over $199</span>
+                              </div>
+                          </div> <!-- end single shipping -->
+                          <div class="single-block-shipping">
+                              <div class="shipping-icon">
+                                  <i class="fa fa-money"></i>
+                              </div>
+                              <div class="shipping-content">
+                                  <h5>money back 100%</h5>
+                                  <span>Within 30 Days after delivery</span>
+                              </div>
+                          </div> <!-- end single shipping -->
+                      </div>
+                      <div class="header-middle-block">
+                          <div class="header-middle-searchbox">
+                              <input type="text" placeholder="Search...">
+                              <button class="search-btn"><i class="fa fa-search"></i></button>
+                          </div>
+                          <div class="header-mini-cart">
+                              <div class="mini-cart-btn">
+                                  <i class="fa fa-shopping-cart"></i>
+                                  <span class="cart-notification">2</span>
+                              </div>
+                              <div class="cart-total-price">
+                                  <span>total</span>
+                                  $50.00
+                              </div>
+                              <ul class="cart-list">
+                                  <li>
+                                      <div class="cart-img">
+                                          <a href="product-details.html"><img src="assets/img/cart/cart-1.jpg"
+                                                  alt=""></a>
+                                      </div>
+                                      <div class="cart-info">
+                                          <h4><a href="product-details.html">simple product 09</a></h4>
+                                          <span>$60.00</span>
+                                      </div>
+                                      <div class="del-icon">
+                                          <i class="fa fa-times"></i>
+                                      </div>
+                                  </li>
+                                  <li>
+                                      <div class="cart-img">
+                                          <a href="product-details.html"><img src="assets/img/cart/cart-2.jpg"
+                                                  alt=""></a>
+                                      </div>
+                                      <div class="cart-info">
+                                          <h4><a href="product-details.html">virtual product 10</a></h4>
+                                          <span>$50.00</span>
+                                      </div>
+                                      <div class="del-icon">
+                                          <i class="fa fa-times"></i>
+                                      </div>
+                                  </li>
+                                  <li class="mini-cart-price">
+                                      <span class="subtotal">subtotal : </span>
+                                      <span class="subtotal-price">$88.66</span>
+                                  </li>
+                                  <li class="checkout-btn">
+                                      <a href="#">checkout</a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
+  <!-- header middle end -->
+
+  <!-- main menu area start -->
+  <div class="main-header-wrapper bdr-bottom1">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="main-header-inner">
+                      <div class="main-menu">
+                          <nav id="mobile-menu">
+                              <ul>
+                                  <li class="active"><a href="#"><i class="fa fa-home"></i>Home <i class="fa fa-angle-down"></i></a>
+                                      <ul class="dropdown">
+                                          <li><a href="#">Home version 01</a></li>
+                                      </ul>
+                                  </li>
+                                  <li class="static"><a href="#">pages <i class="fa fa-angle-down"></i></a>
+                                      <ul class="megamenu dropdown">
+                                          <li class="mega-title"><a href="#">column 01</a>
+                                              <ul>
+                                                  <li><a href="shop-grid-left-sidebar.html">shop grid left
+                                                          sidebar</a></li>
+                                                  <li><a href="shop-grid-right-sidebar.html">shop grid right
+                                                          sidebar</a></li>
+                                                  <li><a href="shop-grid-full-3-col.html">shop grid full 3
+                                                          column</a></li>
+                                                  <li><a href="shop-grid-full-4-col.html">shop grid full 4
+                                                          column</a></li>
+                                              </ul>
+                                          </li>
+                                          <li class="mega-title"><a href="#">column 02</a>
+                                              <ul>
+                                                  <li><a href="product-details.html">product details</a></li>
+                                                  <li><a href="product-details-affiliate.html">product
+                                                          details
+                                                          affiliate</a></li>
+                                                  <li><a href="product-details-variable.html">product details
+                                                          variable</a></li>
+                                                  <li><a href="product-details-group.html">product details
+                                                          group</a></li>
+                                              </ul>
+                                          </li>
+                                          <li class="mega-title"><a href="#">column 03</a>
+                                              <ul>
+                                                  <li><a href="cart.html">cart</a></li>
+                                                  <li><a href="checkout.html">checkout</a></li>
+                                                  <li><a href="compare.html">compare</a></li>
+                                                  <li><a href="wishlist.html">wishlist</a></li>
+                                              </ul>
+                                          </li>
+                                          <li class="mega-title"><a href="#">column 04</a>
+                                              <ul>
+                                                  <li><a href="my-account.html">my-account</a></li>
+                                                  <li><a href="login-register.html">login-register</a></li>
+                                                  <li><a href="about-us.html">about us</a></li>
+                                                  <li><a href="contact-us.html">contact us</a></li>
+                                              </ul>
+                                          </li>
+                                      </ul>
+                                  </li>
+                                  <li><a routerLink="shop">shop <i class="fa fa-angle-down"></i></a>
+                                  </li>
+                                  <li><a href="#">Blog <i class="fa fa-angle-down"></i></a>
+                                      <ul class="dropdown">
+                                          <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
+                                          <li><a href="blog-left-sidebar-2-col.html">blog left sidebar 2 col</a></li>
+                                          <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
+                                          <li><a href="blog-full-2-column.html">blog full 2 column</a></li>
+                                          <li><a href="blog-full-3-column.html">blog full 3 column</a></li>
+                                          <li><a href="blog-details.html">blog details</a></li>
+                                          <li><a href="blog-details-audio.html">blog details audio</a></li>
+                                          <li><a href="blog-details-video.html">blog details video</a></li>
+                                          <li><a href="blog-details-image.html">blog details image</a></li>
+                                      </ul>
+                                  </li>
+                                  <li><a href="contact-us.html">Contact us</a></li>
+                              </ul>
+                          </nav>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-12 d-block d-lg-none">
+                  <div class="mobile-menu"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- main menu area end -->
+
 </header>

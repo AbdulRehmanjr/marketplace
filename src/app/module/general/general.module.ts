@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleSigninButtonModule,SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
+import {NgxTypedJsModule} from 'ngx-typed-js';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { LandingpageComponent } from 'src/app/components/general/landingpage/landingpage.component';
 
@@ -14,13 +16,18 @@ import { GeneralComponent } from './general.component';
 import { HeaderComponent } from '../../components/general/header/header.component';
 import { LoginComponent } from '../../components/general/login/login.component';
 import { SignupComponent } from '../../components/general/signup/signup.component';
+import { CategoriesComponent } from '../../components/general/categories/categories.component';
+import { TrendingComponent } from '../../components/general/trending/trending.component';
+import { ShopComponent } from '../../components/general/shop/shop.component';
+
 
 
 
 const routes: Routes = [
-  { path: '', component: LandingpageComponent },
-  { path: 'login', component: LoginComponent },
-  {path:'signup',component:SignupComponent}
+  {path:'',component:GeneralComponent,children:[
+    {path:'',component:LandingpageComponent},
+    {path:'shop',component:ShopComponent}
+  ]}
 ]
 
 @NgModule({
@@ -29,14 +36,19 @@ const routes: Routes = [
     LandingpageComponent,
     HeaderComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    CategoriesComponent,
+    TrendingComponent,
+    ShopComponent,
   ],
   imports: [
+    NgxTypedJsModule,
     HttpClientModule,
     SocialLoginModule,
     GoogleSigninButtonModule,
     ReactiveFormsModule,
     MatBadgeModule,
+    MatDividerModule,
     MatIconModule,
     CommonModule,
     RouterModule.forChild(routes)
