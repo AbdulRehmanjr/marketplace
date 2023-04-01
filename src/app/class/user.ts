@@ -1,5 +1,7 @@
 export class User {
   id:string
+  userName:string
   email:string
-  password:string
+  userPassword:string
+  profilePicture:Blob
 }

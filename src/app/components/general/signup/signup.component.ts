@@ -12,24 +12,60 @@ import { SignupService } from 'src/app/service/signup.service';
 export class SignupComponent {
 
 SignupForm: FormGroup;
+file:any
   constructor(
     private formBuilder: FormBuilder,
     private _router:Router,
-    private signup:SignupService  ) { }
+    private _signup:SignupService  ) { }
   ngOnInit(): void {
-
     this.SignupForm = this.formBuilder.group({
-      password: new FormControl('', [Validators.required]),
-      email :new FormControl('',[Validators.required,Validators.email]),
+      email: ['', [Validators.required, Validators.email]],
+          username: ['', Validators.required],
+          password: ['', Validators.required],
+          confirmPassword: ['', Validators.required],
+          profilePicture: ['', Validators.required],
     });
   }
-  get email():any {return this.SignupForm.get('email').value}
-  get password(): any { return this.SignupForm.get('password').value }
+
+  passwordMatchValidator(form: FormGroup):void {
+    const password = form.get('password');
+    const confirmPassword = form.get('confirmPassword');
+
+    if (password.value !== confirmPassword.value) {
+      confirmPassword.setErrors({ passwordMismatch: true });
+    } else {
+      confirmPassword.setErrors(null);
+    }
+  }
+
+  onChange(event:any){
+    this.file= event.target.files[0]
+    if(this.file){
+      console.log("File changed / selected")
+    }
+  }
   OnSubmit() {
+    if (this.SignupForm.invalid) {
+      this.SignupForm.markAllAsTouched();
+      return;
+    }
      let user = new User()
      user.email = this.SignupForm.controls['email'].value
-     user.password = this.SignupForm.controls['password'].value
+     user.userPassword = this.SignupForm.controls['password'].value
+     user.userName = this.SignupForm.controls['username'].value
 
-     this.signup.signup(user)
+     this._signup.saveUser(user,this.file).subscribe({
+      next:(value:any)=>{
+        if(value){
+          this._router.navigate(['login'])
+        }
+      },
+      error:(err)=>{
+        console.log(`Error in saving user ${err}`)
+      },
+      complete:()=>{
+        console.log('Saving user completed with success')
+      }
+     })
     }
 }

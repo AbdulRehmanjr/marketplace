@@ -19,6 +19,8 @@ import { SignupComponent } from '../../components/general/signup/signup.componen
 import { CategoriesComponent } from '../../components/general/categories/categories.component';
 import { TrendingComponent } from '../../components/general/trending/trending.component';
 import { ShopComponent } from '../../components/general/shop/shop.component';
+import { ShopDetailViewComponent } from '../../components/general/shop-detail-view/shop-detail-view.component';
+import { FooterComponent } from '../../components/general/footer/footer.component';
 
 
 
@@ -26,7 +28,8 @@ import { ShopComponent } from '../../components/general/shop/shop.component';
 const routes: Routes = [
   {path:'',component:GeneralComponent,children:[
     {path:'',component:LandingpageComponent},
-    {path:'shop',component:ShopComponent}
+    {path:'shop',component:ShopComponent},
+    {path:'shop-detail',component:ShopDetailViewComponent}
   ]}
 ]
 
@@ -40,6 +43,8 @@ const routes: Routes = [
     CategoriesComponent,
     TrendingComponent,
     ShopComponent,
+    ShopDetailViewComponent,
+    FooterComponent,
   ],
   imports: [
     NgxTypedJsModule,

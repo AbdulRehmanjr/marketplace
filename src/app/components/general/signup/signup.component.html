@@ -1,27 +1,88 @@
-<div class="bg">
-  <div class="box-form">
-    <div class="left">
-      <div class="overlay">
-        <h1>Multi Vendor</h1>
-        <p>Platform to Sell, Buy and Auction.</p>
-        <span>
-        </span>
+<div class="form-box login-reg-form-wrap mt-md-34 mt-sm-34">
+  <h2>Singup Form</h2>
+  <form [formGroup]="SignupForm" (ngSubmit)="OnSubmit()">
+    <div class="single-input-item">
+      <input
+        type="text"
+        placeholder="Full Name"
+        formControlName="username"
+        required
+      />
+    </div>
+    <div
+      *ngIf="
+        SignupForm.get('username').invalid && SignupForm.get('username').touched
+      "
+      class="error-message"
+    >
+      Username is required
+    </div>
+    <div class="single-input-item">
+      <input type="email" formControlName="email" placeholder="Enter your Email" required />
+    </div>
+    <div
+      *ngIf="SignupForm.get('email').invalid && SignupForm.get('email').touched"
+      class="error-message"
+    >
+      Email is required
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="single-input-item">
+          <input type="password" formControlName="password" placeholder="Enter your Password" required />
+        </div>
+        <div
+        *ngIf="
+          SignupForm.get('password').invalid &&
+          SignupForm.get('password').touched
+        "
+        class="error-message"
+      >
+        <div *ngIf="SignupForm.get('password').errors['required']">
+          Password is required
+        </div>
+      </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="single-input-item">
+          <input type="password" formControlName="confirmPassword" placeholder="Repeat your Password" required />
+        </div>
+        <div
+          *ngIf="
+            SignupForm.get('confirmPassword').invalid &&
+            SignupForm.get('confirmPassword').touched
+          "
+          class="error-message"
+        >
+          Confirm password is required
+        </div>
+        <div
+          *ngIf="
+          SignupForm.get('confirmPassword').touched && SignupForm.get('confirmPassword').value!=SignupForm.get('password').value
+          "
+          class="error-message"
+        >
+          Confirm password not matched
+        </div>
       </div>
     </div>
-
-    <div class="right">
-      <div class="row mt-4">
-        <h6>Signup</h6>
-      </div>
-      <div class="row mt-4">
-        <form class="inputs" [formGroup]="SignupForm" (ngSubmit)="OnSubmit()">
-          <input type="email" placeholder="abc@gmail.com" required/>
-          <br />
-          <input type="password" placeholder="password" required/>
-        </form>
-        <button class="mt-4" type="submit">Sign up</button>
-      </div>
-
+    <div class="single-input-item">
+      <input type="file" formControlName="profilePicture"  (change)="onChange($event)" required />
+          <div
+            *ngIf="
+              SignupForm.get('profilePicture').invalid &&
+              SignupForm.get('profilePicture').touched
+            "
+            class="error-message"
+          >
+            Profile picture is required
+          </div>
     </div>
-  </div>
+
+    <div class="single-input-item">
+
+      <button type="submit" class="sqr-btn">Submit</button>
+    </div>
+  </form>
 </div>

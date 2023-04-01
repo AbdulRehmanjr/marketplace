@@ -2,8 +2,11 @@
   padding: 0;
   margin: 0;
 }
-.banner{
+.height{
   height: 500px;
+}
+.banner{
+  height: 100%;
   filter: blur(3px);
   -webkit-filter: blur(3px);
   background-image: url('../../../../assets/images/banner-1.jpg');
