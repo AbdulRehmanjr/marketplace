@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/class/user';
 import { SignupService } from 'src/app/service/signup.service';
 
+import swal from 'sweetalert2'
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -12,7 +14,8 @@ import { SignupService } from 'src/app/service/signup.service';
 export class SignupComponent {
 
 SignupForm: FormGroup;
-file:any
+file:File
+Error:string
   constructor(
     private formBuilder: FormBuilder,
     private _router:Router,
@@ -60,8 +63,13 @@ file:any
           this._router.navigate(['login'])
         }
       },
-      error:(err)=>{
+      error:(err:Error)=>{
         console.log(`Error in saving user ${err}`)
+        swal.fire(
+          'Sign up Failed',
+          `${err.message}`,
+          'error'
+        );
       },
       complete:()=>{
         console.log('Saving user completed with success')

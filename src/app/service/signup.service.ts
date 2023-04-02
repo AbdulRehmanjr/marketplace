@@ -23,6 +23,6 @@ export class SignupService {
     } else {
       console.log("File is not null")
     }
-    return this._http.post(`${this.baseUrl}/register`, formData, { responseType: 'text' })
+    return this._http.post(`${this.baseUrl}/register`, formData,{responseType:'text'})
   }
 }

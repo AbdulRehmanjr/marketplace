@@ -3,5 +3,6 @@ export class User {
   userName:string
   email:string
   userPassword:string
-  profilePicture:Blob
+  profilePicture:string
+  authority:string
 }

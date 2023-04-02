@@ -1,33 +1,25 @@
-<div class="bg">
-  {{user|json}}
-  <div class="box-form">
-    <div class="left">
-      <div class="overlay">
-        <h1>Multi Vendor</h1>
-        <p>Platform to Sell, Buy and Auction.</p>
-        <span>
-          <p>Login with Social Media</p>
-          <asl-google-signin-button onclick="signInWithGoogle()"></asl-google-signin-button>
-        </span>
+<div class="form-box login-reg-form-wrap  pr-lg-50">
+  <h2>Sign In</h2>
+  <form [formGroup]="LoginForm" (ngSubmit)="OnSubmit()">
+      <div class="single-input-item">
+          <input formControlName="email" type="email" placeholder="Email or Username" required />
       </div>
-    </div>
+      <div class="single-input-item">
+          <input formControlName="password" type="password" placeholder="Enter your Password" required />
+      </div>
+      <div class="single-input-item">
+          <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
+              <a href="#" class="forget-pwd">Forget Password?</a>
+          </div>
+      </div>
 
-    <div class="right">
-      <div class="row mt-4">
-        <h6>Login</h6>
-      </div>
-      <div class="row mt-4">
-        <div class="inputs">
-          <input type="email" placeholder="abc@gmail.com" required/>
-          <br />
-          <input type="password" placeholder="password" required/>
+      <div class="single-input-item">
+        <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
+            <a href="/signup" class="forget-pwd">Don't Have Account? Sign up</a>
         </div>
-
-      </div>
-      <div class="row mt-4">
-        Don't have account?<a routerLink="/signup">  Sign up</a>
-      </div>
-      <button class="mt-4">Login</button>
     </div>
-  </div>
+      <div class="single-input-item">
+          <button class="sqr-btn">Login</button>
+      </div>
+  </form>
 </div>
