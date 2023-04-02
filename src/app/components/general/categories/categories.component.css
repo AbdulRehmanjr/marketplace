@@ -23,7 +23,10 @@ a{
 .category-banner:hover{
   color:red;
 }
-h6,h2{
+h2{
   font-family: 'Squid Game';
-
+}
+h6{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
 }

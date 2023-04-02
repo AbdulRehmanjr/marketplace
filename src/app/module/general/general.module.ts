@@ -26,11 +26,11 @@ import { FooterComponent } from '../../components/general/footer/footer.componen
 
 
 const routes: Routes = [
-  {path:'',component:GeneralComponent,children:[
-    {path:'',component:LandingpageComponent},
-    {path:'shop',component:ShopComponent},
-    {path:'shop-detail',component:ShopDetailViewComponent}
-  ]}
+  // {path:'',component:GeneralComponent,children:[
+  //   {path:'',component:LandingpageComponent},
+  //   {path:'shop',component:ShopComponent},
+  //   {path:'shop-detail',component:ShopDetailViewComponent}
+  // ]}
 ]
 
 @NgModule({

@@ -54,7 +54,7 @@ Error:string
     }
      let user = new User()
      user.email = this.SignupForm.controls['email'].value
-     user.userPassword = this.SignupForm.controls['password'].value
+     user.password = this.SignupForm.controls['password'].value
      user.userName = this.SignupForm.controls['username'].value
 
      this._signup.saveUser(user,this.file).subscribe({
@@ -63,11 +63,11 @@ Error:string
           this._router.navigate(['login'])
         }
       },
-      error:(err:Error)=>{
-        console.log(`Error in saving user ${err}`)
+      error:(err:any)=>{
+        console.log(err)
         swal.fire(
           'Sign up Failed',
-          `${err.message}`,
+          `${err.error}`,
           'error'
         );
       },

@@ -2,7 +2,7 @@ export class User {
   id:string
   userName:string
   email:string
-  userPassword:string
+  password:string
   profilePicture:string
   authority:string
 }

@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
       this.LoginForm.markAllAsTouched();
       return;
     }
-
+    /*
     let login = new Login();
 
     login.email = this.LoginForm.controls['email'].value;
@@ -129,6 +129,8 @@ export class LoginComponent implements OnInit {
         console.log(`completted token generation`)
       }
     })
+    */
+   this.router.navigate(['user-dashboard'])
   }
 
     private redirection():void {

@@ -6,11 +6,12 @@
 }
 
 body{
-  background-color: #F5F5F5;
+  background-color: #fff;
+  overflow-x: hidden;
 }
 .no-padding{
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 a{
   text-decoration: none;

@@ -10,38 +10,23 @@ export class CategoriesComponent {
   categories:Category[] = [
     {
       id:'',
-      name:'Fashion',
-      logo:'fa-solid fa-shirt'
+      name:'Men',
+      logo:'fa-solid fa-person'
     },
     {
       id:'',
-      name:'Furniture',
-      logo:'fa-solid fa-couch'
+      name:'Women',
+      logo:'fa-solid fa-person-dress'
     },
     {
       id:'',
-      name:'Sport',
-      logo:'fa-solid fa-medal'
+      name:'Child',
+      logo:'fa-solid fa-baby'
     },
     {
       id:'',
-      name:'Toy',
-      logo:'fa-solid fa-bicycle'
-    },
-    {
-      id:'',
-      name:'Game',
-      logo:'fa-solid fa-gamepad'
-    },
-    {
-      id:'',
-      name:'Phone',
-      logo:'fa-solid fa-mobile'
-    },
-    {
-      id:'',
-      name:'Camera',
-      logo:'fa-solid fa-camera'
-    },
+      name:'Teenager',
+      logo:'fa-solid fa-user-graduate'
+    }
   ]
 }
