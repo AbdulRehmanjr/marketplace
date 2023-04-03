@@ -1,20 +1,30 @@
 <div class="container-fluid no-padding">
   <div class="row">
+    <h3>My wardrobe</h3>
+  </div>
+  <div class="row">
+    <button class="btn-new">Add</button>
+  </div>
+  <div class="row">
     <div *ngFor="let num of numbers" class="col-sm-4">
-      <p-card header="Advanced Card" subheader="Card Subheader" [style]="{ width: '360px' }">
-        <ng-template pTemplate="header">
-            <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
-        </ng-template>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-            quas!
-        </p>
-        <ng-template pTemplate="footer">
-            <button label="Save" icon="pi pi-check">Add Product</button>
-            <button label="Cancel" >View</button>
-        </ng-template>
-      </p-card>
+      <div class="card mt-3 p-3 g-2">
+        <div class="d-flex align-items-center">
+          <small class="first">Today at 1:30 pm</small>
+        </div>
+        <div class="mt-3">
+          <h2 class="text">Machine Learning <br />Notes</h2>
+        </div>
+        <div class="detail mt-5">
+          <small
+            >Machine Learning is a method of data data analysis that automates
+            analytical model building</small
+          >
+        </div>
+        <div class="mt-3 d-flex justify-content-end px-2">
+          <button class="btn-submit">View</button>
+          <button class="btn-submit mx-5">Delete</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-

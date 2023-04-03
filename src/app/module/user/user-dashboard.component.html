@@ -1,30 +1,13 @@
-<div class="wrapper">
-
-    <!-- Sidebar -->
-    <nav id="sidebar">
-      <div class="sidebar-header">
-          <h3>DashBoard</h3>
-      </div>
-
-      <ul class="list-unstyled components">
-          <li>
-              <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-          </li>
-          <li><a routerLink="wardrobe"><img width="30" src="assets/images/svg/home.svg" alt="home"> Wardrobe</a></li>
-          <li><a href="#"><img width="30" src="assets/images/svg/following.svg" alt="following">Following</a></li>
-          <li><a href="#"><img width="30" src="assets/images/svg/home.svg" alt="favorite">Favorite</a></li>
-          <li><a routerLink="add-product"><img width="30" src="assets/images/svg/wardrobe.svg" alt="home">Wardrobe</a></li>
-      </ul>
-  </nav>
-        <div class="container-fluid no-padding">
-            <button type="button" id="sidebarCollapse" class="btn-toggle">
-              <i class="fa-solid fa-bars"></i>
-          </button>
-        <div class="row">
-          <div class="col-md-12">
-            <router-outlet></router-outlet>
-          </div>
-        </div>
-        </div>
+<div class="container-fluid">
+  <div class="row">
+    <div
+      class="d-none d-md-block col-md-2 position"
+      style="border: 2px solid black"
+    >
+    <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-10 offset-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
-

@@ -1,0 +1,40 @@
+body{
+  background-color:#eaf5ff;
+
+}
+
+.btn-new{
+  width: 100px;
+}
+.card{
+  background-color:#142948;
+  border-radius:15px;
+  height:300px;
+}
+.first {
+  color:#a4adb8;
+}
+.text{
+  color:#fff;
+  font-weight:700;
+}
+.detail{
+  color:#a4adb8;
+}
+.readmore{
+  font-weight:400;
+  color:#fff;
+}
+.btn-submit{
+  color: #fff;
+  background-color: transparent;
+  border-radius:50px;
+  border:none;
+  height:35px;
+  width:120px;
+  font-size:20px;
+  font-weight:500;
+}
+.btn-submit:hover{
+  border-bottom: 2px solid #fff;
+}
