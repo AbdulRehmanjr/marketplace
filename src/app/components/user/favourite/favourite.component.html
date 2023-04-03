@@ -1,36 +1,265 @@
 <div class="container">
+<div class="row">
+  <h1>Favourite</h1>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-10 offset-md-1">
+    <p-tabView styleClass="tabview-custom">
+      <p-tabPanel>
+          <ng-template pTemplate="header">
+              <i class="pi pi-user"></i>
+              <span>Users</span>
+          </ng-template>
 
-<p-tabView styleClass="tabview-custom">
-  <p-tabPanel>
-      <ng-template pTemplate="header">
-          <i class="pi pi-calendar"></i>
-          <span>Header I</span>
-      </ng-template>
-      <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-  </p-tabPanel>
-  <p-tabPanel header="Header II">
-      <ng-template pTemplate="header">
-          <i class="pi pi-user"></i>
-          <span>Header II</span>
-      </ng-template>
-      <p>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-          ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
-      </p>
-  </p-tabPanel>
-  <p-tabPanel header="Header III">
-      <ng-template pTemplate="header">
-          <i class="pi pi-search"></i>
-          <span>Header III</span>
-          <i class="pi pi-cog"></i>
-      </ng-template>
-      <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa
-          qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
-      </p>
-  </p-tabPanel>
-</p-tabView>
+          <p-table
+          #dt
+          [value]="customers"
+          [(selection)]="selectedCustomers"
+          dataKey="id"
+          [rowHover]="true"
+          [rows]="5"
+          [showCurrentPageReport]="true"
+          [paginator]="true"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [filterDelay]="0"
+          [globalFilterFields]="['id', 'name', 'image']"
+      >
+          <ng-template pTemplate="caption">
+              <div class="table-header">
+                  List of Customers
+                  <span class="p-input-icon-left">
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" (input)="dt.filterGlobal($event.target['value'], 'contains')" placeholder="Global Search" />
+                  </span>
+              </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+              <tr>
+                  <th style="width: 4rem">
+                      <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                  </th>
+                  <th pSortableColumn="id">
+                      <div class="flex justify-content-between align-items-center">
+                          Id
+                          <p-sortIcon field="id"></p-sortIcon>
+                          <p-columnFilter type="text" field="id" display="menu" class="ml-auto"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th pSortableColumn="name">
+                      <div class="flex justify-content-between align-items-center">
+                          User Name
+                          <p-sortIcon field="name"></p-sortIcon>
+                          <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th>
+                    <div class="flex justify-content-between align-items-center">
+                        Image
+                    </div>
+                </th>
+                  <th style="width: 5rem"></th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-customer>
+              <tr class="p-selectable-row">
+                  <td>
+                      <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+                  </td>
+                  <td>
+                      <span class="p-column-title">Id</span>
+                      {{ customer.id }}
+                  </td>
+                  <td>
+                    <span class="p-column-title">Name</span>
+                    {{ customer.name }}
+                </td>
+                  <td>
+                      <span class="p-column-title">Image</span>
+                      <img src="{{customer.image}}" width="50px"  />
+                  </td>
+
+                  <td style="text-align: center">
+                      <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
+                  </td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td colspan="8">No customers found.</td>
+              </tr>
+          </ng-template>
+      </p-table>
+      </p-tabPanel>
+      <p-tabPanel header="Wardrobe">
+          <ng-template pTemplate="header">
+              <i class="pi pi-bars"></i>
+              <span>Wardrobe</span>
+          </ng-template>
+          <p-table
+          #dt
+          [value]="customers"
+          [(selection)]="selectedCustomers"
+          dataKey="id"
+          [rowHover]="true"
+          [rows]="5"
+          [showCurrentPageReport]="true"
+          [paginator]="true"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [filterDelay]="0"
+          [globalFilterFields]="['id', 'name', 'image']"
+      >
+          <ng-template pTemplate="caption">
+              <div class="table-header">
+                  List of Customers
+                  <span class="p-input-icon-left">
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" (input)="dt.filterGlobal($event.target['value'], 'contains')" placeholder="Global Search" />
+                  </span>
+              </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+              <tr>
+                  <th style="width: 4rem">
+                      <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                  </th>
+                  <th pSortableColumn="id">
+                      <div class="flex justify-content-between align-items-center">
+                          Id
+                          <p-sortIcon field="id"></p-sortIcon>
+                          <p-columnFilter type="text" field="id" display="menu" class="ml-auto"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th pSortableColumn="name">
+                      <div class="flex justify-content-between align-items-center">
+                          User Name
+                          <p-sortIcon field="name"></p-sortIcon>
+                          <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th>
+                    <div class="flex justify-content-between align-items-center">
+                        Image
+                    </div>
+                </th>
+                  <th style="width: 5rem"></th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-customer>
+              <tr class="p-selectable-row">
+                  <td>
+                      <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+                  </td>
+                  <td>
+                      <span class="p-column-title">Id</span>
+                      {{ customer.id }}
+                  </td>
+                  <td>
+                    <span class="p-column-title">Name</span>
+                    {{ customer.name }}
+                </td>
+                  <td>
+                      <span class="p-column-title">Image</span>
+                      <img src="{{customer.image}}" width="50px"  />
+                  </td>
+
+                  <td style="text-align: center">
+                      <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
+                  </td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td colspan="8">No customers found.</td>
+              </tr>
+          </ng-template>
+      </p-table>
+      </p-tabPanel>
+      <p-tabPanel header="Products">
+          <ng-template pTemplate="header">
+              <i class="pi pi-search"></i>
+              <span>Products</span>
+          </ng-template>
+          <p-table
+          #dt
+          [value]="customers"
+          [(selection)]="selectedCustomers"
+          dataKey="id"
+          [rowHover]="true"
+          [rows]="5"
+          [showCurrentPageReport]="true"
+          [paginator]="true"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [filterDelay]="0"
+          [globalFilterFields]="['id', 'name', 'image']"
+      >
+          <ng-template pTemplate="caption">
+              <div class="table-header">
+                  List of Customers
+                  <span class="p-input-icon-left">
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" (input)="dt.filterGlobal($event.target['value'], 'contains')" placeholder="Global Search" />
+                  </span>
+              </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+              <tr>
+                  <th style="width: 4rem">
+                      <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                  </th>
+                  <th pSortableColumn="id">
+                      <div class="flex justify-content-between align-items-center">
+                          Id
+                          <p-sortIcon field="id"></p-sortIcon>
+                          <p-columnFilter type="text" field="id" display="menu" class="ml-auto"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th pSortableColumn="name">
+                      <div class="flex justify-content-between align-items-center">
+                          User Name
+                          <p-sortIcon field="name"></p-sortIcon>
+                          <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th>
+                    <div class="flex justify-content-between align-items-center">
+                        Image
+                    </div>
+                </th>
+                  <th style="width: 5rem"></th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-customer>
+              <tr class="p-selectable-row">
+                  <td>
+                      <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+                  </td>
+                  <td>
+                      <span class="p-column-title">Id</span>
+                      {{ customer.id }}
+                  </td>
+                  <td>
+                    <span class="p-column-title">Name</span>
+                    {{ customer.name }}
+                </td>
+                  <td>
+                      <span class="p-column-title">Image</span>
+                      <img src="{{customer.image}}" width="50px"  />
+                  </td>
+
+                  <td style="text-align: center">
+                      <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
+                  </td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td colspan="8">No customers found.</td>
+              </tr>
+          </ng-template>
+      </p-table>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>
+
 </div>

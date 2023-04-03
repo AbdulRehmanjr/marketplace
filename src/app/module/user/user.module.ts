@@ -9,6 +9,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
 import { TabViewModule } from 'primeng/tabview';
+import { TableModule } from 'primeng/table';
 
 
 //angular module
@@ -23,6 +24,7 @@ import { AddProductComponent } from '../../components/user/add-product/add-produ
 import { ProfileComponent } from '../../components/user/profile/profile.component';
 import { SidebarComponent } from '../../components/user/sidebar/sidebar.component';
 import { FavouriteComponent } from '../../components/user/favourite/favourite.component';
+import { WardrobeDetaillComponent } from '../../components/user/wardrobe-detaill/wardrobe-detaill.component';
 
 
 const routes:Routes=[
@@ -38,6 +40,9 @@ const routes:Routes=[
     },
     {
       path:'favourite',component:FavouriteComponent
+    },
+    {
+      path:'wardrobe-detail',component:WardrobeDetaillComponent
     }
   ]}
 ]
@@ -49,11 +54,13 @@ const routes:Routes=[
     AddProductComponent,
     ProfileComponent,
     SidebarComponent,
-    FavouriteComponent
+    FavouriteComponent,
+    WardrobeDetaillComponent
   ],
   imports: [
     MatListModule,
     MatCardModule,
+    TableModule,
     TabViewModule,
     CardModule,
     SidebarModule,
