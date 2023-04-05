@@ -10,6 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
 import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
+import {DialogModule} from 'primeng/dialog';
 
 
 //angular module
@@ -48,6 +49,7 @@ const routes:Routes=[
 ]
 @NgModule({
   declarations: [
+
     ListWardrobeComponent,
     AddWardrobeComponent,
     UserDashboardComponent,
@@ -63,6 +65,7 @@ const routes:Routes=[
     TableModule,
     TabViewModule,
     CardModule,
+    DialogModule,
     SidebarModule,
     InputTextModule,
     CommonModule,

@@ -1,25 +1,18 @@
-<div class="container-fluid no-padding">
-  <div class="row">
-    <div class="col-md-4 offset-4 bg">
-      <form action="">
+    <form formGroup="wardrobeForm" (ngSubmit)="OnSubmit()">
         <h2 class="text-center">Wardrobe Info</h2>
         <div class="p-inputgroup mt-4">
           <span class="p-inputgroup-addon">
             <i class="pi pi-shopping-cart"></i>
           </span>
-          <input pInputText placeholder="Wardrobe Name" required/>
+          <input pInputText formControlName="title" placeholder="Wardrobe Name" required/>
         </div>
         <div class="p-inputgroup mt-4">
           <span class="p-inputgroup-addon">
             <i class="pi pi-book"></i>
           </span>
-          <input pInputText placeholder="Description" required/>
+          <textarea type="text" formControlName="description" col="3" rows="5" maxlength="100" pInputText placeholder="Description 100 words only" required></textarea>
         </div>
         <div class="p-inputgroup mt-4">
-          <button class="btn-form" type="submit">Submit</button>
+          <button class="btn btn-info" type="submit">Submit</button>
         </div>
       </form>
-
-    </div>
-  </div>
-</div>

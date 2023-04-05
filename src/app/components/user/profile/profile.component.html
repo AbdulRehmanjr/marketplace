@@ -1,38 +1,129 @@
-<div class="container rounded bg-white mt-5 mb-5">
+<div class="container-fluid rounded bg mt-5">
   <div class="row">
-      <div class="col-md-4 border-right">
-          <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">user Name</span></div>
-      </div>
-      <div class="col-md-8 border-right">
-          <div class="p-3 py-5">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4 class="text-right">About me</h4>
-              </div>
-              <div class="row mt-2">
-                  <p>Bio etc sticker etc</p>
-              </div>
-              <div class="row mt-3">
-                  <div class="col-sm-6">
-                    Followers
-                  </div>
-                  <div class="col-sm-6">
-                    Following
-                  </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-sm-6">
-                  Number of active Wardrobe: number
-                </div>
-                <div class="col-sm-6">
-                  Number of products : number
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-sm-6">
-                  Check Wardrobe link to wardrobe by user id
-                </div>
-              </div>
+    <div class="col-md-4 card-section">
+      <div class="card card-profile">
+        <img
+          src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/img-1-1000x600.jpg"
+          alt="Image placeholder"
+          class="card-img-top"
+        />
+        <div class="row justify-content-center">
+          <div class="col-lg-3 order-lg-2">
+            <div class="card-profile-image">
+              <a href="#">
+                <img
+                  src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg"
+                  class="rounded-circle"
+                />
+              </a>
+            </div>
           </div>
+        </div>
+        <ng-container *ngIf="ownUser == false  ">
+          <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+            <div class="d-flex justify-content-between">
+              <a href="#" class="btn btn-sm mr-4 btn-default">Connect</a>
+              <a href="#" class="btn btn-sm float-right btn-warning">Message</a>
+            </div>
+          </div>
+        </ng-container>
+
+        <div class="card-body pt-h">
+          <div class="row">
+            <div class="col">
+              <div class="card-profile-stats d-flex justify-content-center">
+                <div>
+                  <span class="heading">22</span>
+                  <span class="description">Followers</span>
+                </div>
+                <div>
+                  <span class="heading">{{followings.length}}</span>
+                  <span class="description">Following</span>
+                </div>
+                <div>
+                  <span class="heading">89</span>
+                  <span class="description">Comments</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <h5 class="h3">
+              Jessica Jones<span class="font-weight-light">, 27</span>
+            </h5>
+            <h5 class="font-weight-light">Bucharest, Romania</h5>
+            <h5 class="h5 mt-4">Solution Manager - Creative Tim Officer</h5>
+            <h5>University of Computer Science</h5>
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1>Following</h1>
+          <p-table [value]="followings" scrollDirection="vertical" [scrollable]="true" scrollHeight="400px">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:30px;">Image</th>
+                    <th style="width:150px;">Name</th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-following>
+                <tr>
+                  <td><img src='data:image/jpeg;base64, {{this.following.profilePicture}}' width="60" alt="profile image"></td>
+                  <td>{{following.userName}}</td>
+                  <td> <a href="#" class="btn btn-sm mr-4 btn-default">View</a></td>
+                </tr>
+            </ng-template>
+        </p-table>
+        </div>
+        <div class="col-sm-6">
+          <h1>Follower</h1>
+          <p-table [value]="users" scrollDirection="vertical" [scrollable]="true" scrollHeight="400px">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:30px;">Image</th>
+                    <th style="width:150px;">Name</th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+                <tr>
+                  <td><img src="{{user.image}}" width="60" alt="profile image"></td>
+                  <td>{{user.name}}</td>
+                  <td> <a href="#" class="btn btn-sm mr-4 btn-default">View</a></td>
+                </tr>
+            </ng-template>
+        </p-table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Wardrobe details scrollable</h1>
+      <p-table [value]="users" scrollDirection="vertical" [scrollable]="true" scrollHeight="400px">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:150px;">Name</th>
+                <th style="width:350px;">Description</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr>
+              <td>Name</td>
+              <td>{{user.name}}</td>
+              <td> <a href="#" class="btn btn-sm mr-4 btn-default">View</a></td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>
+    <div class="col-md-2">
+      here will be some minor info orders,etc
+    </div>
   </div>
 </div>
