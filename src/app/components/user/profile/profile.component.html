@@ -11,19 +11,19 @@
           <div class="col-lg-3 order-lg-2">
             <div class="card-profile-image">
               <a href="#">
-                <img
-                  src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg"
+                <img width="50"
+                  src="data:image/jpeg;base64, {{profile.profilePicture}}"
                   class="rounded-circle"
                 />
               </a>
             </div>
           </div>
         </div>
-        <ng-container *ngIf="ownUser == false  ">
+        <ng-container *ngIf="ownUser == true">
           <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
             <div class="d-flex justify-content-between">
-              <a href="#" class="btn btn-sm mr-4 btn-default">Connect</a>
-              <a href="#" class="btn btn-sm float-right btn-warning">Message</a>
+              <button  class="btn btn-sm mr-4 btn-default" (click)="followUser(profile.userId)">{{ isfollowed ? 'Followed' : 'Follow' }}</button>
+              <button href="#" class="btn btn-sm float-right btn-warning">Message</button>
             </div>
           </div>
         </ng-container>
@@ -33,27 +33,22 @@
             <div class="col">
               <div class="card-profile-stats d-flex justify-content-center">
                 <div>
-                  <span class="heading">22</span>
+                  <span class="heading">{{numFollowers}}</span>
                   <span class="description">Followers</span>
                 </div>
                 <div>
-                  <span class="heading">{{followings.length}}</span>
+                  <span class="heading">{{numFollowing}}</span>
                   <span class="description">Following</span>
-                </div>
-                <div>
-                  <span class="heading">89</span>
-                  <span class="description">Comments</span>
                 </div>
               </div>
             </div>
           </div>
           <div class="text-center">
-            <h5 class="h3">
-              Jessica Jones<span class="font-weight-light">, 27</span>
-            </h5>
-            <h5 class="font-weight-light">Bucharest, Romania</h5>
-            <h5 class="h5 mt-4">Solution Manager - Creative Tim Officer</h5>
-            <h5>University of Computer Science</h5>
+            <p class="h3">
+              {{profile.userName}}
+                        </p>
+            <h5 class="font-weight-light"></h5>
+            <h5 class="h5 mt-4"><a  class="contact" href="mailto:{{profile.email}}">Click to Contact Us</a></h5>
           </div>
         </div>
       </div>
@@ -74,14 +69,14 @@
                 <tr>
                   <td><img src='data:image/jpeg;base64, {{this.following.profilePicture}}' width="60" alt="profile image"></td>
                   <td>{{following.userName}}</td>
-                  <td> <a href="#" class="btn btn-sm mr-4 btn-default">View</a></td>
+                  <td> <a routerLink="/user-dashboard/profile/{{following.userId}}" class="btn btn-sm mr-4 btn-default">View</a></td>
                 </tr>
             </ng-template>
         </p-table>
         </div>
         <div class="col-sm-6">
           <h1>Follower</h1>
-          <p-table [value]="users" scrollDirection="vertical" [scrollable]="true" scrollHeight="400px">
+          <p-table [value]="followers" scrollDirection="vertical" [scrollable]="true" scrollHeight="400px">
             <ng-template pTemplate="header">
                 <tr>
                     <th style="width:30px;">Image</th>
@@ -89,11 +84,11 @@
                     <th></th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-user>
+            <ng-template pTemplate="body" let-follower>
                 <tr>
-                  <td><img src="{{user.image}}" width="60" alt="profile image"></td>
-                  <td>{{user.name}}</td>
-                  <td> <a href="#" class="btn btn-sm mr-4 btn-default">View</a></td>
+                  <td><img src='data:image/jpeg;base64, {{follower.profilePicture}}' width="60" alt="profile image"></td>
+                  <td>{{follower.userName}}</td>
+                  <td> <a routerLink="/user-dashboard/profile/{{follower.userId}}" class="btn btn-sm mr-4 btn-default">View</a></td>
                 </tr>
             </ng-template>
         </p-table>
@@ -105,7 +100,7 @@
   <div class="row">
     <div class="col-md-8">
       <h1>Wardrobe details scrollable</h1>
-      <p-table [value]="users" scrollDirection="vertical" [scrollable]="true" scrollHeight="400px">
+      <p-table [value]="wardrobes" scrollDirection="vertical" [scrollable]="true" scrollHeight="400px">
         <ng-template pTemplate="header">
             <tr>
                 <th style="width:150px;">Name</th>
@@ -113,10 +108,10 @@
                 <th></th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-user>
+        <ng-template pTemplate="body" let-wardrobe>
             <tr>
-              <td>Name</td>
-              <td>{{user.name}}</td>
+              <td>{{wardrobe.title}}</td>
+              <td>{{wardrobe.description}}</td>
               <td> <a href="#" class="btn btn-sm mr-4 btn-default">View</a></td>
             </tr>
         </ng-template>

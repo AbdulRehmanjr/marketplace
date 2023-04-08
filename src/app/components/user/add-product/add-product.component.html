@@ -1,1 +1,97 @@
-<p>add-product works!</p>
+<form [formGroup]="productForm" (ngSubmit)="OnSubmit()">
+  <h2 class="text-center">Product Info</h2>
+  <div class="p-inputgroup mt-4">
+    <span class="p-inputgroup-addon">
+      <i class="pi pi-shopping-cart"></i>
+    </span>
+    <input
+      pInputText
+      formControlName="name"
+      placeholder="Product Name"
+      required
+    />
+  </div>
+
+  <div class="p-inputgroup mt-4">
+    <span class="p-inputgroup-addon">
+      <i class="pi pi-dollar"></i>
+    </span>
+    <input pInputText formControlName="price" placeholder="Price" required />
+  </div>
+
+  <div class="p-inputgroup mt-4">
+    <span class="p-inputgroup-addon">
+      <i class="pi pi-list"></i>
+    </span>
+    <select formControlName="category" class="form-select">
+      <option
+        *ngFor="let category of categories"
+        value="{{ category.id }}"
+      >
+        {{ category.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="p-inputgroup mt-4">
+    <span class="p-inputgroup-addon">
+      <i class="pi pi-list"></i>
+    </span>
+    <select formControlName="wardrobe" class="form-select" placeholer="Select Wardrobe">
+      <option
+        *ngFor="let wardrobe of wardrobes"
+        value="{{ wardrobe.id }}"
+      >
+        {{ wardrobe.title }}
+      </option>
+    </select>
+  </div>
+
+  <div class="p-inputgroup mt-4">
+    <span class="p-inputgroup-addon">
+      <i class="pi pi-align-justify"></i>
+    </span>
+    <textarea
+      formControlName="description"
+      placeholder="Description"
+      rows="5"
+      maxlength="100"
+      required
+    ></textarea>
+  </div>
+
+  <div class="p-inputgroup mt-4">
+    <span class="p-inputgroup-addon">
+      <i class="pi pi-image"></i>
+    </span>
+    <input
+      pInputText
+      type="file"
+      (change)="onChange1($event)"
+      required
+    />
+  </div>
+
+  <div class="p-inputgroup mt-4">
+    <span class="p-inputgroup-addon">
+      <i class="pi pi-image"></i>
+    </span>
+    <input
+      pInputText
+      type="file"
+      (change)="onChange2($event)"
+      required
+    />
+  </div>
+
+  <div class="p-inputgroup mt-4">
+    <span class="p-inputgroup-addon">
+      <i class="pi pi-star"></i>
+    </span>
+    <input pInputText formControlName="review" placeholder="Review" required />
+  </div>
+
+  <div class="p-inputgroup mt-4">
+    <button class="btn btn-info" type="submit">Submit</button>
+  </div>
+</form>

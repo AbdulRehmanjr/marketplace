@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,EventEmitter, Output} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/class/user';
 import { Wardrobe } from 'src/app/class/wardrobe';
+import { WardrobeService } from 'src/app/service/wardrobe.service';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-wardrobe',
@@ -11,11 +14,18 @@ import { Wardrobe } from 'src/app/class/wardrobe';
 export class AddWardrobeComponent implements OnInit{
 
   wardrobeForm:FormGroup
-  constructor(private _form:FormBuilder){
+
+  @Output()
+  formSubmited = new EventEmitter<boolean>()
+
+
+  constructor(private _form:FormBuilder,
+    private _wardrobeService:WardrobeService){
 
   }
 
   ngOnInit(): void {
+
     this.wardrobeForm = this._form.group({
       title: new FormControl('', [Validators.required,Validators.email]),
       description: new FormControl('', [Validators.required]),
@@ -30,16 +40,28 @@ export class AddWardrobeComponent implements OnInit{
     return this.wardrobeForm.get('description').value
   }
   OnSubmit():void{
-
    let wardrobe = new Wardrobe()
-   wardrobe.title = this.title()
-   wardrobe.decription = this.title()
+   wardrobe.title = this.title
+   wardrobe.description = this.description
 
    let user = new User()
-   user.id = '6b0d00c4-62cb-47eb-a095-b563ee72fbab'
+   user.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
 
    wardrobe.user = user
 
    console.log('wardrobe',wardrobe)
+
+   this._wardrobeService.saveWardrobe(wardrobe).subscribe({
+    next:(data:any)=>{
+      Swal.fire('Success','Added succesfully','success')
+    },
+    error:(err:any)=>{
+      console.log(err)
+    },
+    complete:()=>{
+      console.log('Adding wardrobe completed')
+      this.formSubmited.emit(true)
+    }
+   })
   }
 }

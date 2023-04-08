@@ -1,22 +1,36 @@
-<aside>
-  <mat-card>
-    <mat-action-list>
-      <h3>Dash board</h3>
-      <button routerLink="" mat-list-item>
-        <i class="fas fa-user"><strong>Profile</strong></i>
-      </button>
-      <button mat-list-item routerLink="wardrobe">
-        <i class="fas fa-wardrobe"><strong>Wardrobe</strong></i>
-      </button>
-      <button mat-list-item routerLink="favourite">
-        <i class="fas fa-heart"><strong>Favorite</strong></i>
-      </button>
-      <button mat-list-item routerLink="/admin/add-category">
-        Add Category
-      </button>
-      <button mat-list-item routerLink="/admin/quizzes">Quizzes</button>
-      <button mat-list-item routerLink="/admin/add-quiz">Add Quiz</button>
-      <button mat-list-item>Log out</button>
-    </mat-action-list>
-  </mat-card>
-</aside>
+<ng-container *ngIf="view==1 else navbar">
+  <aside>
+    <mat-card>
+      <mat-action-list>
+        <h3>Dash board</h3>
+        <button routerLink="/user-dashboard/profile/my/{{userId}}" mat-list-item>
+          <i class="fas fa-user"><strong>Profile</strong></i>
+        </button>
+        <button mat-list-item routerLink="/user-dashboard/wardrobe">
+          <i class="fas fa-wardrobe"><strong>Wardrobe</strong></i>
+        </button>
+        <button mat-list-item routerLink="/user-dashboard/search">
+          <i class="fas fa-heart"><strong>Search Users</strong></i>
+        </button>
+        <button mat-list-item routerLink="favourite">
+          <i class="fas fa-heart"><strong>Favorite</strong></i>
+        </button>
+        <button mat-list-item (click)="logout()">
+          <i class="fas fa-heart"><strong>Logout</strong></i>
+        </button>
+      </mat-action-list>
+    </mat-card>
+  </aside>
+</ng-container>
+<ng-template #navbar>
+<div class="row">
+  <nav class="position">
+    <ul class="d-flex flex-row">
+      <li><a >Profile</a></li>
+      <li><a >Wardrobe</a></li>
+      <li><a >Favourite</a></li>
+    </ul>
+  </nav>
+</div>
+
+</ng-template>

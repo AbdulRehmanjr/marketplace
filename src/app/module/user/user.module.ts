@@ -11,6 +11,11 @@ import { CardModule } from 'primeng/card';
 import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
+import { TagModule } from 'primeng/tag';
+import { ToolbarModule } from 'primeng/toolbar';
+import { DropdownModule } from 'primeng/dropdown';
+import { MessagesModule } from 'primeng/messages';
+import { ToastModule } from 'primeng/toast';
 
 
 //angular module
@@ -26,15 +31,22 @@ import { ProfileComponent } from '../../components/user/profile/profile.componen
 import { SidebarComponent } from '../../components/user/sidebar/sidebar.component';
 import { FavouriteComponent } from '../../components/user/favourite/favourite.component';
 import { WardrobeDetaillComponent } from '../../components/user/wardrobe-detaill/wardrobe-detaill.component';
-
+import { SearchComponent } from 'src/app/components/user/search/search.component';
+import { UserListComponent } from 'src/app/components/user/user-list/user-list.component';
 
 const routes:Routes=[
-  {path:'',component:UserDashboardComponent,children:[
+  {path:'user-dashboard',component:UserDashboardComponent,children:[
     {
-      path:'',component:ProfileComponent,
+      path:'profile/:userId',component:ProfileComponent,
+    },
+    {
+      path:'profile/my/:userId',component:ProfileComponent
     },
     {
       path:'wardrobe',component:ListWardrobeComponent
+    },
+    {
+      path:'wardrobe-detail/:wardrobeId',component:WardrobeDetaillComponent
     },
     {
       path:'add-product',component:AddProductComponent
@@ -43,13 +55,12 @@ const routes:Routes=[
       path:'favourite',component:FavouriteComponent
     },
     {
-      path:'wardrobe-detail',component:WardrobeDetaillComponent
+      path:'search',component:SearchComponent
     }
   ]}
 ]
 @NgModule({
   declarations: [
-
     ListWardrobeComponent,
     AddWardrobeComponent,
     UserDashboardComponent,
@@ -57,7 +68,9 @@ const routes:Routes=[
     ProfileComponent,
     SidebarComponent,
     FavouriteComponent,
-    WardrobeDetaillComponent
+    WardrobeDetaillComponent,
+    SearchComponent,
+    UserListComponent
   ],
   imports: [
     MatListModule,
@@ -66,8 +79,14 @@ const routes:Routes=[
     TabViewModule,
     CardModule,
     DialogModule,
+    TagModule,
+    MessagesModule,
+    ToastModule,
     SidebarModule,
+    DropdownModule,
     InputTextModule,
+    ToolbarModule,
+    ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild(routes)
   ],

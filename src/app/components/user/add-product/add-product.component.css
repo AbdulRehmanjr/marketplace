@@ -1,0 +1,57 @@
+.bg{
+  border: 1px solid aliceblue;
+  background-color: aliceblue;
+  border-radius: 10px;
+}
+.btn-sm {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+.btn-add {
+  color: #fff;
+  border-color:#000;
+  background-color: #000;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.btn-add:hover {
+  color: #fff;
+  border-color: #000;
+  background-color: #000;
+}
+.btn-add.focus,
+.btn-add:focus {
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 0 0 rgba(251, 99, 64, 0.5);
+}
+.btn {
+  font-size: 0.875rem;
+  position: relative;
+  transition: all 0.15s ease;
+  letter-spacing: 0.025em;
+  text-transform: none;
+  will-change: transform;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+.btn:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.btn-info {
+  color: #fff;
+  border-color:#2f2fff;
+  background-color: #2f2fff;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.btn-info:hover {
+  color: #fff;
+  border-color: #2f2fff;
+  background-color: #2f2fff;
+}
+.btn-info.focus,
+.btn-info:focus {
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 0 0 rgba(251, 99, 64, 0.5);
+}

@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Login } from 'src/app/class/login';
 import { LoginService } from 'src/app/service/login.service';
 import swal from 'sweetalert2'
+import { User } from 'src/app/class/user';
 
 @Component({
   selector: 'app-login',
@@ -78,7 +79,7 @@ export class LoginComponent implements OnInit {
       this.LoginForm.markAllAsTouched();
       return;
     }
-    /*
+
     let login = new Login();
 
     login.email = this.LoginForm.controls['email'].value;
@@ -97,6 +98,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.generateToken(login).subscribe({
       next:(data:any)=>{
+        console.log('token',data.token)
         this.loginService.setToken(data.token)
 
         this.loginService.currentUser(login).subscribe(
@@ -129,8 +131,6 @@ export class LoginComponent implements OnInit {
         console.log(`completted token generation`)
       }
     })
-    */
-   this.router.navigate(['user-dashboard'])
   }
 
     private redirection():void {
@@ -142,8 +142,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['admin-dashboard'])
 
     }else if(role == "USER"){
-
-      this.router.navigate([''])
+      let user = JSON.parse(sessionStorage.getItem('user'))
+      this.router.navigate([`user-dashboard/profile/${user['userId']}`])
     }
     else{
       this.router.navigate(['login'])

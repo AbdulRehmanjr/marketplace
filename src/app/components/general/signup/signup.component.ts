@@ -13,24 +13,24 @@ import swal from 'sweetalert2'
 })
 export class SignupComponent {
 
-SignupForm: FormGroup;
-file:File
-Error:string
+  SignupForm: FormGroup;
+  file: File
+  Error: string
   constructor(
     private formBuilder: FormBuilder,
-    private _router:Router,
-    private _signup:SignupService  ) { }
+    private _router: Router,
+    private _signup: SignupService) { }
   ngOnInit(): void {
     this.SignupForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-          username: ['', Validators.required],
-          password: ['', Validators.required],
-          confirmPassword: ['', Validators.required],
-          profilePicture: ['', Validators.required],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+      profilePicture: ['', Validators.required],
     });
   }
 
-  passwordMatchValidator(form: FormGroup):void {
+  passwordMatchValidator(form: FormGroup): void {
     const password = form.get('password');
     const confirmPassword = form.get('confirmPassword');
 
@@ -41,9 +41,9 @@ Error:string
     }
   }
 
-  onChange(event:any){
-    this.file= event.target.files[0]
-    if(this.file){
+  onChange(event: any) {
+    this.file = event.target.files[0]
+    if (this.file) {
       console.log("File changed / selected")
     }
   }
@@ -52,18 +52,18 @@ Error:string
       this.SignupForm.markAllAsTouched();
       return;
     }
-     let user = new User()
-     user.email = this.SignupForm.controls['email'].value
-     user.password = this.SignupForm.controls['password'].value
-     user.userName = this.SignupForm.controls['username'].value
+    let user = new User()
+    user.email = this.SignupForm.controls['email'].value
+    user.password = this.SignupForm.controls['password'].value
+    user.userName = this.SignupForm.controls['username'].value
 
-     this._signup.saveUser(user,this.file).subscribe({
-      next:(value:any)=>{
-        if(value){
+    this._signup.saveUser(user, this.file).subscribe({
+      next: (value: any) => {
+        if (value) {
           this._router.navigate(['login'])
         }
       },
-      error:(err:any)=>{
+      error: (err: any) => {
         console.log(err)
         swal.fire(
           'Sign up Failed',
@@ -71,9 +71,9 @@ Error:string
           'error'
         );
       },
-      complete:()=>{
+      complete: () => {
         console.log('Saving user completed with success')
       }
-     })
-    }
+    })
+  }
 }

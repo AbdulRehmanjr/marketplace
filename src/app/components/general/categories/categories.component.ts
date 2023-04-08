@@ -11,22 +11,21 @@ export class CategoriesComponent {
     {
       id:'',
       name:'Men',
-      logo:'fa-solid fa-person'
     },
     {
       id:'',
       name:'Women',
-      logo:'fa-solid fa-person-dress'
+
     },
     {
       id:'',
       name:'Child',
-      logo:'fa-solid fa-baby'
+
     },
     {
       id:'',
       name:'Teenager',
-      logo:'fa-solid fa-user-graduate'
+
     }
   ]
 }

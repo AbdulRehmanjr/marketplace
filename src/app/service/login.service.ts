@@ -16,7 +16,7 @@ export class LoginService {
 
   public generateToken(login: Login) {
     return this._http.post(`${this.baseUrl}` + '/generate', login, {
-      responseType: 'text',
+      responseType: 'json',
     });
 
   }
@@ -41,7 +41,8 @@ export class LoginService {
 
     let current_user = new User();
 
-    current_user.email = data.userEmail;
+    current_user.userId = data.userId
+    current_user.email = data.email
     current_user.userName = data.userName
     current_user.authority = data.role.authority;
 
@@ -49,7 +50,7 @@ export class LoginService {
   }
 
   public currentUser(loginInfo:Login) {
-    return this._http.post(`${this.baseUrl}/token/current-user`,loginInfo);
+    return this._http.post(`${this.baseUrl}/current-user`,loginInfo);
   }
 
 }

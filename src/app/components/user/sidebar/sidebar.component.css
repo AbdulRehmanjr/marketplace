@@ -10,3 +10,18 @@ strong{
 i{
   font-size: 20px;
 }
+nav{
+  background-color: aquamarine;
+  z-index: 10000;
+  position: fixed;
+  top:0;
+  left:0;
+}
+nav ul li{
+  padding-left: 20px;
+  padding-top:10px;
+}
+nav ul li a{
+  text-decoration: none;
+}
+

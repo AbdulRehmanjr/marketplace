@@ -4,9 +4,12 @@
       class="d-none d-md-block col-md-2 position"
       style="border: 2px solid black"
     >
-    <app-sidebar></app-sidebar>
+    <app-sidebar [view]="1"></app-sidebar>
     </div>
-    <div class="col-sm-12 col-md-10 offset-md-2" style="border:none;border-radius:10px;">
+    <div class="d-sm-block d-md-none">
+      <app-sidebar [view]="2"></app-sidebar>
+    </div>
+    <div class="col-sm-12 col-md-10 offset-md-2 mt-5" style="border:none;border-radius:10px;">
       <router-outlet></router-outlet>
     </div>
   </div>

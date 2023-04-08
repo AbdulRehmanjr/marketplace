@@ -1,4 +1,5 @@
-    <form formGroup="wardrobeForm" (ngSubmit)="OnSubmit()">
+
+    <form [formGroup]="wardrobeForm" (ngSubmit)="OnSubmit()">
         <h2 class="text-center">Wardrobe Info</h2>
         <div class="p-inputgroup mt-4">
           <span class="p-inputgroup-addon">
