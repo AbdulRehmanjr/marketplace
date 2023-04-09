@@ -11,8 +11,9 @@
           <div class="col-lg-3 order-lg-2">
             <div class="card-profile-image">
               <a href="#">
-                <img width="50"
-                  src="data:image/jpeg;base64, {{profile.profilePicture}}"
+                <img
+                  width="50"
+                  src="data:image/jpeg;base64, {{ profile.profilePicture }}"
                   class="rounded-circle"
                 />
               </a>
@@ -20,10 +21,19 @@
           </div>
         </div>
         <ng-container *ngIf="ownUser == true">
-          <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+          <div
+            class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
+          >
             <div class="d-flex justify-content-between">
-              <button  class="btn btn-sm mr-4 btn-default" (click)="followUser(profile.userId)">{{ isfollowed ? 'Followed' : 'Follow' }}</button>
-              <button href="#" class="btn btn-sm float-right btn-warning">Message</button>
+              <button
+                class="btn btn-sm mr-4 btn-default"
+                (click)="followUser(profile.userId)"
+              >
+                {{ isfollowed ? "Followed" : "Follow" }}
+              </button>
+              <button href="#" class="btn btn-sm float-right btn-warning">
+                Message
+              </button>
             </div>
           </div>
         </ng-container>
@@ -33,11 +43,11 @@
             <div class="col">
               <div class="card-profile-stats d-flex justify-content-center">
                 <div>
-                  <span class="heading">{{numFollowers}}</span>
+                  <span class="heading">{{ numFollowers }}</span>
                   <span class="description">Followers</span>
                 </div>
                 <div>
-                  <span class="heading">{{numFollowing}}</span>
+                  <span class="heading">{{ numFollowing }}</span>
                   <span class="description">Following</span>
                 </div>
               </div>
@@ -45,10 +55,14 @@
           </div>
           <div class="text-center">
             <p class="h3">
-              {{profile.userName}}
-                        </p>
+              {{ profile.userName }}
+            </p>
             <h5 class="font-weight-light"></h5>
-            <h5 class="h5 mt-4"><a  class="contact" href="mailto:{{profile.email}}">Click to Contact Us</a></h5>
+            <h5 class="h5 mt-4">
+              <a class="contact" href="mailto:{{ profile.email }}"
+                >Click to Contact Us</a
+              >
+            </h5>
           </div>
         </div>
       </div>
@@ -56,69 +70,96 @@
     <div class="col-md-8">
       <div class="row">
         <div class="col-sm-6">
-          <h1>Following</h1>
-          <p-table [value]="followings" scrollDirection="vertical" [scrollable]="true" scrollHeight="400px">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th style="width:30px;">Image</th>
-                    <th style="width:150px;">Name</th>
-                    <th></th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-following>
-                <tr>
-                  <td><img src='data:image/jpeg;base64, {{this.following.profilePicture}}' width="60" alt="profile image"></td>
-                  <td>{{following.userName}}</td>
-                  <td> <a routerLink="/user-dashboard/profile/{{following.userId}}" class="btn btn-sm mr-4 btn-default">View</a></td>
-                </tr>
-            </ng-template>
-        </p-table>
+          <h1>Followings</h1>
+          <ng-container *ngIf="followings == undefined; else error">
+            <p-virtualScroller
+              [value]="followings"
+              class="border-1 surface-border border-round"
+              scrollHeight="400px"
+            >
+              <ng-template #show pTemplate="item" let-following>
+                <div class="flex align-items-center p-2 h-full">
+                  <img
+                    src="data:image/jpeg;base64, {{ following.profilePicture }}"
+                    width="60"
+                    alt="profile image"
+                  />
+                  <td>{{ following.userName }}</td>
+                  <td>
+                    <a
+                      routerLink="/user-dashboard/profile/{{
+                        following.userId
+                      }}"
+                      class="btn btn-sm mr-4 btn-default"
+                      >View</a
+                    >
+                  </td>
+                </div>
+              </ng-template>
+            </p-virtualScroller>
+          </ng-container>
+          <ng-template #error>
+            <p class="h3">No following yet</p>
+          </ng-template>
         </div>
+
         <div class="col-sm-6">
           <h1>Follower</h1>
-          <p-table [value]="followers" scrollDirection="vertical" [scrollable]="true" scrollHeight="400px">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th style="width:30px;">Image</th>
-                    <th style="width:150px;">Name</th>
-                    <th></th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-follower>
-                <tr>
-                  <td><img src='data:image/jpeg;base64, {{follower.profilePicture}}' width="60" alt="profile image"></td>
-                  <td>{{follower.userName}}</td>
-                  <td> <a routerLink="/user-dashboard/profile/{{follower.userId}}" class="btn btn-sm mr-4 btn-default">View</a></td>
-                </tr>
-            </ng-template>
-        </p-table>
+          <ng-container *ngIf="followers == undefined; else error">
+            <p-virtualScroller
+              [value]="followers"
+              class="border-1 surface-border border-round"
+              scrollHeight="400px"
+            >
+              <ng-template #show pTemplate="item" let-follower>
+                <div class="flex align-items-center p-2 h-full">
+                  <img
+                    src="data:image/jpeg;base64, {{ follower.profilePicture }}"
+                    width="60"
+                    alt="profile image"
+                  />
+                  <td>{{ follower.userName }}</td>
+                  <td>
+                    <a
+                      routerLink="/user-dashboard/profile/{{ follower.userId }}"
+                      class="btn btn-sm mr-4 btn-default"
+                      >View</a
+                    >
+                  </td>
+                </div>
+              </ng-template>
+            </p-virtualScroller>
+          </ng-container>
+          <ng-template #error>
+            <p class="h3">No follower yet</p>
+          </ng-template>
         </div>
       </div>
-
     </div>
   </div>
   <div class="row">
     <div class="col-md-8">
       <h1>Wardrobe details scrollable</h1>
-      <p-table [value]="wardrobes" scrollDirection="vertical" [scrollable]="true" scrollHeight="400px">
-        <ng-template pTemplate="header">
-            <tr>
-                <th style="width:150px;">Name</th>
-                <th style="width:350px;">Description</th>
-                <th></th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-wardrobe>
-            <tr>
-              <td>{{wardrobe.title}}</td>
-              <td>{{wardrobe.description}}</td>
-              <td> <a href="#" class="btn btn-sm mr-4 btn-default">View</a></td>
-            </tr>
-        </ng-template>
-    </p-table>
+
+      <ng-container *ngIf="wardrobes == undefined; else error">
+        <p-virtualScroller
+          [value]="wardrobes"
+          class="border-1 surface-border border-round"
+          scrollHeight="400px"
+        >
+          <ng-template #show pTemplate="item" let-wardrobe>
+            <div class="flex align-items-center p-2 h-full">
+              {{ wardrobe.title }}
+              {{ wardrobe.description }}
+              <a href="#" class="btn btn-sm mr-4 btn-default">View</a>
+            </div>
+          </ng-template>
+        </p-virtualScroller>
+      </ng-container>
+      <ng-template #error>
+        <p class="h3">No Wardrobe yet</p>
+      </ng-template>
     </div>
-    <div class="col-md-2">
-      here will be some minor info orders,etc
-    </div>
+    <div class="col-md-2">here will be some minor info orders,etc</div>
   </div>
 </div>

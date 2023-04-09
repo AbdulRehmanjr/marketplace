@@ -14,7 +14,7 @@ import { WardrobeService } from 'src/app/service/wardrobe.service';
 export class ProfileComponent implements OnInit{
   profile:User
   followings:User[]
-  followers:User[]
+  followers:User[] = undefined
   ownUser:boolean = true
   userId :string = ''
   wardrobes:Wardrobe[]

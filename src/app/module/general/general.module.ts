@@ -5,6 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { GoogleSigninButtonModule,SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from '@abacritt/angularx-social-login';
+
+
+import { CarouselModule } from 'primeng/carousel';
+
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import {NgxTypedJsModule} from 'ngx-typed-js';
@@ -47,6 +51,7 @@ const routes: Routes = [
     FooterComponent,
   ],
   imports: [
+    CarouselModule,
     NgxTypedJsModule,
     HttpClientModule,
     SocialLoginModule,

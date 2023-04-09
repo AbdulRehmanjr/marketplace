@@ -25,14 +25,11 @@ h1{
   font-weight: bold;
   border: 3px solid #f1f1f1;
   border-radius: 10px;
-  transform: translate(-50%, -50%);
+  height: 500px;
   z-index: 2;
-  width: 400px;
   padding: 20px;
   text-align: center;
-  position: relative;
-  left: 40%;
-  top:-30%;
+
 }
 span{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, 'sans-serif';

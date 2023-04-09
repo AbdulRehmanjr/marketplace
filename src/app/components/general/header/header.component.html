@@ -1,145 +1,247 @@
-<header class="no-padding">
-  <!-- header middle start -->
-  <div class="header-middle-area pt-20 pb-20 px-0 pr-0">
-      <div class="container-fluid">
-          <div class="row align-items-center">
-              <div class="col-lg-3">
-                  <div class="brand-logo">
-                      <a href="#">
-                          <img src="assets/images/logo/logo.png" alt="brand logo">
-                      </a>
-                  </div>
-              </div> <!-- end logo area -->
-              <div class="col-lg-9">
-                  <div class="header-middle-right">
-                      <!-- <div class="header-middle-shipping mb-20">
-                          <div class="single-block-shipping">
-                              <div class="shipping-icon">
-                                  <i class="fa fa-clock-o"></i>
-                              </div>
-                              <div class="shipping-content">
-                                  <h5>Working time</h5>
-                                  <span>Mon- Sun: 8.00 - 18.00</span>
-                              </div>
-                          </div>
-                          <div class="single-block-shipping">
-                              <div class="shipping-icon">
-                                  <i class="fa fa-truck"></i>
-                              </div>
-                              <div class="shipping-content">
-                                  <h5>free shipping</h5>
-                                  <span>On order over $199</span>
-                              </div>
-                          </div>
-                          <div class="single-block-shipping">
-                              <div class="shipping-icon">
-                                  <i class="fa fa-money"></i>
-                              </div>
-                              <div class="shipping-content">
-                                  <h5>money back 100%</h5>
-                                  <span>Within 30 Days after delivery</span>
-                              </div>
-                          </div>
-                      </div> -->
-                      <div class="header-middle-block">
-                          <div class="header-middle-searchbox">
-                              <input type="text" placeholder="Search...">
-                              <button class="search-btn"><i class="fa fa-search"></i></button>
-                          </div>
-                          <!-- <div class="header-mini-cart">
-                              <div class="mini-cart-btn">
-                                  <i class="fa fa-shopping-cart"></i>
-                                  <span class="cart-notification">2</span>
-                              </div>
-                              <div class="cart-total-price">
-                                  <span>total</span>
-                                  $50.00
-                              </div>
-                              <ul class="cart-list">
-                                  <li>
-                                      <div class="cart-img">
-                                          <a href="product-details.html"><img src="assets/img/cart/cart-1.jpg"
-                                                  alt=""></a>
-                                      </div>
-                                      <div class="cart-info">
-                                          <h4><a href="product-details.html">simple product 09</a></h4>
-                                          <span>$60.00</span>
-                                      </div>
-                                      <div class="del-icon">
-                                          <i class="fa fa-times"></i>
-                                      </div>
-                                  </li>
-                                  <li>
-                                      <div class="cart-img">
-                                          <a href="product-details.html"><img src="assets/img/cart/cart-2.jpg"
-                                                  alt=""></a>
-                                      </div>
-                                      <div class="cart-info">
-                                          <h4><a href="product-details.html">virtual product 10</a></h4>
-                                          <span>$50.00</span>
-                                      </div>
-                                      <div class="del-icon">
-                                          <i class="fa fa-times"></i>
-                                      </div>
-                                  </li>
-                                  <li class="mini-cart-price">
-                                      <span class="subtotal">subtotal : </span>
-                                      <span class="subtotal-price">$88.66</span>
-                                  </li>
-                                  <li class="checkout-btn">
-                                      <a href="#">checkout</a>
-                                  </li>
-                              </ul>
-                          </div> -->
-                      </div>
-                  </div>
-              </div>
+<header class="header">
+  <div class="header-middle">
+    <div class="container">
+      <div class="header-left mr-md-4">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="#" class="logo ml-lg-0">
+          <img
+            src="../../../../assets/images/logo/logo.png"
+            alt="logo"
+            width="144"
+            height="45"
+          />
+        </a>
+        <form
+          method="get"
+          action="#"
+          class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper"
+        >
+          <div class="select-box">
+            <select id="category" name="category">
+              <option value="">All Categories</option>
+              <option value="4">Fashion</option>
+              <option value="5">Furniture</option>
+              <option value="6">Shoes</option>
+              <option value="7">Sports</option>
+              <option value="8">Games</option>
+              <option value="9">Computers</option>
+              <option value="10">Electronics</option>
+              <option value="11">Kitchen</option>
+              <option value="12">Clothing</option>
+            </select>
           </div>
+          <input
+            type="text"
+            class="form-control"
+            name="search"
+            id="search"
+            placeholder="Search in..."
+            required=""
+          />
+          <button class="btn btn-search" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
       </div>
+      <div class="header-right ml-4">
+        <div class="header-call d-xs-show d-lg-flex align-items-center">
+          <div class="call-info d-lg-show">
+            <h4
+              class="chat font-weight-normal font-size-md text-normal ls-normal text-light mb-0"
+            >
+              <a href="mailto:#" class="text-capitalize">Live Chat</a> or :
+            </h4>
+            <a href="tel:#" class="phone-number font-weight-bolder ls-50"
+              >0(800)123-456</a
+            >
+          </div>
+        </div>
+        <a class="font-weight-bold" href="/login">
+          <span class="wishlist-label d-lg-show">
+            <strong>Login /Sign up</strong>
+            </span>
+        </a>
+      </div>
+    </div>
   </div>
-  <!-- header middle end -->
-
-  <!-- main menu area start -->
-  <div class="main-header-wrapper bdr-bottom1">
+  <!-- End of Header Middle -->
+  <div class="sticky-content-wrapper">
+    <div
+      class="header-bottom sticky-content fix-top sticky-header has-dropdown"
+      style=""
+    >
       <div class="container">
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="main-header-inner">
-                      <div class="main-menu">
-                          <nav id="mobile-menu">
-                              <ul>
-                                  <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a>
-                                  </li>
-                                  <li><a href="#">pages</a>
-                                  <li><a routerLink="shop">shop</a>
-                                  </li>
-                                  <li><a href="#">Blog</a>
-                                      <ul class="dropdown">
-                                          <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
-                                          <li><a href="blog-left-sidebar-2-col.html">blog left sidebar 2 col</a></li>
-                                          <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
-                                          <li><a href="blog-full-2-column.html">blog full 2 column</a></li>
-                                          <li><a href="blog-full-3-column.html">blog full 3 column</a></li>
-                                          <li><a href="blog-details.html">blog details</a></li>
-                                          <li><a href="blog-details-audio.html">blog details audio</a></li>
-                                          <li><a href="blog-details-video.html">blog details video</a></li>
-                                          <li><a href="blog-details-image.html">blog details image</a></li>
-                                      </ul>
-                                  </li>
-                                  <li *ngIf="login"><a routerLink="login">Login / Register</a>
-                                    <li *ngIf="login"><a routerLink="user-dashboard">user-dashboard</a>
-
-                              </ul>
-                          </nav>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-12 d-block d-lg-none">
-                  <div class="mobile-menu"></div>
-              </div>
+        <div class="inner-wrap">
+          <div class="header-left">
+            <nav class="main-nav">
+              <ul class="menu active-underline collapse navbar-collapse" id="navbarSupportedContent">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="has-submenu">
+                  <a href="#">Shop</a>
+                </li>
+                <li class="has-submenu">
+                  <a href="vendor-dokan-store.html">Vendor</a>
+                  <ul class="submenu">
+                    <li class="has-submenu">
+                      <a href="vendor-dokan-store-list.html">Store Listing</a>
+                      <ul class="submenu">
+                        <li>
+                          <a href="vendor-dokan-store-list.html"
+                            >Store listing 1</a
+                          >
+                        </li>
+                        <li>
+                          <a href="vendor-wcfm-store-list.html"
+                            >Store listing 2</a
+                          >
+                        </li>
+                        <li>
+                          <a href="vendor-wcmp-store-list.html"
+                            >Store listing 3</a
+                          >
+                        </li>
+                        <li>
+                          <a href="vendor-wc-store-list.html"
+                            >Store listing 4</a
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="has-submenu">
+                      <a href="vendor-dokan-store.html">Vendor Store</a>
+                      <ul class="submenu">
+                        <li>
+                          <a href="vendor-dokan-store.html">Vendor Store 1</a>
+                        </li>
+                        <li>
+                          <a href="vendor-wcfm-store-product-grid.html"
+                            >Vendor Store 2</a
+                          >
+                        </li>
+                        <li>
+                          <a href="vendor-wcmp-store-product-grid.html"
+                            >Vendor Store 3</a
+                          >
+                        </li>
+                        <li>
+                          <a href="vendor-wc-store-product-grid.html"
+                            >Vendor Store 4</a
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li class="has-submenu">
+                  <a href="blog.html">Blog</a>
+                  <ul class="submenu">
+                    <li><a href="blog.html">Classic</a></li>
+                    <li><a href="blog-listing.html">Listing</a></li>
+                    <li class="has-submenu">
+                      <a href="blog-grid-3cols.html">Grid</a>
+                      <ul class="submenu">
+                        <li>
+                          <a href="blog-grid-2cols.html">Grid 2 columns</a>
+                        </li>
+                        <li>
+                          <a href="blog-grid-3cols.html">Grid 3 columns</a>
+                        </li>
+                        <li>
+                          <a href="blog-grid-4cols.html">Grid 4 columns</a>
+                        </li>
+                        <li>
+                          <a href="blog-grid-sidebar.html">Grid sidebar</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="has-submenu">
+                      <a href="blog-masonry-3cols.html">Masonry</a>
+                      <ul class="submenu">
+                        <li>
+                          <a href="blog-masonry-2cols.html"
+                            >Masonry 2 columns</a
+                          >
+                        </li>
+                        <li>
+                          <a href="blog-masonry-3cols.html"
+                            >Masonry 3 columns</a
+                          >
+                        </li>
+                        <li>
+                          <a href="blog-masonry-4cols.html"
+                            >Masonry 4 columns</a
+                          >
+                        </li>
+                        <li>
+                          <a href="blog-masonry-sidebar.html"
+                            >Masonry sidebar</a
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="has-submenu">
+                      <a href="blog-mask-grid.html">Mask</a>
+                      <ul class="submenu">
+                        <li>
+                          <a href="blog-mask-grid.html">Blog mask grid</a>
+                        </li>
+                        <li>
+                          <a href="blog-mask-masonry.html">Blog mask masonry</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a href="post-single.html">Single Post</a></li>
+                  </ul>
+                </li>
+                <li class="has-submenu">
+                  <a href="about-us.html">Pages</a>
+                  <ul class="submenu">
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="become-a-vendor.html">Become A Vendor</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="error-404.html">Error 404</a></li>
+                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                    <li><a href="wishlist.html">Wishlist</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                    <li><a href="my-account.html">My Account</a></li>
+                    <li><a href="compare.html">Compare</a></li>
+                  </ul>
+                </li>
+                <li class="has-submenu">
+                  <a href="elements.html">Elements</a>
+                  <ul class="submenu">
+                    <li><a href="element-accordions.html">Accordions</a></li>
+                    <li>
+                      <a href="element-alerts.html">Alert &amp; Notification</a>
+                    </li>
+                    <li><a href="element-blog-posts.html">Blog Posts</a></li>
+                    <li><a href="element-buttons.html">Buttons</a></li>
+                    <li><a href="element-cta.html">Call to Action</a></li>
+                    <li><a href="element-icons.html">Icons</a></li>
+                    <li><a href="element-icon-boxes.html">Icon Boxes</a></li>
+                    <li><a href="element-instagrams.html">Instagrams</a></li>
+                    <li>
+                      <a href="element-categories.html">Product Category</a>
+                    </li>
+                    <li><a href="element-products.html">Products</a></li>
+                    <li><a href="element-tabs.html">Tabs</a></li>
+                    <li>
+                      <a href="element-testimonials.html">Testimonials</a>
+                    </li>
+                    <li><a href="element-titles.html">Titles</a></li>
+                    <li><a href="element-typography.html">Typography</a></li>
+                    <li><a href="element-vendors.html">Vendors</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
           </div>
+        </div>
       </div>
+    </div>
   </div>
-  <!-- main menu area end -->
-
 </header>

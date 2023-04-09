@@ -16,7 +16,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { DropdownModule } from 'primeng/dropdown';
 import { MessagesModule } from 'primeng/messages';
 import { ToastModule } from 'primeng/toast';
-
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
 
 //angular module
 import {MatCardModule} from '@angular/material/card';
@@ -28,7 +28,6 @@ import { AddWardrobeComponent } from 'src/app/components/user/add-wardrobe/add-w
 import { ListWardrobeComponent } from 'src/app/components/user/list-wardrobe/list-wardrobe.component';
 import { AddProductComponent } from '../../components/user/add-product/add-product.component';
 import { ProfileComponent } from '../../components/user/profile/profile.component';
-import { SidebarComponent } from '../../components/user/sidebar/sidebar.component';
 import { FavouriteComponent } from '../../components/user/favourite/favourite.component';
 import { WardrobeDetaillComponent } from '../../components/user/wardrobe-detaill/wardrobe-detaill.component';
 import { SearchComponent } from 'src/app/components/user/search/search.component';
@@ -66,7 +65,6 @@ const routes:Routes=[
     UserDashboardComponent,
     AddProductComponent,
     ProfileComponent,
-    SidebarComponent,
     FavouriteComponent,
     WardrobeDetaillComponent,
     SearchComponent,
@@ -79,6 +77,7 @@ const routes:Routes=[
     TabViewModule,
     CardModule,
     DialogModule,
+    VirtualScrollerModule,
     TagModule,
     MessagesModule,
     ToastModule,
