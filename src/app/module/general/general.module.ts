@@ -8,6 +8,7 @@ import { GoogleSigninButtonModule,SocialLoginModule, SocialAuthServiceConfig, Go
 
 
 import { CarouselModule } from 'primeng/carousel';
+import { SidebarModule } from 'primeng/sidebar';
 
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
@@ -51,6 +52,7 @@ const routes: Routes = [
     FooterComponent,
   ],
   imports: [
+    SidebarModule,
     CarouselModule,
     NgxTypedJsModule,
     HttpClientModule,

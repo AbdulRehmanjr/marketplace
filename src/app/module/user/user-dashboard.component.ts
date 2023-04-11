@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 import * as $ from 'jquery'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
@@ -10,11 +11,14 @@ import * as $ from 'jquery'
 export class UserDashboardComponent  implements OnInit {
   sidebarVisible: boolean;
       items: MenuItem[];
+  userId: any;
 
+  constructor(private router:Router){}
      ngOnInit() {
-      $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-    });
+      // $('.toggle-sidebar-btn').click(function() {
+      //   $('aside').toggle();
+      //   $('main').toggleClass('col-md-12 col-md-10');
+      // });
 
           this.items = [
               {
@@ -34,9 +38,14 @@ export class UserDashboardComponent  implements OnInit {
                   icon: 'https://primefaces.org/cdn/primeng/images/dock/trash.png'
               }
           ];
-      }
+          this.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
+        }
+        logout(){
+          sessionStorage.removeItem('user')
+          this.router.navigate(['/login'])
+        }
 
-      toggle(){
-        this.sidebarVisible = true;
-      }
+      // toggle(){
+      //   this.sidebarVisible = true;
+      // }
 }

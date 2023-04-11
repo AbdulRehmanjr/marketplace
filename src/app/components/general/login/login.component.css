@@ -1,8 +1,4 @@
-h2{
-  font-family: 'Squid Game';
-}
-.form-box{
-  position: absolute;
-  top:10%;
-  left:35%;
+.error{
+  color:red;
+  font-size:20px;
 }

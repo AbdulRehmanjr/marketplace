@@ -1,65 +1,47 @@
-<!-- <div class="form-box login-reg-form-wrap  pr-lg-50">
-  <h2>Sign In</h2>
-  <form [formGroup]="LoginForm" (ngSubmit)="OnSubmit()">
-      <div class="single-input-item">
-          <input formControlName="email" type="email" placeholder="Email or Username" required />
-      </div>
-      <div class="single-input-item">
-          <input formControlName="password" type="password" placeholder="Enter your Password" required />
-      </div>
-      <div class="single-input-item">
-          <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-              <a href="#" class="forget-pwd">Forget Password?</a>
-          </div>
-      </div>
-
-      <div class="single-input-item">
-        <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-            <a href="/signup" class="forget-pwd">Don't Have Account? Sign up</a>
-        </div>
-    </div>
-      <div class="single-input-item">
-          <button class="sqr-btn">Login</button>
-      </div>
-  </form>
-</div> -->
 <div class="container-fluid">
   <div class="row mt-4 d-flex justify-content-center align-items-center">
     <div class="col-md-10">
       <div class="card" style="border-radius: 1rem;">
        <div class="row">
-        <div class="col-md-6 col-lg-5 d-none d-md-block">
-            <img src="assets/images/login_form.png"  alt="login form">
+        <div class="col-md-6 d-none d-md-block">
+            <img src="assets/images/login_form.png"  withd="100%" alt="login form">
         </div>
-        <div class="col-md-6 col-md-7 d-flex align-items-center">
-            <div class="card-body p-4 p-lg-5 text-black">
-
+        <div class="col-md-6 d-flex align-items-center">
+            <div class="card-body p-4 text-black">
                     <div class="d-flex align-items-center mb-3 pb-1">
-                        <i class="fas fa-cubes fa-2x me-3" style="color: #2e1bfb;"></i>
+                        <i class="fas fa-cubes fa-2x me-3" style="color: #2c2ff7;"></i>
                         <span class="h1 fw-bold mb-0">Multi Vendor</span>
                       </div>
-                      <form [formGroup]="LoginForm" (ngSubmit)="OnSubmit()">
-                        <div class="single-input-item">
-                            <input formControlName="email" type="email" placeholder="Email or Username" required />
+                      <form [formGroup]="LoginForm" (ngSubmit)="OnSubmit()" [noValidate]="false">
+                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your Account</h5>
+                        <div class="form-outline mb-4">
+                          <input type="text"  formControlName = "email" class="form-control form-control-lg" required/>
+                          <label class="form-label" >Email</label>
                         </div>
-                        <div class="single-input-item">
-                            <input formControlName="password" type="password" placeholder="Enter your Password" required />
-                        </div>
-                        <div class="single-input-item">
-                            <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-                                <a href="#" class="forget-pwd">Forget Password?</a>
-                            </div>
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <p class="error" *ngIf="email.errors?.['required'] ">
+                               Email is required
+                            </p>
                         </div>
 
-                        <div class="single-input-item">
-                          <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-                              <a href="/signup" class="forget-pwd">Don't Have Account? Sign up</a>
-                          </div>
-                      </div>
-                        <div class="single-input-item">
-                            <button class="btn">Login</button>
+                        <div class="form-outline mb-4">
+                          <input type="password" formControlName="password"class="form-control form-control-lg" required/>
+                          <label class="form-label">Password</label>
                         </div>
-                    </form>
+                        <div class="error" *ngIf="password.invalid && (password.dirty || password.touched)">
+                            <p *ngIf="password.errors?.['required'] ">
+                                Password is required
+                            </p>
+                        </div>
+
+                        <div class="pt-1 mb-4">
+                          <button type="submit" class="btn btn-lg btn-block btn-login">Login</button>
+
+                        </div>
+
+                        <a class="small text-muted" href="#!">Forgot password?</a>
+                        <p class="mb-5 pb-lg-2" >Don't have an account? <a href="signup">Register here</a></p>
+                      </form>
             </div>
         </div>
        </div>

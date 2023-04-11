@@ -75,7 +75,9 @@ export class LoginComponent implements OnInit {
   // form submission
   OnSubmit() {
 
+
     if (this.LoginForm.invalid) {
+      console.log('invalid')
       this.LoginForm.markAllAsTouched();
       return;
     }
@@ -143,7 +145,7 @@ export class LoginComponent implements OnInit {
 
     }else if(role == "USER"){
       let user = JSON.parse(sessionStorage.getItem('user'))
-      this.router.navigate([`user-dashboard/profile/${user['userId']}`])
+      this.router.navigate([`user-dashboard/profile/my/${user['userId']}`])
     }
     else{
       this.router.navigate(['login'])

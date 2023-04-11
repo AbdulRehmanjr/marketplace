@@ -13,7 +13,7 @@ import { WardrobeService } from 'src/app/service/wardrobe.service';
 })
 export class ProfileComponent implements OnInit{
   profile:User
-  followings:User[]
+  followings:User[] = undefined
   followers:User[] = undefined
   ownUser:boolean = true
   userId :string = ''
@@ -22,6 +22,8 @@ export class ProfileComponent implements OnInit{
   numFollowing:number = 0
   private currentId:string
   isfollowed:boolean = false
+
+
 
   constructor(private profileService:ProfileService,
     private _wardrobe:WardrobeService,
@@ -58,16 +60,17 @@ export class ProfileComponent implements OnInit{
       {
         next: (user:User) => {
           this.profile = user
-          let result = this.checkProfile(this.userId,this.currentId)
-          if(result==true){
-              this.ownUser = false
-          }
+
         },
         error: (error) => {
           console.log(error)
         },
         complete: () => {
           console.log('fetching user info completed')
+          let result = this.checkProfile(this.userId,this.currentId)
+          if(result==true){
+              this.ownUser = false
+          }
         }
 
       }
@@ -84,6 +87,7 @@ export class ProfileComponent implements OnInit{
       },
       complete:()=>{
         this.numFollowing = this.followings.length
+
 
        console.log('following info fetching completed')
       }
@@ -102,6 +106,7 @@ fetchingFollowers(){
     complete:()=>{
       this.numFollowers = this.followers.length
       this.followed()
+
         console.log('completed')
     }
   })
@@ -116,7 +121,8 @@ fetchingFollowers(){
           console.log(err)
         },
         complete:()=>{
-          console.log('Fetching Completed')
+          console.log(this.wardrobes)
+          console.log(' wardrobe Fetching Completed')
         }
       }
     )

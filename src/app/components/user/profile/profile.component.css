@@ -1,1 +1,110 @@
+.card {
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+}
+
+
+
+.profile .profile-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c384e;
+  margin: 10px 0 0 0;
+}
+
+.profile .profile-card h3 {
+  font-size: 18px;
+}
+
+.profile .profile-card .social-links a {
+  font-size: 20px;
+  display: inline-block;
+  color: rgba(1, 41, 112, 0.5);
+  line-height: 0;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.profile .profile-card .social-links a:hover {
+  color: #012970;
+}
+
+.profile .profile-overview .row {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.profile .profile-overview .card-title {
+  color: #012970;
+}
+
+.profile .profile-overview .label {
+  font-weight: 600;
+  color: rgba(1, 41, 112, 0.6);
+}
+
+
+
+
+button{
+  width:100px;
+  font-size: 10px !important;
+}
+.bg-setting{
+  background-color: #fff;
+  min-height: 400px;
+  border: 1px solid #eee;
+  border-radius: 20px;
+}
+.little-profile .pro-img img {
+  width: 128px;
+  height: 128px;
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 100%;
+}
+
+h1{
+  font-family: 'Times New Roman', Times, serif;
+  color: #000;
+  font-weight: bolder;
+  font-size: 40px;
+}
+h3 {
+  line-height: 30px;
+  font-size: 21px
+}
+
+.btn-view{
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  height: fit-content;
+  color:rgba(86, 86, 255, 0.811);
+}
+.btn-view:hover{
+  border-bottom:2px solid rgba(86, 86, 255, 0.811);
+}
+.name{
+  margin-top: 0;
+  margin-bottom: 1rem;
+    font-size:20px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+
+}
+f-image{
+ height:50px;
+}
+/*  list styling */
+.box{
+  background-color: #00bcd4;
+
+}
+th,
+td,
+button,small{
+  font-size:2rem;
+}
 

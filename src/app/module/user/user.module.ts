@@ -17,7 +17,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MessagesModule } from 'primeng/messages';
 import { ToastModule } from 'primeng/toast';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
-
+import { SplitterModule } from 'primeng/splitter';
 //angular module
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
@@ -32,15 +32,19 @@ import { FavouriteComponent } from '../../components/user/favourite/favourite.co
 import { WardrobeDetaillComponent } from '../../components/user/wardrobe-detaill/wardrobe-detaill.component';
 import { SearchComponent } from 'src/app/components/user/search/search.component';
 import { UserListComponent } from 'src/app/components/user/user-list/user-list.component';
+import { UserheaderComponent } from '../../components/user/userheader/userheader.component';
+import { UsersidebarComponent } from '../../components/user/usersidebar/usersidebar.component';
+
 
 const routes:Routes=[
   {path:'user-dashboard',component:UserDashboardComponent,children:[
     {
-      path:'profile/:userId',component:ProfileComponent,
-    },
-    {
       path:'profile/my/:userId',component:ProfileComponent
     },
+    {
+      path:'profile/:userId',component:ProfileComponent,
+    },
+
     {
       path:'wardrobe',component:ListWardrobeComponent
     },
@@ -68,12 +72,15 @@ const routes:Routes=[
     FavouriteComponent,
     WardrobeDetaillComponent,
     SearchComponent,
-    UserListComponent
+    UserListComponent,
+    UserheaderComponent,
+    UsersidebarComponent,
   ],
   imports: [
     MatListModule,
     MatCardModule,
     TableModule,
+    SplitterModule,
     TabViewModule,
     CardModule,
     DialogModule,
