@@ -1,4 +1,4 @@
-<div class="container-fluid rounded mt-5">
+<div class="container-fluid rounded">
   <div class="row">
     <div class="col-md-4">
       <div class="card">
@@ -11,11 +11,11 @@
             alt="Profile"
             class="rounded-circle"
           />
-          <h2>Kevin Anderson</h2>
+          <h2>{{profile.userName}}</h2>
         </div>
-        <div class="row" *ngIf="ownUser == true">
+        <div class="row" *ngIf="ownUser == false">
           <div class="text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-            <button class="btn btn-info" (click)="followUser(profile.userId)">
+            <button class="btn-view btn-view-info" (click)="followUser(profile.userId)">
               {{ isfollowed ? "Followed" : "Follow" }}
             </button>
           </div>
@@ -32,68 +32,134 @@
         </div>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6 offset-md-1">
       <p-tabView>
-        <p-tabPanel header="Followings">
-          <ng-container *ngIf="followings == undefined else error1">
-            <p-virtualScroller
-              [value]="followings"
-              class="border-1 surface-border border-round"
-              scrollHeight="180px"
-            >
-              <ng-template #show pTemplate="item" let-following>
-                <div class="d-flex justify-content-between p-2">
-                  <img
-                    src="data:image/jpeg;base64, {{ following.profilePicture }}"
-                    width="50"
-                    alt="profile image"
-                  />
-                  <p class="name">{{ following.userName }}</p>
-
-                  <a
-                    routerLink="/user-dashboard/profile/{{ following.userId }}"
-                    class="btn-view"
-                    >View</a
-                  >
-                </div>
-              </ng-template>
-            </p-virtualScroller>
-          </ng-container>
-          <ng-template #error1>
-            <p class="h3">No follower yet</p>
-          </ng-template>
-        </p-tabPanel>
         <p-tabPanel header="Followers">
-          <ng-container *ngIf="followers == undefined else error2">
-            <p-virtualScroller
-              [value]="followers"
-              class="border-1 surface-border border-round"
-              scrollHeight="180px"
-            >
-              <ng-template #show pTemplate="item" let-follower>
-                <div
-                  class="d-flex flex-row justify-content-between border-bottom"
-                >
-                  <img
-                    src="data:image/jpeg;base64, {{ follower.profilePicture }}"
-                    width="50"
-                    alt="profile image"
-                  />
-                  <p class="name">{{ follower.userName }}</p>
-
-                  <a
-                    routerLink="/user-dashboard/profile/{{ follower.userId }}"
-                    class="btn-view pb-4"
-                    >View</a
-                  >
-                </div>
-              </ng-template>
-            </p-virtualScroller>
-          </ng-container>
-          <ng-template #error2>
-            <p class="text-center">No followings yet</p>
+          <p-table
+          #dt1
+          [value]="followers"
+          dataKey="id"
+          [rows]="5"
+          [showCurrentPageReport]="true"
+          [rowsPerPageOptions]="[5,10]"
+          [paginator]="true"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Followers"
+          [globalFilterFields]="['userName']"
+      >
+          <ng-template pTemplate="caption">
+              <div class="flex">
+                  <button  class="btn-view" (click)="clear(dt1)">Clear</button>
+                  <span class="p-input-icon-left ml-auto">
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" (input)="dt1.filterGlobal($event.target['value'], 'contains')" placeholder="Search keyword" />
+                  </span>
+              </div>
           </ng-template>
+          <ng-template pTemplate="header">
+              <tr>
+                  <th >
+                      <div class="flex align-items-center">
+                          Image
+                      </div>
+                  </th>
+                  <th >
+                      <div class="flex align-items-center">
+                          User Name
+                          <p-columnFilter type="text" field="userName" display="menu"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th >
+                      <div class="flex align-items-center">
+                          Action
+                      </div>
+                  </th>
 
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-follower>
+              <tr>
+                  <td>
+                      <img src="data:image/jpeg;base64, {{ follower.profilePicture }}" alt="profile picture" width="50"/>
+                  </td>
+                  <td>
+                      {{ follower.userName}}
+                  </td>
+                  <td>
+                      <button class="btn-view" routerLink="/user-dashboard/profile/{{follower.userId}}"> View</button>
+                  </td>
+
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td colspan="7">No Follower found.</td>
+              </tr>
+          </ng-template>
+      </p-table>
+        </p-tabPanel>
+        <p-tabPanel header="Followings">
+
+            <p-table
+            #dt1
+            [value]="followings"
+            dataKey="id"
+            [rows]="5"
+            [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[5,10]"
+            [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Followings"
+            [globalFilterFields]="['userName']"
+        >
+            <ng-template pTemplate="caption">
+                <div class="flex">
+                    <button class="btn-view" (click)="clear(dt1)">Clear</button>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt1.filterGlobal($event.target['value'], 'contains')" placeholder="Search keyword" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th >
+                        <div class="flex align-items-center">
+                            Image
+                        </div>
+                    </th>
+                    <th >
+                        <div class="flex align-items-center">
+                            User Name
+                            <p-columnFilter type="text" field="userName" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th >
+                        <div class="flex align-items-center">
+                            Action
+                        </div>
+                    </th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-following>
+                <tr>
+                    <td>
+                        <img src="data:image/jpeg;base64, {{ following.profilePicture }}" alt="profile picture" width="50"/>
+                    </td>
+                    <td>
+                        {{ following.userName}}
+                    </td>
+                    <td>
+                        <button class="btn-view" routerLink="/user-dashboard/profile/{{following.userId}}"> View</button>
+                    </td>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="7">No customers found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
         </p-tabPanel>
       </p-tabView>
 
@@ -141,7 +207,7 @@
               <td>{{ wardrobe.title }}</td>
               <td>{{ wardrobe.description }}</td>
               <td>
-                <button
+                <button class="btn-view"
                   routerLink="/user-dashboard/wardrobe-detail/{{ wardrobe.id }}"
                 >
                   View

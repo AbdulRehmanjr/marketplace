@@ -1,10 +1,9 @@
-<h1>deyail</h1>
+<h1>Wardrobe Details</h1>
 
 <!-- <p-toast></p-toast> -->
 <p-toolbar styleClass="mb-4 gap-2">
     <ng-template pTemplate="left">
         <button class="btn btn-info mr-2" (click)="openNew()"> Add New Product</button>
-        <!-- <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button> -->
     </ng-template>
 </p-toolbar>
 
@@ -65,6 +64,6 @@
 </p-table>
 <p-dialog [(visible)]="displayDialog"  header="Add New Product" [modal]="true" styleClass="dialog-style">
   <ng-template pTemplate="body">
-   <app-add-product></app-add-product>
+   <app-add-product (formSubmitted)="hideDialog()"></app-add-product>
   </ng-template>
 </p-dialog>

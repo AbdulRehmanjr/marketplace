@@ -26,7 +26,7 @@
     <select formControlName="category" class="form-select">
       <option
         *ngFor="let category of categories"
-        value="{{ category.id }}"
+        value="{{ category.categoryId }}"
       >
         {{ category.name }}
       </option>
@@ -55,7 +55,8 @@
       formControlName="description"
       placeholder="Description"
       rows="5"
-      maxlength="100"
+      col="4"
+      maxlength="20"
       required
     ></textarea>
   </div>
@@ -84,12 +85,12 @@
     />
   </div>
 
-  <div class="p-inputgroup mt-4">
+  <!-- <div class="p-inputgroup mt-4">
     <span class="p-inputgroup-addon">
       <i class="pi pi-star"></i>
     </span>
     <input pInputText formControlName="review" placeholder="Review" required />
-  </div>
+  </div> -->
 
   <div class="p-inputgroup mt-4">
     <button class="btn btn-info" type="submit">Submit</button>

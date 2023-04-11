@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/class/category';
 import { Product } from 'src/app/class/product';
@@ -23,6 +23,8 @@ export class AddProductComponent implements OnInit{
 
   wardrobes:Wardrobe[]
 
+  @Output()
+  formSubmited = new EventEmitter<boolean>()
 
   constructor(private _form:FormBuilder,
     private wardrobe:WardrobeService,
@@ -79,29 +81,43 @@ export class AddProductComponent implements OnInit{
   onChange1(event:any){
     this.image1 = event.target.files[0]
     if (this.image1) {
+      console.log(this.image1)
       console.log("File changed / selected")
     }
   }
   onChange2(event:any){
     this.image2 = event.target.files[0]
     if (this.image1) {
+      console.log(this.image2)
       console.log("File changed / selected")
     }
   }
   OnSubmit(){
+
+    // if(this.productForm.invalid) {
+    //   return
+    // }
+
     let product = new Product()
+    let category = new Category()
+    let wardrobe = new Wardrobe()
 
     product.productName = this.productForm.get('name').value
-    product.basePrice = this.productForm.get('price').value
-    product.category.id = this.productForm.get('category').value
-    product.wardrobe.id = this.productForm.get('wardrobe').value
-    product.description = this.productForm.get('description').value
-    product.reviews = this.productForm.get('review').value
 
-    let files:File[]
-    files.push(this.image1)
-    files.push(this.image2)
-    this.productService.saveProduct(String(product), files).subscribe(
+    product.basePrice = this.productForm.get('price').value
+
+    category.categoryId = this.productForm.get('category').value
+    product.category = category
+
+    wardrobe.id = this.productForm.get('wardrobe').value
+    product.wardrobe = wardrobe
+
+    product.description = this.productForm.get('description').value
+
+    // product.reviews = this.productForm.get('review').value
+
+
+    this.productService.saveProduct(String(product), this.image1,this.image2).subscribe(
       {
         next:(data:any)=>{
           Swal.fire('Sucessfully Added','Data added successfully','success')
@@ -111,6 +127,7 @@ export class AddProductComponent implements OnInit{
         },
         complete:()=>{
           console.log('Added Success')
+          this.formSubmited.emit(true)
         }
       }
     )

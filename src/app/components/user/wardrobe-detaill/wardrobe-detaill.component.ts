@@ -16,12 +16,10 @@ export class WardrobeDetaillComponent  implements OnInit{
   wardrobeId:string
 
   products: Product[];
-
   selectedProducts: Product[];
 
   submitted: boolean;
 
-  statuses: any[];
 
   constructor(
     private productService:ProductService,
@@ -53,46 +51,13 @@ export class WardrobeDetaillComponent  implements OnInit{
    this.displayDialog=true
   }
 
-deleteSelectedProducts() {
-    // this.confirmationService.confirm({
-    //     message: 'Are you sure you want to delete the selected products?',
-    //     header: 'Confirm',
-    //     icon: 'pi pi-exclamation-triangle',
-    //     accept: () => {
-    //         this.products = this.products.filter((val) => !this.selectedProducts.includes(val));
-    //         this.selectedProducts = null;
-    //         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
-    //     }
-    // });
-}
-
-editProduct(product: any) {
-    this.products = { ...product };
-    this.productDialog = true;
-}
-
-deleteProduct(product: any) {
-    // this.confirmationService.confirm({
-    //     message: 'Are you sure you want to delete ' + product.name + '?',
-    //     header: 'Confirm',
-    //     icon: 'pi pi-exclamation-triangle',
-    //     accept: () => {
-    //         this.products = this.products.filter((val) => val.id !== product.id);
-    //         this.product = {};
-    //         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-    //     }
-    // });
-}
-
 hideDialog() {
-    this.productDialog = false;
-    this.submitted = false;
+   this.displayDialog = false
+   this.get_all_products_by_wardrobe()
 }
 
 saveProduct() {
     this.submitted = true;
-
-
 }
 
 findIndexById(id: string): number {

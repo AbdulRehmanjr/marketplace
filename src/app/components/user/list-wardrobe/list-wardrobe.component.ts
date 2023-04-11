@@ -12,7 +12,7 @@ export class ListWardrobeComponent implements OnInit{
 
   wardrobes:Wardrobe[]
   displayDialog:boolean = false
-
+  private userId:string
 
   @Input()
   actionForm :boolean
@@ -20,19 +20,22 @@ export class ListWardrobeComponent implements OnInit{
   constructor(private _wardrobeService:WardrobeService){}
   ngOnInit(): void {
    // @TODO : add usr Id in this function later
-   let userId = JSON.parse(sessionStorage.getItem('user'))['userId']
-   this._wardrobeService.getwarrobesByUserId(userId).subscribe({
-    next:(data:any)=>{
-      this.wardrobes = data
-    },
-    error:(err)=>{
-      console.log(err)
-    },
-    complete:()=>{
-      console.log('completed')
-    }
+   this.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
+  this.fetchWardrobeList()
+  }
+  fetchWardrobeList(){
+    this._wardrobeService.getwarrobesByUserId(this.userId).subscribe({
+      next:(data:any)=>{
+        this.wardrobes = data
+      },
+      error:(err)=>{
+        console.log(err)
+      },
+      complete:()=>{
+        console.log('completed')
+      }
 
-  })
+    })
   }
   onSubmit(event:any){
 
@@ -40,6 +43,7 @@ export class ListWardrobeComponent implements OnInit{
   }
   hideDialog() {
     this.displayDialog =false
+    this.fetchWardrobeList()
     }
     showDialog() {
       this.displayDialog = true

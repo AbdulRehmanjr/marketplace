@@ -39,7 +39,7 @@ import { UsersidebarComponent } from '../../components/user/usersidebar/userside
 const routes:Routes=[
   {path:'user-dashboard',component:UserDashboardComponent,children:[
     {
-      path:'profile/my/:userId',component:ProfileComponent
+      path:'my/profile/:userId',component:ProfileComponent
     },
     {
       path:'profile/:userId',component:ProfileComponent,

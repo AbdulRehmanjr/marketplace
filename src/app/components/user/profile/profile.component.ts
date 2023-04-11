@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { Table } from 'primeng/table';
 import { User } from 'src/app/class/user';
 import { Wardrobe } from 'src/app/class/wardrobe';
 import { ProfileService } from 'src/app/service/profile.service';
@@ -15,14 +16,13 @@ export class ProfileComponent implements OnInit{
   profile:User
   followings:User[] = undefined
   followers:User[] = undefined
-  ownUser:boolean = true
+  ownUser:boolean = false
   userId :string = ''
   wardrobes:Wardrobe[]
   numFollowers:number  = 0
   numFollowing:number = 0
   private currentId:string
   isfollowed:boolean = false
-
 
 
   constructor(private profileService:ProfileService,
@@ -42,10 +42,16 @@ export class ProfileComponent implements OnInit{
   // checking that is user already followered or not
   private followed(){
     const isPresent = this.followers.some(
-      user => user.userId==this.currentId
+      (user) => {
+        console.log(user)
+        user.userId==this.currentId
+      }
     )
-    if(isPresent)
+    if(isPresent){
+      console.log('user is in follower list')
       this.isfollowed =true
+    }
+
 
   }
   private checkProfile(userId:string,currentId:string):boolean{
@@ -69,7 +75,7 @@ export class ProfileComponent implements OnInit{
           console.log('fetching user info completed')
           let result = this.checkProfile(this.userId,this.currentId)
           if(result==true){
-              this.ownUser = false
+              this.ownUser = true
           }
         }
 
@@ -106,7 +112,6 @@ fetchingFollowers(){
     complete:()=>{
       this.numFollowers = this.followers.length
       this.followed()
-
         console.log('completed')
     }
   })
@@ -141,4 +146,8 @@ fetchingFollowers(){
       }
     )
   }
+  clear(table: Table) {
+    table.clear();
+}
+
 }

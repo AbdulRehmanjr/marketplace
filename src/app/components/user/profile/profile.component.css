@@ -48,10 +48,6 @@
 
 
 
-button{
-  width:100px;
-  font-size: 10px !important;
-}
 .bg-setting{
   background-color: #fff;
   min-height: 400px;
@@ -78,11 +74,11 @@ h3 {
 }
 
 .btn-view{
-  padding-bottom: 20px;
+  color:#000;
   font-size: 20px;
   font-weight: bold;
-  height: fit-content;
-  color:rgba(86, 86, 255, 0.811);
+  background-color: #fff;
+  border:none;
 }
 .btn-view:hover{
   border-bottom:2px solid rgba(86, 86, 255, 0.811);
@@ -102,9 +98,3 @@ f-image{
   background-color: #00bcd4;
 
 }
-th,
-td,
-button,small{
-  font-size:2rem;
-}
-

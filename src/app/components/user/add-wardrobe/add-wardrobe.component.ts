@@ -43,7 +43,9 @@ export class AddWardrobeComponent implements OnInit{
    let wardrobe = new Wardrobe()
    wardrobe.title = this.title
    wardrobe.description = this.description
-
+    if(this.wardrobeForm.invalid){
+      return
+    }
    let user = new User()
    user.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
 

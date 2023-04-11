@@ -7,7 +7,7 @@
 }
 
 .btn {
-  font-size: 1.5rem;
+  font-size: 15px;
   position: relative;
   transition: all 0.15s ease;
   letter-spacing: 0.025em;
@@ -18,28 +18,10 @@
   transform: translateY(-1px);
   box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
-.btn:not(:last-child) {
-  margin-right: 0.5rem;
-}
 
-.btn-info {
-  color: #fff;
-  border-color:#2f2fff;
-  background-color: #2f2fff;
-  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-.btn-info:hover {
-  color: #fff;
-  border-color: #2f2fff;
-  background-color: #2f2fff;
-}
-.btn-info.focus,
-.btn-info:focus {
-  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 0 0 rgba(251, 99, 64, 0.5);
-}
+
 
 h2{
-  font-size: 4rem;
   font-family: 'Times New Roman', Times, serif;
   font-weight: bolder;
   color: #000;
@@ -48,13 +30,4 @@ h2{
 form{
   width:400px;
   height:480px;
-}
-input{
-  font-size: 2rem;
-}
-i{
-  font-size: 2rem;
-}
-textarea{
-  font-size:2rem;
 }

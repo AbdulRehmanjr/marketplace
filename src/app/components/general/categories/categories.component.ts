@@ -9,21 +9,21 @@ import { Category } from 'src/app/class/category';
 export class CategoriesComponent {
   categories:Category[] = [
     {
-      id:'',
+      categoryId:'',
       name:'Men',
     },
     {
-      id:'',
+      categoryId:'',
       name:'Women',
 
     },
     {
-      id:'',
+      categoryId:'',
       name:'Child',
 
     },
     {
-      id:'',
+      categoryId:'',
       name:'Teenager',
 
     }
