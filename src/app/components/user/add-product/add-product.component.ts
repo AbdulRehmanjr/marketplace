@@ -116,14 +116,16 @@ export class AddProductComponent implements OnInit{
 
     // product.reviews = this.productForm.get('review').value
 
-
-    this.productService.saveProduct(String(product), this.image1,this.image2).subscribe(
+    this.productService.saveProduct(JSON.stringify(product),this.image1,this.image2).subscribe(
       {
         next:(data:any)=>{
           Swal.fire('Sucessfully Added','Data added successfully','success')
         },
         error:(err:any)=>{
-          Swal.fire('Error','Error ','error')
+          console.error(err)
+          this.formSubmited.emit(true)
+          Swal.fire('Error',`${err.Error}`,'error')
+
         },
         complete:()=>{
           console.log('Added Success')

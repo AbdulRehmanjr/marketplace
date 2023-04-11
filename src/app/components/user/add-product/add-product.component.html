@@ -23,7 +23,7 @@
     <span class="p-inputgroup-addon">
       <i class="pi pi-list"></i>
     </span>
-    <select formControlName="category" class="form-select">
+    <select formControlName="category" class="form-select" aria-placeholder="Select Category" >
       <option
         *ngFor="let category of categories"
         value="{{ category.categoryId }}"
@@ -37,7 +37,7 @@
     <span class="p-inputgroup-addon">
       <i class="pi pi-list"></i>
     </span>
-    <select formControlName="wardrobe" class="form-select" placeholer="Select Wardrobe">
+    <select formControlName="wardrobe" class="form-select" aria-placeholder="Select Wardrobe">
       <option
         *ngFor="let wardrobe of wardrobes"
         value="{{ wardrobe.id }}"
@@ -56,7 +56,7 @@
       placeholder="Description"
       rows="5"
       col="4"
-      maxlength="20"
+      maxlength="50"
       required
     ></textarea>
   </div>

@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ProductService {
 
-  private base_url = 'http://localhots:8080/product'
+  private base_url = 'http://localhost:8080/api/v1/product'
   constructor(private http:HttpClient) { }
 
   get_all_product_by_wardrobe_id(wardrobeId:string){
@@ -16,8 +16,9 @@ export class ProductService {
 
     let formData = new FormData()
     formData.append('product',product)
-    // formData.append('files',)
-let files :any
-    return this.http.post(`${this.base_url}/save`,{product,files})
+    formData.append('image1',file1)
+    formData.append('image2',file2)
+
+    return this.http.post(`${this.base_url}/save`,formData,{responseType:'text'})
   }
 }

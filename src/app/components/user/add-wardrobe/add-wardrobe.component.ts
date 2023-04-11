@@ -40,12 +40,10 @@ export class AddWardrobeComponent implements OnInit{
     return this.wardrobeForm.get('description').value
   }
   OnSubmit():void{
+    console.log('clicked on wardorb submit')
    let wardrobe = new Wardrobe()
    wardrobe.title = this.title
    wardrobe.description = this.description
-    if(this.wardrobeForm.invalid){
-      return
-    }
    let user = new User()
    user.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
 

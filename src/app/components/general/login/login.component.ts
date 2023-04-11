@@ -145,7 +145,7 @@ export class LoginComponent implements OnInit {
 
     }else if(role == "USER"){
       let user = JSON.parse(sessionStorage.getItem('user'))
-      this.router.navigate([`user-dashboard/profile/my/${user['userId']}`])
+      this.router.navigate([`user-dashboard/my/profile/${user['userId']}`])
     }
     else{
       this.router.navigate(['login'])
