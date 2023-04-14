@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/class/category';
 import { Product } from 'src/app/class/product';
@@ -24,7 +24,13 @@ export class AddProductComponent implements OnInit{
   wardrobes:Wardrobe[]
 
   @Output()
-  formSubmited = new EventEmitter<boolean>()
+  productAdded = new EventEmitter<boolean>()
+
+  @Input()
+  view :string
+
+  @Input()
+  productUpdate:Product
 
   constructor(private _form:FormBuilder,
     private wardrobe:WardrobeService,
@@ -34,13 +40,15 @@ export class AddProductComponent implements OnInit{
 
 
   ngOnInit(): void {
+    console.log(this.productUpdate)
     this.productForm = this._form.group({
       name: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
       category:new FormControl('',[Validators.required]),
       wardrobe:new FormControl('',[Validators.required]),
       description: new FormControl('',[Validators.required]),
-      review:new FormControl('',[Validators.required])
+      review:new FormControl('',[Validators.required]),
+      status:new FormControl('',[Validators.required])
     });
     this.getWardobes()
     this.getCategories()
@@ -93,14 +101,10 @@ export class AddProductComponent implements OnInit{
     }
   }
   OnSubmit(){
-
-    // if(this.productForm.invalid) {
-    //   return
-    // }
-
     let product = new Product()
     let category = new Category()
     let wardrobe = new Wardrobe()
+
 
     product.productName = this.productForm.get('name').value
 
@@ -114,6 +118,7 @@ export class AddProductComponent implements OnInit{
 
     product.description = this.productForm.get('description').value
 
+    product.status = this.productForm.get('status').value
     // product.reviews = this.productForm.get('review').value
 
     this.productService.saveProduct(JSON.stringify(product),this.image1,this.image2).subscribe(
@@ -123,15 +128,35 @@ export class AddProductComponent implements OnInit{
         },
         error:(err:any)=>{
           console.error(err)
-          this.formSubmited.emit(true)
           Swal.fire('Error',`${err.Error}`,'error')
 
         },
         complete:()=>{
           console.log('Added Success')
-          this.formSubmited.emit(true)
+          this.productAdded.emit(true)
         }
       }
     )
+  }
+
+  updateProduct(){
+    let product = new Product()
+    product.productId = this.productUpdate.productId
+    product.basePrice = this.productUpdate.basePrice
+    product.productName = this.productUpdate.productName
+    product.status = this.productUpdate.status
+    product.description = this.productUpdate.description
+
+    this.productService.updateProduct(product).subscribe({
+      next:(data:any)=>{
+        Swal.fire('Sucessfully Updated','Data updated successfully','success')
+      },
+      error:(err:any)=>{
+        Swal.fire('Error','Error updating product','error')
+      },
+      complete:()=>{
+        this.productAdded.emit(true)
+      }
+    })
   }
 }

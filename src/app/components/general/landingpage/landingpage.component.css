@@ -2,32 +2,12 @@
 .height{
   height: 500px;
 }
-.banner{
-  height: 100%;
-  filter: blur(3px);
-  -webkit-filter: blur(3px);
-  background-image: url('../../../../assets/images/banner-1.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  object-fit:cover;
-}
+
 h1{
   font-family: 'Squid Game';
   color: white;
 }
-.info-section{
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
-  color: white;
-  font-weight: bold;
-  border: 3px solid #f1f1f1;
-  border-radius: 10px;
-  height: 500px;
-  z-index: 2;
-  padding: 20px;
-  text-align: center;
 
-}
 span{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, 'sans-serif';
   font-size:20px;
@@ -59,6 +39,21 @@ border: none;
 .shop-now:hover{
   border-bottom: 2px solid #fff;
 }
+.intro-section{
+  height:400px;
+}
+.bg-image{
+  background-image: url('../../../../assets/images/slider/shoes.jpg');
+  background-repeat: no-repeat;
+}
 .bg-grey{
   background-color: #F5F5F5;
+}
+.content-block {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana,'sans-serif';
+  font-weight: bold;
+  color:#F77C29;
+}
+.message1{
+  color:#9EA0A2;
 }

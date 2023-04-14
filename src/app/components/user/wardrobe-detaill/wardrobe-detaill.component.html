@@ -3,7 +3,7 @@
 <!-- <p-toast></p-toast> -->
 <p-toolbar styleClass="mb-4 gap-2">
     <ng-template pTemplate="left">
-        <button class="btn btn-info mr-2" (click)="openNew()"> Add New Product</button>
+        <button class="btn btn-info mr-2" (click)="showDialog()"> Add New Product</button>
     </ng-template>
 </p-toolbar>
 
@@ -13,7 +13,6 @@
     [rows]="5"
     [paginator]="true"
     [globalFilterFields]="['productName', 'reviews', 'product.category.name']"
-    [(selection)]="selectedProducts"
     [rowHover]="true"
     dataKey="id"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -30,40 +29,43 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>
-                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-            </th>
             <th pSortableColumn="productName">Name <p-sortIcon field="name"></p-sortIcon></th>
             <th>Image 1</th>
             <th>Image 2</th>
             <th pSortableColumn="basePrice">Price <p-sortIcon field="price"></p-sortIcon></th>
             <th pSortableColumn="product.category.name">Category <p-sortIcon field="category"></p-sortIcon></th>
+            <th>Status</th>
             <th pSortableColumn="reviews">Reviews <p-sortIcon field="rating"></p-sortIcon></th>
+            <th>Action</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
         <tr>
-            <td>
-                <p-tableCheckbox [value]="product"></p-tableCheckbox>
-            </td>
             <td>{{ product.productName }}</td>
-            <td><img src="{{product.image1}}" [alt]="product.productName" width="50" class="shadow-4" /></td>
-            <td><img src="{{product.image2}}" [alt]="product.productName" width="50" class="shadow-4" /></td>
+            <td><img src="data:image/jpeg;base64, {{product.image1}}" [alt]="product.productName" width="50" class="shadow-4" /></td>
+            <td><img src="data:image/jpeg;base64, {{product.image2}}" [alt]="product.productName" width="50" class="shadow-4" /></td>
             <td>{{ product.basePrice | currency: 'USD' }}</td>
             <td>{{ product.category.name }}</td>
-            <td>{{product.reviews}}</td>
-            <!-- <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editProduct(product)"></button>
-                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(product)"></button>
-            </td> -->
+            <td>
+              <p-tag [value]="product.status" [severity]="getSeverity(product.status)"></p-tag>
+          </td>
+            <td><p-rating [ngModel]="product.reviews" [readonly]="true" [cancel]="false"></p-rating></td>
+            <td>
+                <button   class="btn btn-info mr-2" (click)="editProduct(product)"><i class="fas fa-pencil"></i></button>
+            </td>
         </tr>
     </ng-template>
     <ng-template pTemplate="summary">
         <div class="flex align-items-center justify-content-between">In total there are {{ products ? products.length : 0 }} products.</div>
     </ng-template>
 </p-table>
+<p-dialog [(visible)]="updateDialog"  header="Add New Product" [modal]="true" styleClass="dialog-style">
+  <ng-template pTemplate="body">
+   <app-add-product [view]="'UPDATE'" [productUpdate]="productUpdate" (productAdded)="hideDialog()"></app-add-product>
+  </ng-template>
+</p-dialog>
 <p-dialog [(visible)]="displayDialog"  header="Add New Product" [modal]="true" styleClass="dialog-style">
   <ng-template pTemplate="body">
-   <app-add-product (formSubmitted)="hideDialog()"></app-add-product>
+   <app-add-product [view]="'SIMPLE'" (productAdded)="hideDialog()"></app-add-product>
   </ng-template>
 </p-dialog>

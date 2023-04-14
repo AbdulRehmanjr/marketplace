@@ -8,7 +8,6 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Login } from 'src/app/class/login';
 import { LoginService } from 'src/app/service/login.service';
 import swal from 'sweetalert2'
-import { User } from 'src/app/class/user';
 
 @Component({
   selector: 'app-login',

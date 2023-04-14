@@ -28,6 +28,9 @@ export class ProfileService {
   }
   follow(userId:string, currentId:string){
 
-    return this._http.post(`${this.userFollowing}/user/${currentId}/follow/${userId}`,null);
+    return this._http.post(`${this.userFollowing}/user/${currentId}/follow/${userId}`,null,{responseType:'text'});
+  }
+  unfollow(userId:string, currentId:string){
+    return this._http.post(`${this.userFollowing}/user/${currentId}/unfollow/${userId}`,null,{responseType:'text'});
   }
 }

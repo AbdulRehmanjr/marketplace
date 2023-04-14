@@ -46,42 +46,21 @@ a:focus {
 }
 
 /*header section*/
-.hero_area {
-  position: relative;
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.sub_page .hero_area {
-  min-height: auto;
-}
-
-.sub_page .about_section {
-  background-color: #313958;
-}
 
 .header_section {
-  background-color: #3a4468;
+  background-color: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.header_section .container-fluid {
-  padding-right: 25px;
-  padding-left: 25px;
-}
 
 .header_section .header_top {
-  padding: 15px 0;
-  background-color: #434f78;
+  padding-top: 10px;
+  background-color: #ffffff;
 }
 
 .header_section .header_bottom {
-  padding: 10px 0;
+  padding-top: 10px;
 }
 
 .top_nav_container {
@@ -103,7 +82,7 @@ a:focus {
 }
 
 .contact_nav a {
-  color: #ffffff;
+  color: #000000;
   margin-right: 10px;
 }
 
@@ -136,7 +115,7 @@ a:focus {
   padding: 0;
   border: none;
   outline: none;
-  color: #ffffff;
+  color: #000000;
   background-color: #f3c93e;
   border-radius: 0 5px 5px 0;
 }
@@ -151,7 +130,7 @@ a:focus {
 }
 
 .user_option_box a {
-  color: #ffffff;
+  color: #000000;
   margin-left: 25px;
   text-transform: uppercase;
 }
@@ -178,7 +157,7 @@ a:focus {
 }
 
 .navbar-brand span {
-  color: #ffffff;
+  color: #000000;
 }
 
 .custom_nav-container {
@@ -191,7 +170,7 @@ a:focus {
 
 .custom_nav-container .navbar-nav .nav-item .nav-link {
   padding: 10px 25px;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
 }
 
@@ -215,7 +194,7 @@ a:focus {
   display: block;
   width: 35px;
   height: 4px;
-  background-color: #ffffff;
+  background-color: #000000;
   margin: 7px 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -231,7 +210,7 @@ a:focus {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #000000;
   top: -10px;
   border-radius: 5px;
   -webkit-transition: all .3s;

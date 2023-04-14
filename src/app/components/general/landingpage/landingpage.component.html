@@ -1,73 +1,36 @@
-
-  <main class="main">
-    <section class="intro-section">
-          <p-carousel [value]="products" [numScroll]="1" [showNavigators]="false" [showIndicators]="false" [autoplayInterval]="4000">
-            <ng-template let-product pTemplate="item" #bgDiv>
-              <figure>
-                <img height="500px"src="{{product.image}}" alt="image">
-              </figure>
-            </ng-template>
-        </p-carousel>
-    </section>
-    <section class="row">
-      <mat-divider></mat-divider>
-    </section>
-    <section class="row">
-      <app-categories></app-categories>
-    </section>
-    <mat-divider></mat-divider>
-    <section class="row">
-      <app-trending></app-trending>
-    </section>
-  </main>
-  <div class="row mt-4">
-    <div class="col-md-8 height">
-      <section class="banner"></section>
-      <div class="info-section">
-        <h1>City Light</h1>
-        <ngx-typed-js
-          [strings]="[
-            'Buy the items.',
-            'Sell the items.',
-            'Auction the items.'
-          ]"
-          [loop]="true"
-          [typeSpeed]="40"
-          [backSpeed]="40"
+<main class="main">
+  <section class="intro-section">
+    <div class="row">
+      <div class="col-md-12 bg-image">
+        <p-galleria
+          [value]="products"
+          [showThumbnails]="false"
+          [showItemNavigators]="false"
+          [circular]="true"
+          [autoPlay]="true"
+          [transitionInterval]="5000"
         >
-          <span class="typing"></span>
-        </ngx-typed-js>
-        <button class="banner-large-btn">
-          Let's Go <i class="fa-solid fa-arrow-right"></i>
-        </button>
+          <ng-template pTemplate="item" let-product class="d-flex flex-row">
+            <div class="content-block d-block px-5" style="min-width:200px">
+              <h2 class="message1">{{product.message1}}</h2>
+              <h2 class="message2">{{product.message2}}</h2>
+              <button class="btn">Shop Now <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+            <img
+            style="max-width: 300px;height: 400px;"
+              [src]="product.image"
+            />
+          </ng-template>
+        </p-galleria>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="row">
-        <div class="banner-small no-padding">
-          <img
-            src="../../.../../../../assets/images/banner-1.jpg"
-            alt="product-img"
-            width="100%"
-            height="100%"
-          />
-          <button class="shop-now">
-            Shop now <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="banner-small">
-          <img
-            src="../../.../../../../assets/images/banner-1.jpg"
-            alt="product-img"
-            width="100%"
-            height="100%"
-          />
-          <button class="shop-now">
-            Shop now <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
+    <p-divider></p-divider>
+  <section class="row">
+    <app-categories></app-categories>
+  </section>
+  <p-divider></p-divider>
+  <section class="row">
+    <app-trending></app-trending>
+  </section>
+</main>

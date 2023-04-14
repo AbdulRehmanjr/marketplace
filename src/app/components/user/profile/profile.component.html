@@ -15,8 +15,11 @@
         </div>
         <div class="row" *ngIf="ownUser == false">
           <div class="text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-            <button class="btn-view btn-view-info" (click)="followUser(profile.userId)">
-              {{ isfollowed ? "Followed" : "Follow" }}
+            <button  *ngIf="!isfollowed" class="btn-view btn-view-info" (click)="followUser(profile.userId)">
+              Follow
+            </button>
+            <button *ngIf="isfollowed"class="btn-view btn-view-info" (click)="unfollowUser(profile.userId)">
+              Unfollow
             </button>
           </div>
         </div>

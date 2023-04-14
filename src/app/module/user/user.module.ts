@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Route, RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // prime ng modules
@@ -18,6 +19,10 @@ import { MessagesModule } from 'primeng/messages';
 import { ToastModule } from 'primeng/toast';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { SplitterModule } from 'primeng/splitter';
+import { RatingModule } from 'primeng/rating';
+
+
+
 //angular module
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
@@ -79,6 +84,7 @@ const routes:Routes=[
   imports: [
     MatListModule,
     MatCardModule,
+    RatingModule,
     TableModule,
     SplitterModule,
     TabViewModule,
@@ -93,6 +99,7 @@ const routes:Routes=[
     InputTextModule,
     ToolbarModule,
     ReactiveFormsModule,
+    FormsModule,
     CommonModule,
     RouterModule.forChild(routes)
   ],

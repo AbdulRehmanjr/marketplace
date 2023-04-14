@@ -35,6 +35,7 @@ export class SearchComponent implements OnInit {
       },
       complete:()=>{
         console.log('fetching completed')
+        console.log(this.users)
       }
     })
   }

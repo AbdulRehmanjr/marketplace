@@ -56,6 +56,7 @@ export class AddWardrobeComponent implements OnInit{
       Swal.fire('Success','Added succesfully','success')
     },
     error:(err:any)=>{
+      this.formSubmited.emit(true)
       console.log(err)
     },
     complete:()=>{

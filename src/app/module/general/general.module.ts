@@ -2,21 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoogleSigninButtonModule,SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from '@abacritt/angularx-social-login';
 
 
 import { CarouselModule } from 'primeng/carousel';
 import { SidebarModule } from 'primeng/sidebar';
+import { GalleriaModule } from 'primeng/galleria';
+import { DividerModule } from 'primeng/divider';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { ScrollTopModule } from 'primeng/scrolltop';
+import { DropdownModule } from 'primeng/dropdown';
+import { PaginatorModule } from 'primeng/paginator';
 
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatIconModule } from '@angular/material/icon';
 import {NgxTypedJsModule} from 'ngx-typed-js';
-import {MatDividerModule} from '@angular/material/divider';
+
 
 import { LandingpageComponent } from 'src/app/components/general/landingpage/landingpage.component';
-
 import { GeneralComponent } from './general.component';
 import { HeaderComponent } from '../../components/general/header/header.component';
 import { LoginComponent } from '../../components/general/login/login.component';
@@ -34,7 +37,7 @@ const routes: Routes = [
   {path:'',component:GeneralComponent,children:[
     {path:'',component:LandingpageComponent},
     {path:'shop',component:ShopComponent},
-    {path:'shop-detail',component:ShopDetailViewComponent}
+    {path:'product-detail/:productId',component:ShopDetailViewComponent}
   ]}
 ]
 
@@ -52,6 +55,12 @@ const routes: Routes = [
     FooterComponent,
   ],
   imports: [
+  PaginatorModule,
+    DropdownModule,
+    ScrollTopModule,
+    PanelMenuModule,
+    DividerModule,
+    GalleriaModule,
     SidebarModule,
     CarouselModule,
     NgxTypedJsModule,
@@ -59,10 +68,8 @@ const routes: Routes = [
     SocialLoginModule,
     GoogleSigninButtonModule,
     ReactiveFormsModule,
-    MatBadgeModule,
-    MatDividerModule,
-    MatIconModule,
     CommonModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ],
   exports: [

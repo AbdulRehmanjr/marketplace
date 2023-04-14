@@ -1,151 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/class/product';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-shop-detail-view',
   templateUrl: './shop-detail-view.component.html',
   styleUrls: ['./shop-detail-view.component.css']
 })
-export class ShopDetailViewComponent {
-  products: any[] = [
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-    {
-      id: 0,
-      img1: 'assets/img/product/product-img1.jpg',
-      img2: 'assets/img/product/product-img2.jpg',
-      price: 70.00,
-      name:'product 1'
-    },
-  ]
+export class ShopDetailViewComponent implements OnInit{
+
+  product:Product
+  products:Product[]
+  id:string
+
+  constructor(private productService: ProductService,
+    private route:ActivatedRoute){}
+  ngOnInit(): void {
+    //* getting id from url
+     this.id = this.route.snapshot.paramMap.get('productId')
+
+     //*  getting product
+     this.fetchProduct()
+
+  }
+
+  fetchProductsByWardrobeId(id:string){
+    this.productService.get_all_product_by_wardrobe_id(id).subscribe({
+      next:(data:Product[])=>{
+        this.products = data
+      },
+      error:()=>{
+        console.log('Error')
+      },
+      complete:()=>{
+        console.log('Product Fetching from wardrobe done')
+      }
+    })
+  }
+  fetchProduct(){
+    this.productService.getProductById(this.id).subscribe({
+      next:(data:Product)=>{
+          this.product = data
+      },
+      error:()=>{
+        console.log('Error')
+      },
+      complete:()=>{
+        console.log('Fetching Product completed')
+
+        this.fetchProductsByWardrobeId(this.product.wardrobe.id)
+      }
+    })
+  }
+
 }

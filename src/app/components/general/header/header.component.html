@@ -2,7 +2,7 @@
   <div class="header_top">
     <div class="container-fluid">
       <div class="top_nav_container">
-        <div class="contact_nav">
+        <div class="contact_nav d-none d-md-flex">
           <a href="">
             <i class="fa fa-phone" aria-hidden="true"></i>
             <span>
@@ -25,13 +25,13 @@
         <div class="user_option_box">
           <a routerLink="login" class="account-link">
             <i class="fa fa-user" aria-hidden="true"></i>
-            <span>
+            <span class="d-none d-md-inline">
               My Account
             </span>
           </a>
           <a href="" class="cart-link">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            <span>
+            <span class="d-none d-md-inline">
               Cart
             </span>
           </a>
@@ -43,32 +43,29 @@
   <div class="header_bottom">
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand d-none d-md-flex" href="#">
           <span>
-            Minics
+            Multi Vendor
           </span>
         </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class=""> </span>
-        </button>
+        </button> -->
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ">
+        <div class="d-block" id="navbarSupportedContent">
+          <ul class="navbar-nav d-flex flex-row">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html"> About</a>
+              <a class="nav-link" href="/shop"> Shop</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="product.html">Products</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="why.html">Why Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="testimonial.html">Testimonial</a>
             </li>
           </ul>
         </div>

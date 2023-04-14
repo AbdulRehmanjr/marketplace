@@ -6,148 +6,165 @@ import { User } from 'src/app/class/user';
 import { Wardrobe } from 'src/app/class/wardrobe';
 import { ProfileService } from 'src/app/service/profile.service';
 import { WardrobeService } from 'src/app/service/wardrobe.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit{
-  profile:User
-  followings:User[] = undefined
-  followers:User[] = undefined
-  ownUser:boolean = false
-  userId :string = ''
-  wardrobes:Wardrobe[]
-  numFollowers:number  = 0
-  numFollowing:number = 0
-  private currentId:string
-  isfollowed:boolean = false
+export class ProfileComponent implements OnInit {
+
+  profile: User
+  followings: User[] = undefined
+  followers: User[] = undefined
+  ownUser: boolean = false
+  userId: string = ''
+  wardrobes: Wardrobe[]
+  numFollowers: number = 0
+  numFollowing: number = 0
+  private currentId: string
+  isfollowed: boolean = false
 
 
-  constructor(private profileService:ProfileService,
-    private _wardrobe:WardrobeService,
-    private route:ActivatedRoute,
+  constructor(private profileService: ProfileService,
+    private _wardrobe: WardrobeService,
+    private route: ActivatedRoute,
 
-    ){}
+  ) { }
   ngOnInit(): void {
-     this.userId= this.route.snapshot.paramMap.get('userId');
-     this.currentId = JSON.parse(sessionStorage.getItem('user'))['userId']
+    this.userId = this.route.snapshot.paramMap.get('userId');
+    this.currentId = JSON.parse(sessionStorage.getItem('user'))['userId']
 
-   this.fetchUserInfo()
-   this.fetchFollowings()
-   this.fetchingFollowers()
-   this.fetchingwardrobes()
+    //* calling some essential functions
+    this.fetchUserInfo()
+    this.fetchFollowings()
+    this.fetchingFollowers()
+    this.fetchingwardrobes()
+
   }
   // checking that is user already followered or not
-  private followed(){
+  private followed() {
     const isPresent = this.followers.some(
-      (user) => {
-        console.log(user)
-        user.userId==this.currentId
-      }
+      (user: User) =>
+        user.userId == this.currentId
     )
-    if(isPresent){
+    if (isPresent) {
       console.log('user is in follower list')
-      this.isfollowed =true
+      this.isfollowed = true
     }
 
 
   }
-  private checkProfile(userId:string,currentId:string):boolean{
+  private checkProfile(userId: string, currentId: string): boolean {
 
-    if(userId == currentId){
+    if (userId == currentId) {
       return true
     }
     return false
   }
-  fetchUserInfo(){
+  fetchUserInfo() {
     this.profileService.getuserInfo(this.userId).subscribe(
       {
-        next: (user:User) => {
+        next: (user: User) => {
           this.profile = user
-
         },
         error: (error) => {
           console.log(error)
         },
         complete: () => {
           console.log('fetching user info completed')
-          let result = this.checkProfile(this.userId,this.currentId)
-          if(result==true){
-              this.ownUser = true
+          let result = this.checkProfile(this.userId, this.currentId)
+          if (result == true) {
+            this.ownUser = true
           }
         }
 
       }
     )
   }
-  fetchFollowings(){
-
+  fetchFollowings() {
+    this.isfollowed = true
     this.profileService.getFollowingInfo(this.userId).subscribe({
-      next:(data:any)=>{
+      next: (data: any) => {
         this.followings = data
+        console.log(this.followings)
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err)
       },
-      complete:()=>{
+      complete: () => {
         this.numFollowing = this.followings.length
-
-
-       console.log('following info fetching completed')
+        console.log('following info fetching completed')
       }
     })
   }
-fetchingFollowers(){
-  this.profileService.getFollowerInfo(this.userId).subscribe({
-    next:(data:any)=>{
-      console.log(data)
-      this.followers = data
+  fetchingFollowers() {
+    this.isfollowed = false
+    this.profileService.getFollowerInfo(this.userId).subscribe({
+      next: (data: any) => {
+        this.followers = data
+      },
+      error: (err) => {
+        console.log(err)
+      },
+      complete: () => {
+        this.numFollowers = this.followers.length
+        this.followed()
+        console.log('followers fetched successfully')
 
-    },
-    error:(err)=>{
-      console.log(err)
-    },
-    complete:()=>{
-      this.numFollowers = this.followers.length
-      this.followed()
-        console.log('completed')
-    }
-  })
-}
-  fetchingwardrobes(){
+      }
+    })
+  }
+  fetchingwardrobes() {
     this._wardrobe.getwarrobesByUserId(this.userId).subscribe(
       {
-        next:(data:any)=>{
+        next: (data: any) => {
           this.wardrobes = data
         },
-        error:(err)=>{
+        error: (err) => {
           console.log(err)
         },
-        complete:()=>{
-          console.log(this.wardrobes)
+        complete: () => {
           console.log(' wardrobe Fetching Completed')
         }
       }
     )
   }
-  followUser(id:any){
+  followUser(id: any) {
     console.log('following the user')
-    this.profileService.follow(id,this.currentId).subscribe(
+    this.profileService.follow(id, this.currentId).subscribe(
       {
-        next:(data:any)=>{
-          console.log(data)
+        next: (data: any) => {
+          console.log(' message recvied from follow request with success')
         },
-        error:(error)=>{
-      console.log('error',error.Error)
+        error: (error) => {
+          console.log('error recieved in follow request')
         },
-        complete:()=> console.log('followinf complted with success')
+        complete: () => {
+          console.log('followed completed')
+          this.fetchUserInfo()
+          this.fetchingFollowers()
+        }
       }
     )
   }
   clear(table: Table) {
     table.clear();
-}
-
+  }
+  unfollowUser(userId: string) {
+    this.profileService.unfollow(userId, this.currentId).subscribe({
+      next: (data: any) => {
+        console.log('message received');
+      },
+      error: (error) => {
+        console.log('error in unfollowing', error);
+      },
+      complete: () => {
+        console.log('unfollow completed')
+        this.fetchUserInfo()
+        this.fetchingFollowers()
+      }
+    })
+  }
 }

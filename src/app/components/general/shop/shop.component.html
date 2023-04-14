@@ -1,154 +1,93 @@
-<div class="page-main-wrapper">
-  <div class="container">
-    <div class="row">
-      <!-- product main wrap start -->
-      <div class="col-12">
-        <div class="shop-banner img-full">
-          <img src="assets/img/banner/banner_static1.jpg" alt="" />
+<div class="container-fluid">
+  <section class="row">
+    <div class="col-md-12">
+      <div class="banner" style="background-image: url({{selectedImage}});">
+        <div class="content">
+          <h1 class="light-heading">HUB OF ITEMS</h1>
+          <h2 class="dark-heading text-center">Shop Now</h2>
         </div>
-        <!-- product view wrapper area start -->
-        <div class="shop-product-wrapper pt-34">
-          <!-- shop product top wrap start -->
-          <div class="shop-top-bar">
-            <div class="row">
-              <div class="col-lg-7 col-md-6">
-                <div class="top-bar-left">
-                  <div class="product-view-mode mr-70 mr-sm-0">
-                    <a class="active" data-target="grid"
-                      ><i class="fa fa-th"></i
-                    ></a>
-                    <a routerLink="/shop-detail" data-target="list"
-                      ><i class="fa fa-list"></i
-                    ></a>
-                  </div>
-                  <div class="product-amount">
-                    <p>Showing 1–16 of 21 results</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-5 col-md-6">
-                <div class="top-bar-right">
-                  <div class="product-short">
-                    <p>Sort By :</p>
-                    <select class="nice-select" name="sortby">
-                      <option value="trending">Relevance</option>
-                      <option value="sales">Name (A - Z)</option>
-                      <option value="sales">Name (Z - A)</option>
-                      <option value="rating">Price (Low &gt; High)</option>
-                      <option value="date">Rating (Lowest)</option>
-                      <option value="price-asc">Model (A - Z)</option>
-                      <option value="price-asc">Model (Z - A)</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- shop product top wrap start -->
-
-          <!-- product item start -->
-          <div class="shop-product-wrap grid row">
-            <div
-              *ngFor="let product of products"
-              class="col-lg-3 col-md-4 col-sm-6"
-            >
-              <!-- product single grid item start -->
-              <div class="product-item fix mb-30">
-                <div class="product-thumb">
-                  <a href="product-details.html">
-                    <img
-                      src="{{ product.img1 }}"
-                      class="img-pri"
-                      alt="product_img_1"
-                    />
-                    <img
-                      src="{{ product.img2 }}"
-                      class="img-sec"
-                      alt="product_img_2"
-                    />
-                  </a>
-                  <div class="product-label">
-                    <span>hot</span>
-                  </div>
-                  <div class="product-action-link">
-                    <a href="#" data-toggle="modal" data-target="#quick_view">
-                      <span
-                        data-toggle="tooltip"
-                        data-placement="left"
-                        title="Quick view"
-                        ><i class="fa fa-search"></i
-                      ></span>
-                    </a>
-                    <a
-                      href="#"
-                      data-toggle="tooltip"
-                      data-placement="left"
-                      title="Wishlist"
-                      ><i class="fa fa-heart-o"></i
-                    ></a>
-                    <a
-                      href="#"
-                      data-toggle="tooltip"
-                      data-placement="left"
-                      title="Compare"
-                      ><i class="fa fa-refresh"></i
-                    ></a>
-                    <a
-                      href="#"
-                      data-toggle="tooltip"
-                      data-placement="left"
-                      title="Add to cart"
-                      ><i class="fa fa-shopping-cart"></i
-                    ></a>
-                  </div>
-                </div>
-                <div class="product-content">
-                  <h4>
-                    <a href="product-details.html">{{ product.name }}</a>
-                  </h4>
-                  <div class="pricebox">
-                    <span class="regular-price">${{ product.price }}</span>
-                    <div class="ratings">
-                      <span class="good"><i class="fa fa-star"></i></span>
-                      <span class="good"><i class="fa fa-star"></i></span>
-                      <span class="good"><i class="fa fa-star"></i></span>
-                      <span class="good"><i class="fa fa-star"></i></span>
-                      <span><i class="fa fa-star"></i></span>
-                      <div class="pro-review">
-                        <span>1 review(s)</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- product single grid item end -->
-              <!-- product single list item start -->
-
-              <!-- product single list item start -->
-            </div>
-            <!-- product single column end -->
-          </div>
-          <!-- product item end -->
-        </div>
-        <!-- product view wrapper area end -->
-
-        <!-- start pagination area -->
-        <div class="paginatoin-area text-center pt-28">
-          <div class="row">
-            <div class="col-12">
-              <ul class="pagination-box">
-                <li><a class="Previous" href="#">Previous</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a class="Next" href="#"> Next </a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- end pagination area -->
       </div>
-      <!-- product main wrap end -->
     </div>
-  </div>
+  </section>
+  <p-divider></p-divider>
+  <section class="row">
+    <div class="col-md-2">
+      <aside>
+        <p-panelMenu [model]="items"></p-panelMenu>
+      </aside>
+    </div>
+    <div class="col-md-10">
+      <main>
+        <div class="row mt-4">
+          <div *ngFor="let product of products" class="col-sm-6 col-md-4">
+            <div class="product-item">
+              <div class="product-thumb">
+                <a href="">
+                  <img
+                    src="data:image/jpeg;base64, {{ product.image1 }}"
+                    class="img-pri"
+                    alt="primary_pro_image"
+                  />
+                  <img
+                    src="data:image/jpeg;base64, {{ product.image2 }}"
+                    class="img-sec"
+                    alt="secondary_pro_image"
+                  />
+                </a>
+                <!-- <div class="product-label">
+                  <span>hot</span>
+                </div> -->
+                <div class="product-action-link">
+                  <a routerLink="/product-detail/{{product.productId}}" data-toggle="modal" data-target="#quick_view">
+                    <span
+                      data-toggle="tooltip"
+                      data-placement="left"
+                      title="Detail View"
+                      ><i class="fas fa-search"></i
+                    ></span>
+                  </a>
+                  <a
+                    href="#"
+                    data-toggle="tooltip"
+                    data-placement="left"
+                    title="Wishlist"
+                    ><i class="fas fa-heart"></i
+                  ></a>
+                  <a
+                    href="#"
+                    data-toggle="tooltip"
+                    data-placement="left"
+                    title="Add to cart"
+                    ><i class="fas fa-shopping-cart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="product-content">
+                <h4>
+                  <a href="">{{ product.productName }}</a>
+                </h4>
+                <div class="pricebox">
+                  <span class="regular-price">{{
+                    product.basePrice | currency : "USD"
+                  }}</span>
+                  <div class="ratings">
+                    <span class="good"><i class="fa fa-star"></i></span>
+                    <span class="good"><i class="fa fa-star"></i></span>
+                    <span class="good"><i class="fa fa-star"></i></span>
+                    <span class="good"><i class="fa fa-star"></i></span>
+                    <span><i class="fa fa-star"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-more">Show more...</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
 </div>
