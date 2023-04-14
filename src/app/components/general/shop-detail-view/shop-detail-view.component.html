@@ -1,14 +1,14 @@
 <div class="container-fluid">
   <section class="row detail-section">
-    <div class="col-md-6">
+    <div class="col-md-4 bg-setting">
       <figure class="product-image">
         <img class="img-pri" src="data:image/jpeg; base64, {{product.image1}}" alt="image1">
         <img class="img-sec" src="data:image/jpeg; base64, {{product.image2}}" alt="image2">
       </figure>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 bg-color">
       <h1 class="product-label">{{product.productName.toUpperCase()}}</h1>
-      <p class="additional-details">Category : <span>{{product.category.name}}</span> Wardrobe Id: <span>{{product.wardrobe.title}}</span></p>
+      <p class="additional-details">Category : {{product.category.name}} <br> Wardrobe Code: {{product.wardrobe.title}}</p>
       <p class="price">{{product.basePrice | currency:'USD'}}</p>
       <div class="ratings">
         <span class="good"><i class="fa fa-star"></i></span>

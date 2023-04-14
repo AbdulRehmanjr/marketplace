@@ -12,6 +12,7 @@ export class ShopComponent implements OnInit {
   items: MenuItem[];
   selectedImage: any
   products:Product[]
+  currentSize:number = 2
   value:number = 5
   images: any[] = [
     "assets/images/banner/static/banner2.jpeg",
@@ -29,12 +30,16 @@ export class ShopComponent implements OnInit {
   ngOnInit(): void {
     this.sidebar()
     this.fetchAllProducts()
+    //* select the banner image from  3 images
     this.selectedImage = this.images[Math.floor(Math.random() * 3)]
   }
 
-  /**
-   * fetch all products
-  */
+
+  //* show more products later we will change the number
+  showMore(){
+    this.currentSize = this.currentSize + 2
+  }
+  //* fetching all products
   fetchAllProducts(): void {
     this.productService.getAllProducts().subscribe(
       {
@@ -54,7 +59,9 @@ export class ShopComponent implements OnInit {
   filterPrice(range: string) {
       let converter = +range
       console.log('converter ',converter)
-      this.products = this.products.filter(product => product.basePrice <= converter)
+      this.products = this.products
+                          .filter(product => product.basePrice <= converter)
+                          .sort((a, b) => a.basePrice - b.basePrice)
   }
 
   filterRating(rating: number) {

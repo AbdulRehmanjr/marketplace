@@ -12,14 +12,14 @@
   <p-divider></p-divider>
   <section class="row">
     <div class="col-md-2">
-      <aside>
+      <aside class="sticky">
         <p-panelMenu [model]="items"></p-panelMenu>
       </aside>
     </div>
     <div class="col-md-10">
       <main>
         <div class="row mt-4">
-          <div *ngFor="let product of products" class="col-sm-6 col-md-4">
+          <div *ngFor="let product of products.slice(0,currentSize)" class="col-sm-4 col-md-3">
             <div class="product-item">
               <div class="product-thumb">
                 <a href="">
@@ -63,11 +63,11 @@
                 </div>
               </div>
               <div class="product-content">
-                <h4>
-                  <a href="">{{ product.productName }}</a>
-                </h4>
+                <marquee>
+                  {{ product.productName }}
+                </marquee>
                 <div class="pricebox">
-                  <span class="regular-price">{{
+                  <span class="regular-price">Price : {{
                     product.basePrice | currency : "USD"
                   }}</span>
                   <div class="ratings">
@@ -84,7 +84,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <button class="btn btn-more">Show more...</button>
+            <button class="btn btn-more" (click)="showMore()">Show more...</button>
           </div>
         </div>
       </main>
