@@ -11,7 +11,7 @@ import { ProductService } from 'src/app/service/product.service';
 export class ShopDetailViewComponent implements OnInit{
 
   product:Product
-  products:Product[]
+  products:Product[] = []
   id:string
 
   constructor(private productService: ProductService,
@@ -54,4 +54,8 @@ export class ShopDetailViewComponent implements OnInit{
     })
   }
 
+  //* selected product
+  checkProduct(product:Product){
+    this.product = product
+  }
 }
