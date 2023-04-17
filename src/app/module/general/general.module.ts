@@ -29,7 +29,6 @@ import { TrendingComponent } from '../../components/general/trending/trending.co
 import { ShopComponent } from '../../components/general/shop/shop.component';
 import { ShopDetailViewComponent } from '../../components/general/shop-detail-view/shop-detail-view.component';
 import { FooterComponent } from '../../components/general/footer/footer.component';
-import { ProductListComponent } from '../../component/general/product-list/product-list.component';
 
 
 
@@ -54,7 +53,6 @@ const routes: Routes = [
     ShopComponent,
     ShopDetailViewComponent,
     FooterComponent,
-    ProductListComponent,
   ],
   imports: [
   PaginatorModule,
