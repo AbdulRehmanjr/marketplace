@@ -6,47 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent  implements OnInit{
-  login:boolean = true
+  userId:string
+  islogin:boolean = false
 
   ngOnInit(): void {
-    console.log('header component init')
+   this.islogin= this.checkLogin()
   }
-  categories:any[] = [
-    {
-      id:0,
-      name:'category',
-      image:'fa-solid fa-list'
-    },
-    {
-      id:0,
-      name:'category',
-      image:'fa-solid fa-list'
-    },
-    {
-      id:0,
-      name:'category',
-      image:'fa-solid fa-list'
-    },
-    {
-      id:0,
-      name:'category',
-      image:'fa-solid fa-list'
-    },
-    {
-      id:0,
-      name:'category',
-      image:'fa-solid fa-list'
-    },
-    {
-      id:0,
-      name:'category',
-      image:'fa-solid fa-list'
-    },
-    {
-      id:0,
-      name:'category',
-      image:'fa-solid fa-list'
+
+  checkLogin(){
+    this.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
+    if(this.userId){
+      return true
     }
-  ]
+      return false
+  }
 
 }

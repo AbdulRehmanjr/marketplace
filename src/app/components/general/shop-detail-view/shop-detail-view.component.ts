@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Favouriteproduct } from 'src/app/class/favouriteproduct';
 import { Product } from 'src/app/class/product';
+import { User } from 'src/app/class/user';
+import { FavouriteproductService } from 'src/app/service/favouriteproduct.service';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
@@ -13,9 +16,10 @@ export class ShopDetailViewComponent implements OnInit{
   product:Product
   products:Product[] = []
   id:string
-
+  userId:string
   constructor(private productService: ProductService,
-    private route:ActivatedRoute){}
+    private route:ActivatedRoute,
+    private favourite:FavouriteproductService){}
   ngOnInit(): void {
     //* getting id from url
      this.id = this.route.snapshot.paramMap.get('productId')
@@ -26,7 +30,7 @@ export class ShopDetailViewComponent implements OnInit{
   }
 
   fetchProductsByWardrobeId(id:string){
-    this.productService.get_all_product_by_wardrobe_id(id).subscribe({
+    this.productService.getProductsByWardrobeId(id).subscribe({
       next:(data:Product[])=>{
         this.products = data
       },
@@ -58,4 +62,24 @@ export class ShopDetailViewComponent implements OnInit{
   checkProduct(product:Product){
     this.product = product
   }
+  addFavourite(product: Product) {
+    let user = new User()
+    user.userId = this.userId
+    let fav  = new Favouriteproduct()
+    fav.user = user
+    fav.product = product
+    console.log(fav)
+    this.favourite.saveFavouriteProduct(fav).subscribe({
+     next:(data)=>{
+       console.log('Message',data)
+     },
+     error:(err)=>{
+       console.log('Error',err)
+     },
+     complete:()=>{
+       console.log('Add favourite completed')
+     }
+    })
+
+ }
 }
