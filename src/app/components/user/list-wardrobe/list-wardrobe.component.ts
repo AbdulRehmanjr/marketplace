@@ -20,8 +20,8 @@ export class ListWardrobeComponent implements OnInit{
   constructor(private _wardrobeService:WardrobeService){}
   ngOnInit(): void {
    // @TODO : add usr Id in this function later
-   this.userId = JSON.parse(localStorage.getItem('user'))['userId']
-  this.fetchWardrobeList()
+    this.userId = JSON.parse(localStorage.getItem('user'))['userId']
+    this.fetchWardrobeList()
   }
   fetchWardrobeList(){
     this._wardrobeService.getwarrobesByUserId(this.userId).subscribe({

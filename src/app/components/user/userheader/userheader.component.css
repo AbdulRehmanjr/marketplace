@@ -89,11 +89,14 @@
 .header-nav ul li {
   padding-right: 10px;
 }
-.header-nav .nav-icon {
-  font-size: 22px;
-  color: #012970;
+.header-nav ul li a{
+  padding-top:10px;
+  font-size:25px;
 }
-
+.header-nav ul li a:hover{
+  border-bottom: 1px solid blue;
+  color:blue;
+}
 
 
 

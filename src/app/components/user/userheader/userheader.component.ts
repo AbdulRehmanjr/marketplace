@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { _deprecated } from 'chart.js/dist/helpers/helpers.core';
 
 import * as $ from 'jquery'
@@ -8,15 +9,18 @@ import * as $ from 'jquery'
   templateUrl: './userheader.component.html',
   styleUrls: ['./userheader.component.css']
 })
-export class UserheaderComponent implements OnInit{
-userId: any;
-logOut() {
-throw new Error('Method not implemented.');
-}
-
-  constructor( ){}
+export class UserheaderComponent implements OnInit {
+  userId: any
+  dsda:any
+  constructor(
+    private route: Router) { }
 
   ngOnInit(): void {
+    this.userId = JSON.parse(localStorage.getItem('user'))['userId']
+  }
 
+  logOut() {
+    localStorage.removeItem('token')
+    this.route.navigate([''])
   }
 }

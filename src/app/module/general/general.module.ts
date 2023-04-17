@@ -16,6 +16,7 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { DropdownModule } from 'primeng/dropdown';
 import { PaginatorModule } from 'primeng/paginator';
 import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
 
 import { NgxTypedJsModule } from 'ngx-typed-js';
 
@@ -30,6 +31,7 @@ import { TrendingComponent } from '../../components/general/trending/trending.co
 import { ShopComponent } from '../../components/general/shop/shop.component';
 import { ShopDetailViewComponent } from '../../components/general/shop-detail-view/shop-detail-view.component';
 import { FooterComponent } from '../../components/general/footer/footer.component';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -58,6 +60,7 @@ const routes: Routes = [
     FooterComponent,
   ],
   imports: [
+    MessagesModule,
     ToastModule,
     PaginatorModule,
     DropdownModule,
@@ -91,6 +94,8 @@ const routes: Routes = [
           }
         ]
       } as SocialAuthServiceConfig,
-    }]
+    },
+    MessageService
+  ]
 })
 export class GeneralModule { }

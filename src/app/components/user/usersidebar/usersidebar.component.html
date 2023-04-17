@@ -3,6 +3,12 @@
   <ul class="sidebar-nav" id="sidebar-nav">
 
     <li class="nav-item">
+      <a class="nav-link" routerLink="/">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" routerLink="my/profile/{{userId}}">
         <i class="fas fa-user"></i>
         <span>Profile</span>
@@ -23,20 +29,20 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="search"
       >
-        <i class="bi bi-search"></i>
+      <i class="fa-solid fa-magnifying-glass"></i>
         <span>Search User</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" routerLink="cart"
       >
-        <i class="bi bi-search"></i>
-        <span>Search User</span>
+        <i class="fas fa-cart-shopping"></i>
+        <span>Cart</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" (click)="logOut()">
-        <i class="bi bi-logout"></i>
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
         <span>Logout</span>
       </a>
     </li>

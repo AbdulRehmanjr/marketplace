@@ -64,13 +64,23 @@ export class ShopDetailViewComponent implements OnInit{
   checkProduct(product: Product) {
     this.product = product
   }
+
+  //! may be change in future versions
+
+  addToCart(product:Product){
+
+  }
+
+  //* add to Favourite list
   addFavourite(product: Product) {
+
     let user = new User()
     user.userId = this.userId
+
     let fav = new Favouriteproduct()
     fav.user = user
     fav.product = product
-    console.log(fav)
+
     this.favourite.saveFavouriteProduct(fav).subscribe({
       next: (data) => {
         Swal.fire('Added to Favourite List','Successfully','success')

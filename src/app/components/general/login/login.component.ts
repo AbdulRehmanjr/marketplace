@@ -143,8 +143,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['admin-dashboard'])
 
     }else if(role == "USER"){
-      let user = JSON.parse(localStorage.getItem('user'))
-      this.router.navigate([`user-dashboard/my/profile/${user['userId']}`])
+      this.router.navigate([''])
     }
     else{
       this.router.navigate(['login'])

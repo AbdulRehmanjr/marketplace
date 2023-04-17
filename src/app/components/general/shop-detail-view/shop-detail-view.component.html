@@ -27,7 +27,7 @@
         <p class="product-description">{{product.description}}</p>
         <h4 class="price">current price: <span>{{product.basePrice | currency:'USD'}}</span></h4>
         <div class="action">
-          <button class="add-to-cart btn btn-default" type="button"><span class="fa fa-cart-shopping"></span> add to cart</button>
+          <button class="add-to-cart btn btn-default" (click)="addToCart(product)" type="button"><span class="fa fa-cart-shopping"></span>Add to cart</button>
           <button class="like btn btn-default" type="button" (click)="addFavourite(product)"><span class="fa fa-heart"></span></button>
         </div>
       </div>
