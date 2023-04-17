@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Favouriteproduct } from 'src/app/class/favouriteproduct';
 import { Product } from 'src/app/class/product';
 import { User } from 'src/app/class/user';
+import { FavouriteproductService } from 'src/app/service/favouriteproduct.service';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
@@ -11,29 +13,38 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class WardrobeDetaillComponent implements OnInit {
 
-
   displayDialog: boolean = false
   updateDialog: boolean = false
-  productUpdate:Product
-  wardrobeId: string
-
-  products: Product[];
-
-  submitted: boolean;
-
+  productUpdate: Product
+  wardrobeId: string = ''
+  products: Product[] = []
+  submitted: boolean = false
+  validate: boolean = true
+  currentUserId:string =''
+  currentSize:number = 8
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private favourite:FavouriteproductService
+    ) { }
+
   ngOnInit(): void {
     this.wardrobeId = this.route.snapshot.paramMap.get('wardrobeId')
-    console.log('id', this.wardrobeId)
-    this.get_all_products_by_wardrobe()
+    this.fetchPoductsByWardrobe()
+    this.currentUserId = JSON.parse(sessionStorage.getItem('user'))['userId']
   }
 
-  get_all_products_by_wardrobe() {
-    // later on change this to dynamic
-    this.productService.get_all_product_by_wardrobe_id(this.wardrobeId).subscribe(
+  private checkProfile(userId: string, currentId: string): boolean {
+
+    if (userId == currentId) {
+      return true
+    }
+    return false
+  }
+
+  fetchPoductsByWardrobe() {
+    this.productService.getProductsByWardrobeId(this.wardrobeId).subscribe(
       {
         next: (data: Product[]) => {
           this.products = data
@@ -42,7 +53,10 @@ export class WardrobeDetaillComponent implements OnInit {
           console.log(err.Error)
         },
         complete: () => {
-          console.log('fecthing completed')
+          console.log(this.products)
+          const userId = this.products[0].wardrobe.user.userId
+          this.validate = this.checkProfile(userId, this.currentUserId)
+          console.log('Fetching Products by wardrobe completed.')
         }
       }
     )
@@ -50,12 +64,12 @@ export class WardrobeDetaillComponent implements OnInit {
   getSeverity(status: string): string {
     switch (status) {
       case 'INSTOCK':
-          return 'success';
+        return 'success';
       case 'OUTOFSTOCK':
-          return 'danger';
+        return 'danger';
+    }
+    return ''
   }
-  return ''
-}
 
 
   showDialog() {
@@ -65,7 +79,7 @@ export class WardrobeDetaillComponent implements OnInit {
   hideDialog() {
     this.displayDialog = false
     this.updateDialog = false
-    this.get_all_products_by_wardrobe()
+    this.fetchPoductsByWardrobe()
   }
 
   saveProduct() {
@@ -75,12 +89,31 @@ export class WardrobeDetaillComponent implements OnInit {
 
   deleteProduct(_t43: any) {
 
-    }
-    editProduct(product: Product) {
-      console.log('product coming from details',product)
-      this.updateDialog = true
-      this.productUpdate = product
-    }
+  }
+  editProduct(product: Product) {
+    console.log('product coming from details', product)
+    this.updateDialog = true
+    this.productUpdate = product
+  }
+  addFavourite(product: Product) {
+    let user = new User()
+    user.userId = this.currentUserId
+    let fav = new Favouriteproduct()
+    fav.user = user
+    fav.product = product
+    console.log(fav)
+    this.favourite.saveFavouriteProduct(fav).subscribe({
+      next: (data) => {
+        console.log('Message', data)
+      },
+      error: (err) => {
+        console.log('Error', err)
+      },
+      complete: () => {
+        console.log('Add favourite completed')
+      }
+    })
 
+  }
 }
 

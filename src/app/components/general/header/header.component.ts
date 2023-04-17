@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent  implements OnInit{
-  login:boolean = true
+  isLogin:boolean = false
+  userId:string
 
   ngOnInit(): void {
+    this.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
+    this.isLogin = this.checkLogin()
     console.log('header component init')
+  }
+  checkLogin():boolean{
+    if(this.userId){
+      return true
+    }
+    return false
   }
   categories:any[] = [
     {

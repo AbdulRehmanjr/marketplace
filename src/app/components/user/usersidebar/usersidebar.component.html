@@ -1,4 +1,4 @@
-<aside id="sidebar" class="sidebar" *ngIf="this.toggle.toggleState$ | async">
+<aside id="sidebar" class="sidebar">
 
   <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -28,9 +28,9 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/user-dashboard/my/profile/{{userId}}">
-        <i class="bi bi-grid"></i>
-        <span>Profile</span>
+      <a class="nav-link" (click)="logOut()">
+        <i class="bi bi-door"></i>
+        <span>Logout</span>
       </a>
     </li>
   </ul>

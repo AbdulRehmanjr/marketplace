@@ -1,7 +1,6 @@
 <h1>Wardrobe Details</h1>
-
-<!-- <p-toast></p-toast> -->
-<p-toolbar styleClass="mb-4 gap-2">
+<ng-container *ngIf="validate == true else other" >
+  <p-toolbar styleClass="mb-4 gap-2">
     <ng-template pTemplate="left">
         <button class="btn btn-info mr-2" (click)="showDialog()"> Add New Product</button>
     </ng-template>
@@ -69,3 +68,71 @@
    <app-add-product [view]="'SIMPLE'" (productAdded)="hideDialog()"></app-add-product>
   </ng-template>
 </p-dialog>
+
+</ng-container>
+<ng-template #other>
+  <div class="row mt-4">
+    <div *ngFor="let product of products.slice(0,currentSize)" class="col-sm-4 col-md-3">
+      <div class="product-item">
+        <div class="product-thumb">
+          <a href="">
+            <img
+              src="data:image/jpeg;base64, {{ product.image1 }}"
+              class="img-pri"
+              alt="primary_pro_image"
+            />
+            <img
+              src="data:image/jpeg;base64, {{ product.image2 }}"
+              class="img-sec"
+              alt="secondary_pro_image"
+            />
+          </a>
+          <!-- <div class="product-label">
+            <span>hot</span>
+          </div> -->
+          <div class="product-action-link">
+            <a routerLink="/product-detail/{{product.productId}}" data-toggle="modal" data-target="#quick_view">
+              <span
+                data-toggle="tooltip"
+                data-placement="left"
+                title="Detail View"
+                ><i class="fas fa-search"></i
+              ></span>
+            </a>
+            <a
+              data-toggle="tooltip"
+              data-placement="left"
+              (click)="addFavourite(product)"
+              title="Wishlist"
+              ><i class="fas fa-heart"></i
+            ></a>
+            <a
+              href="#"
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Add to cart"
+              ><i class="fas fa-shopping-cart"></i
+            ></a>
+          </div>
+        </div>
+        <div class="product-content">
+          <marquee>
+            {{ product.productName }}
+          </marquee>
+          <div class="pricebox">
+            <span class="regular-price">Price : {{
+              product.basePrice | currency : "USD"
+            }}</span>
+            <div class="ratings">
+              <span class="good"><i class="fa fa-star"></i></span>
+              <span class="good"><i class="fa fa-star"></i></span>
+              <span class="good"><i class="fa fa-star"></i></span>
+              <span class="good"><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

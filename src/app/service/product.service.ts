@@ -17,7 +17,7 @@ export class ProductService {
   getAllProducts(){
     return this.http.get(`${this.base_url}/all`)
   }
-  get_all_product_by_wardrobe_id(wardrobeId:string){
+  getProductsByWardrobeId(wardrobeId:string){
     return this.http.get(`${this.base_url}/wardrobe/${wardrobeId}`)
   }
   saveProduct(product:string,file1:File,file2:File){

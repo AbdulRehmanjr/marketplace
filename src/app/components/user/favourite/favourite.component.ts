@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Product } from 'src/app/class/product';
+import { FavouriteproductService } from 'src/app/service/favouriteproduct.service';
 
 @Component({
   selector: 'app-favourite',
@@ -7,166 +9,52 @@ import { Component } from '@angular/core';
 })
 export class FavouriteComponent {
 
-  customers: Customer[] = [
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
 
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
+  userId:string
+  products: Product[] = []
 
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
 
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-    {
-      id:'1',
-      name:'Abdul rehman',
-      image:'assets/images/team/team_member_1.jpg'
-    },
-  ]
+  constructor(private favourite:FavouriteproductService) { }
 
-    selectedCustomers: Customer;
+  ngOnInit() {
+    this.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
+    this.fetchFavProduct()
+  }
 
-    constructor() {}
 
-    ngOnInit() {
-
-    }
-
-    getSeverity(status: any):any {
-        switch (status) {
-            case 'unqualified':
-                return 'danger';
-
-            case 'qualified':
-                return 'success';
-
-            case 'new':
-                return 'info';
-
-            case 'negotiation':
-                return 'warning';
-
-            case 'renewal':
-                return null;
-        }
+  fetchFavProduct(){
+    this.favourite.getFavouriteProducts(this.userId).subscribe({
+      next:(products:Product[])=>{
+        this.products = products
+      },
+      error:(error:any)=>{
+        console.log('Error in fetching Favourite Products',error)
+      },
+      complete:()=>{
+        console.log('fetching favourite products completed')
+      }
+    })
+  }
+  deleteProduct(product:Product){
+    this.favourite.deleteFavouriteProduct(product.productId,this.userId).subscribe({
+      next:()=>{
+      },
+      error:(err:any)=>{
+        console.log('Error in deleting fav product ',err)
+      },
+      complete:()=>{
+        this.fetchFavProduct()
+      }
+    })
+  }
+  getSeverity(status: string): string {
+    switch (status) {
+      case 'INSTOCK':
+          return 'success';
+      case 'OUTOFSTOCK':
+          return 'danger';
+  }
+  return ''
 }
 }
-interface Customer{
-  name:string
-  image:string,
-  id:string
-}
+

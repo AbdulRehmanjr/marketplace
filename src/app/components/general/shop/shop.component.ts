@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
+import { Favouriteproduct } from 'src/app/class/favouriteproduct';
 import { Product } from 'src/app/class/product';
+import { User } from 'src/app/class/user';
+import { FavouriteproductService } from 'src/app/service/favouriteproduct.service';
 import { ProductService } from 'src/app/service/product.service';
 @Component({
   selector: 'app-shop',
@@ -11,45 +14,65 @@ import { ProductService } from 'src/app/service/product.service';
 export class ShopComponent implements OnInit {
   items: MenuItem[];
   selectedImage: any
-  products:Product[]
-  currentSize:number = 2
-  value:number = 5
+  products: Product[]
+  currentSize: number = 6
+  userId: string
+
   images: any[] = [
     "assets/images/banner/static/banner2.jpeg",
     "assets/images/banner/static/banner3.jpeg",
     "assets/images/banner/static/banner4.jpeg",
   ]
-  options:any[]=[
-    'By Name',
-    'By Price',
-    'By Rating'
-  ]
-  selectedOption:string
-  constructor(private productService:ProductService){}
+  selectedOption: string
+
+  constructor(private productService: ProductService,
+    private favourite: FavouriteproductService) { }
 
   ngOnInit(): void {
     this.sidebar()
     this.fetchAllProducts()
     //* select the banner image from  3 images
     this.selectedImage = this.images[Math.floor(Math.random() * 3)]
+    this.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
+
   }
 
+  addFavourite(product: Product) {
+    let user = new User()
+    user.userId = this.userId
+    let fav  = new Favouriteproduct()
+    fav.user = user
+    fav.product = product
+    console.log(fav)
+    this.favourite.saveFavouriteProduct(fav).subscribe({
+     next:(data)=>{
+       console.log('Message',data)
+     },
+     error:(err)=>{
+       console.log('Error',err)
+     },
+     complete:()=>{
+       console.log('Add favourite completed')
+     }
+    })
+
+ }
 
   //* show more products later we will change the number
-  showMore(){
+  showMore() {
     this.currentSize = this.currentSize + 2
   }
   //* fetching all products
   fetchAllProducts(): void {
     this.productService.getAllProducts().subscribe(
       {
-        next:(products:Product[])=>{
+        next: (products: Product[]) => {
           this.products = products
         },
-        error:()=>{
+        error: () => {
           console.log('Error fetching all products')
         },
-        complete:()=>{
+        complete: () => {
           console.log('Product Fetching Completed')
         }
       }
@@ -57,11 +80,11 @@ export class ShopComponent implements OnInit {
   }
 
   filterPrice(range: string) {
-      let converter = +range
-      console.log('converter ',converter)
-      this.products = this.products
-                          .filter(product => product.basePrice <= converter)
-                          .sort((a, b) => a.basePrice - b.basePrice)
+    let converter = +range
+    console.log('converter ', converter)
+    this.products = this.products
+      .filter(product => product.basePrice <= converter)
+      .sort((a, b) => a.basePrice - b.basePrice)
   }
 
   filterRating(rating: number) {
@@ -71,7 +94,7 @@ export class ShopComponent implements OnInit {
   filterSize(size: string) {
     console.log('size', size)
   }
-  sidebar(){
+  sidebar() {
     this.items = [
       {
         label: 'Price',
@@ -80,39 +103,39 @@ export class ShopComponent implements OnInit {
           {
             label: '< 100',
             icon: 'pi pi-fw pi-dollar',
-            command:()=>{
+            command: () => {
               this.filterPrice('100')
             }
           },
           {
             label: '< 200',
-             icon: 'pi pi-fw pi-dollar',
-            command:()=>{
+            icon: 'pi pi-fw pi-dollar',
+            command: () => {
               this.filterPrice('200')
             }
           },
           {
             label: '< 300',
-             icon: 'pi pi-fw pi-dollar',
-            command:()=>{
+            icon: 'pi pi-fw pi-dollar',
+            command: () => {
               this.filterPrice('300')
             }
           }, {
             label: '< 400',
-             icon: 'pi pi-fw pi-dollar',
-            command:()=>{
+            icon: 'pi pi-fw pi-dollar',
+            command: () => {
               this.filterPrice('400')
             }
           }, {
             label: '< 500',
-             icon: 'pi pi-fw pi-dollar',
-            command:()=>{
+            icon: 'pi pi-fw pi-dollar',
+            command: () => {
               this.filterPrice('500')
             }
           }, {
             label: '>500',
             icon: 'pi pi-fw pi-dollar',
-            command:()=>{
+            command: () => {
               this.filterPrice('501')
             }
           }
@@ -124,31 +147,31 @@ export class ShopComponent implements OnInit {
         items: [
           {
             label: 'Small',
-            icon:'fa-solid fa-user-tie',
-            command:()=>{
+            icon: 'fa-solid fa-user-tie',
+            command: () => {
               this.filterSize('Small')
             }
           },
           {
             label: 'Medium',
-             icon:'fa-solid fa-user-tie',
-             command:()=>{
+            icon: 'fa-solid fa-user-tie',
+            command: () => {
               this.filterSize('Small')
-             }
+            }
           },
           {
             label: 'Large',
-             icon:'fa-solid fa-user-tie',
-             command:()=>{
+            icon: 'fa-solid fa-user-tie',
+            command: () => {
               this.filterSize('Small')
-             }
+            }
           },
           {
             label: 'Extra Large',
-             icon:'fa-solid fa-user-tie',
-             command:()=>{
+            icon: 'fa-solid fa-user-tie',
+            command: () => {
               this.filterSize('Small')
-             }
+            }
           }
         ]
       }, {
@@ -156,40 +179,40 @@ export class ShopComponent implements OnInit {
         icon: 'fa-solid fa-star',
         items: [
           {
-            label:'1',
-            icon:'fa-solid fa-star',
-            command:()=>{
+            label: '1',
+            icon: 'fa-solid fa-star',
+            command: () => {
               this.filterRating(1.0)
             }
           },
           {
-            label:'2',
-            icon:'fa-solid fa-star',
-             command:()=>{
+            label: '2',
+            icon: 'fa-solid fa-star',
+            command: () => {
               this.filterRating(2.0)
-             }
+            }
           },
           {
-            label:'3',
+            label: '3',
 
-            icon:'fa-solid fa-star',
-             command:()=>{
+            icon: 'fa-solid fa-star',
+            command: () => {
               this.filterRating(3.0)
-             }
+            }
           },
           {
-            label:'4',
-            icon:'fa-solid fa-star',
-             command:()=>{
+            label: '4',
+            icon: 'fa-solid fa-star',
+            command: () => {
               this.filterRating(4.0)
-             }
+            }
           },
           {
-            label:'5',
-            icon:'fa-solid fa-star',
-             command:()=>{
+            label: '5',
+            icon: 'fa-solid fa-star',
+            command: () => {
               this.filterRating(5.0)
-             }
+            }
           }
         ]
       },
