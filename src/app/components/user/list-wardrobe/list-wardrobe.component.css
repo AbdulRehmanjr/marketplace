@@ -59,7 +59,14 @@ img {
 }
 
 
+.card__title {
+  font-size: 1rem;
+  font-weight: 500;
+  color:#000;
+  letter-spacing: 2px;
 
+  text-transform: uppercase;
+}
 
 .card__title {
   font-size: 1.25rem;

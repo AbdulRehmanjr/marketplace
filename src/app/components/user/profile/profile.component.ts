@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('userId');
-    this.currentId = JSON.parse(sessionStorage.getItem('user'))['userId']
+    this.currentId = JSON.parse(localStorage.getItem('user'))['userId']
 
     //* calling some essential functions
     this.fetchUserInfo()

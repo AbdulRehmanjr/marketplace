@@ -5,6 +5,7 @@ import { Product } from 'src/app/class/product';
 import { User } from 'src/app/class/user';
 import { FavouriteproductService } from 'src/app/service/favouriteproduct.service';
 import { ProductService } from 'src/app/service/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-shop-detail-view',
@@ -13,44 +14,45 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class ShopDetailViewComponent implements OnInit{
 
-  product:Product
-  products:Product[] = []
-  id:string
-  userId:string
+  product: Product
+  products: Product[] = []
+  id: string
+  userId: string
   constructor(private productService: ProductService,
-    private route:ActivatedRoute,
-    private favourite:FavouriteproductService){}
+    private route: ActivatedRoute,
+    private favourite: FavouriteproductService) { }
   ngOnInit(): void {
     //* getting id from url
-     this.id = this.route.snapshot.paramMap.get('productId')
+    this.id = this.route.snapshot.paramMap.get('productId')
 
-     //*  getting product
-     this.fetchProduct()
+    //*  getting product
+    this.fetchProduct()
+    this.userId = JSON.parse(localStorage.getItem('user'))['userId']
 
   }
 
-  fetchProductsByWardrobeId(id:string){
+  fetchProductsByWardrobeId(id: string) {
     this.productService.getProductsByWardrobeId(id).subscribe({
-      next:(data:Product[])=>{
+      next: (data: Product[]) => {
         this.products = data
       },
-      error:()=>{
+      error: () => {
         console.log('Error')
       },
-      complete:()=>{
+      complete: () => {
         console.log('Product Fetching from wardrobe done')
       }
     })
   }
-  fetchProduct(){
+  fetchProduct() {
     this.productService.getProductById(this.id).subscribe({
-      next:(data:Product)=>{
-          this.product = data
+      next: (data: Product) => {
+        this.product = data
       },
-      error:()=>{
+      error: () => {
         console.log('Error')
       },
-      complete:()=>{
+      complete: () => {
         console.log('Fetching Product completed')
 
         this.fetchProductsByWardrobeId(this.product.wardrobe.id)
@@ -59,27 +61,29 @@ export class ShopDetailViewComponent implements OnInit{
   }
 
   //* selected product
-  checkProduct(product:Product){
+  checkProduct(product: Product) {
     this.product = product
   }
   addFavourite(product: Product) {
     let user = new User()
     user.userId = this.userId
-    let fav  = new Favouriteproduct()
+    let fav = new Favouriteproduct()
     fav.user = user
     fav.product = product
     console.log(fav)
     this.favourite.saveFavouriteProduct(fav).subscribe({
-     next:(data)=>{
-       console.log('Message',data)
-     },
-     error:(err)=>{
-       console.log('Error',err)
-     },
-     complete:()=>{
-       console.log('Add favourite completed')
-     }
+      next: (data) => {
+        Swal.fire('Added to Favourite List','Successfully','success')
+        console.log('Message', data)
+      },
+      error: (err) => {
+        Swal.fire('Error in adding to Favourite List','Error','error')
+        console.log('Error', err)
+      },
+      complete: () => {
+        console.log('Add favourite completed')
+      }
     })
 
- }
+  }
 }

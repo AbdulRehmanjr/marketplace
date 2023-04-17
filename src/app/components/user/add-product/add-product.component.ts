@@ -56,7 +56,7 @@ export class AddProductComponent implements OnInit{
 
 
   getWardobes(){
-    let userId = JSON.parse(sessionStorage.getItem('user'))['userId']
+    let userId = JSON.parse(localStorage.getItem('user'))['userId']
     this.wardrobe.getwarrobesByUserId(userId).subscribe(
       {
         next:(data:any)=>{

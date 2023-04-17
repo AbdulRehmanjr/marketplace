@@ -45,7 +45,7 @@ export class AddWardrobeComponent implements OnInit{
    wardrobe.title = this.title
    wardrobe.description = this.description
    let user = new User()
-   user.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
+   user.userId = JSON.parse(localStorage.getItem('user'))['userId']
 
    wardrobe.user = user
 

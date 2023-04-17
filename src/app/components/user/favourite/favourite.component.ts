@@ -17,7 +17,7 @@ export class FavouriteComponent {
   constructor(private favourite:FavouriteproductService) { }
 
   ngOnInit() {
-    this.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
+    this.userId = JSON.parse(localStorage.getItem('user'))['userId']
     this.fetchFavProduct()
   }
 

@@ -6,7 +6,7 @@ import { UserModule } from './module/user/user.module';
 
 import { SignupComponent } from './components/general/signup/signup.component';
 import { LoginComponent } from './components/general/login/login.component';
-import { UserDashboardComponent } from './module/user/user-dashboard.component';
+
 
 const routes: Routes = [
   {path:'signup',component:SignupComponent},

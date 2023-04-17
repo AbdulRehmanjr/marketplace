@@ -10,9 +10,7 @@ export class LoginService {
 
   private baseUrl = 'http://localhost:8080/api/v1/token'
 
-  constructor(private _http: HttpClient) {}
-
-
+  constructor(private _http: HttpClient) { }
 
   public generateToken(login: Login) {
     return this._http.post(`${this.baseUrl}` + '/generate', login, {
@@ -23,16 +21,16 @@ export class LoginService {
 
   public setToken(token: any) {
     if (token != null) {
-      sessionStorage.setItem('token', token);
+      localStorage.setItem('token', token);
     }
   }
 
   public getToken() {
-    return sessionStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 
   public getAuthority() {
-    let user = JSON.parse(sessionStorage.getItem('user'))
+    let user = JSON.parse(localStorage.getItem('user'))
 
     return user.authority;
   }
@@ -46,11 +44,11 @@ export class LoginService {
     current_user.userName = data.userName
     current_user.authority = data.role.authority;
 
-    sessionStorage.setItem('user', JSON.stringify(current_user));
+    localStorage.setItem('user', JSON.stringify(current_user));
   }
 
-  public currentUser(loginInfo:Login) {
-    return this._http.post(`${this.baseUrl}/current-user`,loginInfo);
+  public currentUser(loginInfo: Login) {
+    return this._http.post(`${this.baseUrl}/current-user`, loginInfo);
   }
 
 }

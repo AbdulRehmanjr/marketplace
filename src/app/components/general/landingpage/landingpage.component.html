@@ -1,1 +1,36 @@
-<main class="main">  <section class="intro-section">    <div class="row">      <div class="col-md-12 bg-image">        <p-galleria          [value]="products"          [showThumbnails]="false"          [showItemNavigators]="false"          [circular]="true"          [autoPlay]="true"          [transitionInterval]="5000"        >          <ng-template pTemplate="item" let-product class="d-flex flex-row">            <div class="content-block d-block px-5" style="min-width:200px">              <h2 class="message1">{{product.message1}}</h2>              <h2 class="message2">{{product.message2}}</h2>              <button class="btn">Shop Now <i class="fa-solid fa-arrow-right"></i></button>            </div>            <img            style="max-width: 300px;height: 400px;"              [src]="product.image"            />          </ng-template>        </p-galleria>      </div>    </div>  </section>    <p-divider></p-divider>  <section class="row">    <app-categories></app-categories>  </section>  <p-divider></p-divider>  <section class="row">    <app-trending></app-trending>  </section></main>
+<main class="main">
+  <section class="intro-section">
+    <div class="row">
+      <div class="col-md-12 bg-image">
+        <p-galleria
+          [value]="products"
+          [showThumbnails]="false"
+          [showItemNavigators]="false"
+          [circular]="true"
+          [autoPlay]="true"
+          [transitionInterval]="5000"
+        >
+          <ng-template pTemplate="item" let-product class="d-flex flex-row">
+            <div class="content-block d-block px-5" style="min-width:200px">
+              <h2 class="message1">{{product.message1}}</h2>
+              <h2 class="message2">{{product.message2}}</h2>
+              <button class="btn" routerLink="shop">Shop Now <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+            <img
+            style="max-width: 300px;height: 400px;"
+              [src]="product.image"
+            />
+          </ng-template>
+        </p-galleria>
+      </div>
+    </div>
+  </section>
+    <p-divider></p-divider>
+  <section class="row">
+    <app-categories></app-categories>
+  </section>
+  <p-divider></p-divider>
+  <section class="row">
+    <app-trending></app-trending>
+  </section>
+</main>

@@ -33,7 +33,7 @@ export class ShopComponent implements OnInit {
     this.fetchAllProducts()
     //* select the banner image from  3 images
     this.selectedImage = this.images[Math.floor(Math.random() * 3)]
-    this.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
+    this.userId = JSON.parse(localStorage.getItem('user'))['userId']
 
   }
 

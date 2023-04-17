@@ -22,7 +22,6 @@ import { SplitterModule } from 'primeng/splitter';
 import { RatingModule } from 'primeng/rating';
 
 
-
 //angular module
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
@@ -39,6 +38,7 @@ import { SearchComponent } from 'src/app/components/user/search/search.component
 import { UserListComponent } from 'src/app/components/user/user-list/user-list.component';
 import { UserheaderComponent } from '../../components/user/userheader/userheader.component';
 import { UsersidebarComponent } from '../../components/user/usersidebar/usersidebar.component';
+import { CartComponent } from '../../components/user/cart/cart.component';
 
 
 const routes:Routes=[
@@ -64,6 +64,9 @@ const routes:Routes=[
     },
     {
       path:'search',component:SearchComponent
+    },
+    {
+      path:'cart',component:CartComponent
     }
   ]}
 ]
@@ -80,6 +83,7 @@ const routes:Routes=[
     UserListComponent,
     UserheaderComponent,
     UsersidebarComponent,
+    CartComponent,
   ],
   imports: [
     MatListModule,

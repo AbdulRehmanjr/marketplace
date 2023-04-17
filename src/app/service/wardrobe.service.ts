@@ -17,4 +17,7 @@ export class WardrobeService {
   getwarrobesByUserId(userId:string){
     return this.http.get(`${this.baseUrl}/user/${userId}`)
   }
+  getWardrobeByCode(code:string){
+    return this.http.get(`${this.baseUrl}/code/${code}`)
+  }
 }

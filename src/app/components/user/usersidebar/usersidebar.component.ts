@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { ToggleService } from 'src/app/service/toggle.service';
 
 @Component({
   selector: 'app-usersidebar',
@@ -10,16 +9,15 @@ import { ToggleService } from 'src/app/service/toggle.service';
 export class UsersidebarComponent  implements OnInit{
 
   userId:any
-  constructor(public toggle:ToggleService,
+  constructor(
     private route:Router){}
 
   ngOnInit(): void {
-
-    this.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
+    this.userId = JSON.parse(localStorage.getItem('user'))['userId']
   }
 
   logOut(){
-    sessionStorage.removeItem('token')
+    localStorage.removeItem('token')
     this.route.navigate([''])
   }
 }

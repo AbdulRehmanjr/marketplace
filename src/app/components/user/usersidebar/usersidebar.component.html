@@ -3,33 +3,40 @@
   <ul class="sidebar-nav" id="sidebar-nav">
 
     <li class="nav-item">
-      <a class="nav-link" routerLink="/user-dashboard/my/profile/{{userId}}">
-        <i class="bi bi-grid"></i>
+      <a class="nav-link" routerLink="my/profile/{{userId}}">
+        <i class="fas fa-user"></i>
         <span>Profile</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/user-dashboard/wardrobe">
-        <i class="bi bi-grid"></i>
-        <span>Wardrobe</span>
+      <a class="nav-link" routerLink="wardrobe">
+        <i class="fas fa-list"></i>
+        <span>Wardrobes</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/user-dashboard/favourite">
-        <i class="bi bi-grid"></i>
-        <span>Favourite</span>
+      <a class="nav-link" routerLink="favourite">
+        <i class="fas fa-heart"></i>
+        <span>Favourites</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/user-dashboard/search"
+      <a class="nav-link" routerLink="search"
       >
-        <i class="bi bi-grid"></i>
+        <i class="bi bi-search"></i>
+        <span>Search User</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="cart"
+      >
+        <i class="bi bi-search"></i>
         <span>Search User</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" (click)="logOut()">
-        <i class="bi bi-door"></i>
+        <i class="bi bi-logout"></i>
         <span>Logout</span>
       </a>
     </li>

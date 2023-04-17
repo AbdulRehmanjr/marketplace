@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { GoogleSigninButtonModule,SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { GoogleSigninButtonModule, SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from '@abacritt/angularx-social-login';
 
 
 import { CarouselModule } from 'primeng/carousel';
@@ -15,8 +15,9 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { DropdownModule } from 'primeng/dropdown';
 import { PaginatorModule } from 'primeng/paginator';
+import { ToastModule } from 'primeng/toast';
 
-import {NgxTypedJsModule} from 'ngx-typed-js';
+import { NgxTypedJsModule } from 'ngx-typed-js';
 
 
 import { LandingpageComponent } from 'src/app/components/general/landingpage/landingpage.component';
@@ -34,11 +35,13 @@ import { FooterComponent } from '../../components/general/footer/footer.componen
 
 
 const routes: Routes = [
-  {path:'',component:GeneralComponent,children:[
-    {path:'',component:LandingpageComponent},
-    {path:'shop',component:ShopComponent},
-    {path:'product-detail/:productId',component:ShopDetailViewComponent}
-  ]}
+  {
+    path: '', component: GeneralComponent, children: [
+      { path: '', component: LandingpageComponent },
+      { path: 'shop', component: ShopComponent },
+      { path: 'product-detail/:productId', component: ShopDetailViewComponent }
+    ]
+  }
 ]
 
 @NgModule({
@@ -55,7 +58,8 @@ const routes: Routes = [
     FooterComponent,
   ],
   imports: [
-  PaginatorModule,
+    ToastModule,
+    PaginatorModule,
     DropdownModule,
     ScrollTopModule,
     PanelMenuModule,

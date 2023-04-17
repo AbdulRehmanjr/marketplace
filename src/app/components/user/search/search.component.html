@@ -2,15 +2,19 @@
   <div class="row">
     <!-- search form  -->
     <div class="col-sm-12">
-      <form class="d-flex flex-row"[formGroup]="searchForm" (ngSubmit)="OnSubmit()">
+      <form
+        class="d-flex flex-row"
+        [formGroup]="searchForm"
+        (ngSubmit)="OnSubmit()"
+      >
         <div class="p-inputgroup mt-4">
           <span class="p-inputgroup-addon">
             <i class="pi pi-user"></i>
           </span>
           <input
             pInputText
-            formControlName="userName"
-            placeholder="User Name"
+            formControlName="search"
+            placeholder="Search"
             required
           />
         </div>
@@ -21,25 +25,77 @@
     </div>
   </div>
   <div class="row">
-
-      <div class="col-md-12">
-        <p-table [value]="users" scrollDirection="vertical" [scrollable]="true" scrollHeight="400px">
-          <ng-template pTemplate="header">
-              <tr>
-                  <th style="width:200px;"></th>
-                  <th style="width:150px;"></th>
-                  <th></th>
-              </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-user>
-              <tr>
-                <td><img src='data:image/jpeg;base64, {{user.profilePicture}}' width="60" alt="profile image"></td>
-                <td style="font-size:bold">{{user.userName}}</td>
-                <td> <a routerLink="/user-dashboard/profile/{{user.userId}}" class="btn btn-sm mr-4 btn-default" >View</a></td>
-              </tr>
-          </ng-template>
+    <div class="col-md-12">
+      <p-table
+        [value]="users"
+        scrollDirection="vertical"
+        [scrollable]="true"
+        scrollHeight="400px"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 200px"></th>
+            <th style="width: 150px"></th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+          <tr>
+            <td>
+              <img
+                src="data:image/jpeg;base64, {{ user.profilePicture }}"
+                width="60"
+                alt="profile image"
+              />
+            </td>
+            <td style="font-size: bold">{{ user.userName }}</td>
+            <td>
+              <a
+                routerLink="/user-dashboard/profile/{{ user.userId }}"
+                class="btn btn-sm mr-4 btn-default"
+                >View</a
+              >
+            </td>
+          </tr>
+        </ng-template>
       </p-table>
-        </div>
-      </div>
+    </div>
   </div>
-
+  <div class="row">
+    <div class="col-md-12">
+      <p-table
+        [value]="users"
+        scrollDirection="vertical"
+        [scrollable]="true"
+        scrollHeight="400px"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 200px"></th>
+            <th style="width: 150px"></th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+          <tr>
+            <td>
+              <img
+                src="data:image/jpeg;base64, {{ user.profilePicture }}"
+                width="60"
+                alt="profile image"
+              />
+            </td>
+            <td style="font-size: bold">{{ user.userName }}</td>
+            <td>
+              <a
+                routerLink="/user-dashboard/profile/{{ user.userId }}"
+                class="btn btn-sm mr-4 btn-default"
+                >View</a
+              >
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

@@ -14,7 +14,7 @@ export class HeaderComponent  implements OnInit{
   }
 
   checkLogin(){
-    this.userId = JSON.parse(sessionStorage.getItem('user'))['userId']
+    this.userId = JSON.parse(localStorage.getItem('user'))['userId']
     if(this.userId){
       return true
     }

@@ -32,7 +32,7 @@ export class WardrobeDetaillComponent implements OnInit {
   ngOnInit(): void {
     this.wardrobeId = this.route.snapshot.paramMap.get('wardrobeId')
     this.fetchPoductsByWardrobe()
-    this.currentUserId = JSON.parse(sessionStorage.getItem('user'))['userId']
+    this.currentUserId = JSON.parse(localStorage.getItem('user'))['userId']
   }
 
   private checkProfile(userId: string, currentId: string): boolean {
