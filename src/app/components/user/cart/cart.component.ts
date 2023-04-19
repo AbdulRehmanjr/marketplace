@@ -1,49 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Item } from 'src/app/class/item';
 import { Product } from 'src/app/class/product';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent {
+export class CartComponent implements OnInit{
 
-  products:any[] = [
+  items:any[] = [
     {
-      id:1,
-      title:'Product 1',
-      price:'780'
-    },
-    {
-      id:1,
-      title:'Product 2',
-      price:'780'
-    },
-    {
-      id:1,
-      title:'Product 3',
-      price:'780'
-    },
-    {
-      id:1,
-      title:'Product 4',
-      price:'780'
-    },
-    {
-      id:1,
-      title:'Product 5',
-      price:'780'
-    },
-    {
-      id:1,
-      title:'Product 6',
-      price:'780'
-    },
-    {
-      id:1,
-      title:'Product 7',
-      price:'780'
-    },
+      itemId:'s',
+      product:{
+        productId:'',
+        productName:'PRoduct 1',
+        image1:'assets/images/product/product-b-1.jpg',
+        basePrice:20
+        }
+      },
+    ]
 
-  ]
+  constructor(private cartService:CartService){}
+
+  ngOnInit(): void {
+    // this.fetchCartItems()
+  }
+
+  //* fetching products from cart
+  fetchCartItems(){
+
+    this.items = this.cartService.getCartDetails()
+
+  }
+
 }

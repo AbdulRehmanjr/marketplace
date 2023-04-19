@@ -20,7 +20,7 @@ import { ToastModule } from 'primeng/toast';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { SplitterModule } from 'primeng/splitter';
 import { RatingModule } from 'primeng/rating';
-
+import { InputNumberModule } from 'primeng/inputnumber';
 
 //angular module
 import {MatCardModule} from '@angular/material/card';
@@ -86,8 +86,7 @@ const routes:Routes=[
     CartComponent,
   ],
   imports: [
-    MatListModule,
-    MatCardModule,
+    InputNumberModule,
     RatingModule,
     TableModule,
     SplitterModule,

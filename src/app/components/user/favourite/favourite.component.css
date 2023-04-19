@@ -4,3 +4,11 @@
   border:none;
   border-radius: 10px;
 }
+::ng-deep  .p-tabview-panel .p-tabview-nav{
+ color:black;
+ font-weight: bold;
+}
+::ng-deep  .p-tabview-panel .p-tabview-nav::selection{
+  color:black;
+  border-bottom: 2px solid #000;
+ }

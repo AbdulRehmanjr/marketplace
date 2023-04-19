@@ -1,101 +1,130 @@
-
 <div class="container-fluid">
-<div class="card">
-  <div class="container-fliud">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="tab-content">
-          <div class="product-image">
-            <img class="img-pri" role="presentation" src="data:image/jpeg; base64, {{product.image1}}" alt="image1">
-            <img class="img-sec" role="presentation" src="data:image/jpeg; base64, {{product.image2}}" alt="image2">
+  <p-toast></p-toast>
+  <div class="card">
+    <div class="container-fliud">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="tab-content">
+            <div class="product-image">
+              <img
+                class="img-pri"
+                role="presentation"
+                src="data:image/jpeg; base64, {{ product.image1 }}"
+                alt="image1"
+              />
+              <img
+                class="img-sec"
+                role="presentation"
+                src="data:image/jpeg; base64, {{ product.image2 }}"
+                alt="image2"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="details col-md-6">
-        <h3 class="product-title">{{product.productName}}</h3>
-        <h5>Category: {{product.category.name}}</h5>
-        <h5>Wardrobe: {{product.wardrobe.code}}</h5>
-        <div class="rating">
-          <div class="stars">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
+        <div class="details col-md-6">
+          <h3 class="product-title">{{ product.productName }}</h3>
+          <h5>Category: {{ product.category.name }}</h5>
+          <h5>Wardrobe: {{ product.wardrobe.code }}</h5>
+          <div class="rating">
+            <div class="stars">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
           </div>
-        </div>
-        <p class="product-description">{{product.description}}</p>
-        <h4 class="price">current price: <span>{{product.basePrice | currency:'USD'}}</span></h4>
-        <div class="action">
-          <button class="add-to-cart btn btn-default" (click)="addToCart(product)" type="button"><span class="fa fa-cart-shopping"></span>Add to cart</button>
-          <button class="like btn btn-default" type="button" (click)="addFavourite(product)"><span class="fa fa-heart"></span></button>
+          <p class="product-description">{{ product.description }}</p>
+          <h4 class="price">
+            current price:
+            <span>{{ product.basePrice | currency : "USD" }}</span>
+          </h4>
+
+
+          <div class="action">
+            <button
+              class="add-to-cart btn btn-default"
+              (click)="addToCart(product)"
+              type="button"
+            >
+              <span class="fa fa-cart-shopping"></span>Add to cart
+            </button>
+            <button
+              class="like btn btn-default"
+              type="button"
+              (click)="addFavourite(product)"
+            >
+              <span class="fa fa-heart"></span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<p-divider></p-divider>
-<div class="row">
-  <h2 class="more-products">More Products from this Wardrobe</h2>
-</div>
-<div class="row">
-  <div *ngFor="let product of products.slice(0,3)" class="col-sm-4 col-md-3">
-    <div class="product-item">
-      <div class="product-thumb">
-        <a href="">
-          <img
-            src="data:image/jpeg;base64, {{ product.image1 }}"
-            class="img-pri"
-            alt="primary_pro_image"
-          />
-          <img
-            src="data:image/jpeg;base64, {{ product.image2 }}"
-            class="img-sec"
-            alt="secondary_pro_image"
-          />
-        </a>
-        <div class="product-action-link">
-          <a href="#" (click)="checkProduct(product)" data-toggle="modal" data-target="#quick_view">
-            <span
+  <p-divider></p-divider>
+  <div class="row">
+    <h2 class="more-products">More Products from this Wardrobe</h2>
+  </div>
+  <div class="row">
+    <div *ngFor="let product of products.slice(0, 3)" class="col-sm-4 col-md-3">
+      <div class="product-item">
+        <div class="product-thumb">
+          <a href="">
+            <img
+              src="data:image/jpeg;base64, {{ product.image1 }}"
+              class="img-pri"
+              alt="primary_pro_image"
+            />
+            <img
+              src="data:image/jpeg;base64, {{ product.image2 }}"
+              class="img-sec"
+              alt="secondary_pro_image"
+            />
+          </a>
+          <div class="product-action-link">
+            <a
+              href="#"
+              (click)="checkProduct(product)"
+              data-toggle="modal"
+              data-target="#quick_view"
+            >
+              <span
+                data-toggle="tooltip"
+                data-placement="left"
+                title="Detail View"
+                ><i class="fas fa-search"></i
+              ></span>
+            </a>
+            <a
               data-toggle="tooltip"
               data-placement="left"
-              title="Detail View"
-              ><i class="fas fa-search"></i
-            ></span>
-          </a>
-          <a
-            data-toggle="tooltip"
-            data-placement="left"
-            (click)="addFavourite(product)"
-            title="Wishlist"
-            ><i class="fas fa-heart"></i
-          ></a>
-          <a
-            data-toggle="tooltip"
-            data-placement="left"
-            title="Add to cart"
-            ><i class="fas fa-shopping-cart"></i
-          ></a>
+              (click)="addFavourite(product)"
+              title="Wishlist"
+              ><i class="fas fa-heart"></i
+            ></a>
+            <a data-toggle="tooltip" data-placement="left" title="Add to cart"
+              ><i class="fas fa-shopping-cart"></i
+            ></a>
+          </div>
         </div>
-      </div>
-      <div class="product-content">
-        <marquee>
-          {{ product.productName }}
-        </marquee>
-        <div class="pricebox">
-          <span class="regular-price">Price : {{
-            product.basePrice | currency : "USD"
-          }}</span>
-          <div class="ratings">
-            <span class="good"><i class="fa fa-star"></i></span>
-            <span class="good"><i class="fa fa-star"></i></span>
-            <span class="good"><i class="fa fa-star"></i></span>
-            <span class="good"><i class="fa fa-star"></i></span>
-            <span><i class="fa fa-star"></i></span>
+        <div class="product-content">
+          <marquee>
+            {{ product.productName }}
+          </marquee>
+          <div class="pricebox">
+            <span class="regular-price"
+              >Price : {{ product.basePrice | currency : "USD" }}</span
+            >
+            <div class="ratings">
+              <span class="good"><i class="fa fa-star"></i></span>
+              <span class="good"><i class="fa fa-star"></i></span>
+              <span class="good"><i class="fa fa-star"></i></span>
+              <span class="good"><i class="fa fa-star"></i></span>
+              <span><i class="fa fa-star"></i></span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>

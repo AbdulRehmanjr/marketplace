@@ -22,7 +22,7 @@
           <div *ngFor="let product of products.slice(0,currentSize)" class="col-sm-4 col-md-3">
             <div class="product-item">
               <div class="product-thumb">
-                <a href="">
+                <a routerLink="/product-detail/{{product.productId}}">
                   <img
                     src="data:image/jpeg;base64, {{ product.image1 }}"
                     class="img-pri"
@@ -38,7 +38,7 @@
                   <span>hot</span>
                 </div> -->
                 <div class="product-action-link">
-                  <a routerLink="/product-detail/{{product.productId}}" data-toggle="modal" data-target="#quick_view">
+                  <a routerLink="/product-detail/{{product.productId}}">
                     <span
                       data-toggle="tooltip"
                       data-placement="left"
@@ -54,10 +54,10 @@
                     ><i class="fas fa-heart"></i
                   ></a>
                   <a
-                    href="#"
                     data-toggle="tooltip"
                     data-placement="left"
                     title="Add to cart"
+                    (click)="addToCart(product)"
                     ><i class="fas fa-shopping-cart"></i
                   ></a>
                 </div>

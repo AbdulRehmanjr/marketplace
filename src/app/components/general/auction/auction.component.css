@@ -1,0 +1,33 @@
+.text-title{
+  color: #000;
+  font-size: 43px;
+  font-weight: 700;
+}
+.text-title-sec{
+  color:blue;
+  font-size: 48px;
+  font-weight: 700;
+}
+.description{
+color:#000;
+font-size: 16px;
+font-weight: 500;
+}
+button{
+  color: #000;
+  font-size: 20px;
+  padding:10px;
+  margin:10px;
+}
+.button-raised{
+  background-color: blue;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+}
+.button-outlined{
+  background-color: transparent;
+  color: blue;
+  border:2px solid blue;
+  border-radius: 10px;
+}

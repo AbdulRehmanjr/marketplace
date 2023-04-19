@@ -17,6 +17,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { PaginatorModule } from 'primeng/paginator';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
+import { BadgeModule } from 'primeng/badge';
 
 import { NgxTypedJsModule } from 'ngx-typed-js';
 
@@ -32,6 +33,7 @@ import { ShopComponent } from '../../components/general/shop/shop.component';
 import { ShopDetailViewComponent } from '../../components/general/shop-detail-view/shop-detail-view.component';
 import { FooterComponent } from '../../components/general/footer/footer.component';
 import { MessageService } from 'primeng/api';
+import { AuctionComponent } from '../../components/general/auction/auction.component';
 
 
 
@@ -41,6 +43,7 @@ const routes: Routes = [
     path: '', component: GeneralComponent, children: [
       { path: '', component: LandingpageComponent },
       { path: 'shop', component: ShopComponent },
+      {path:'auction',component:AuctionComponent},
       { path: 'product-detail/:productId', component: ShopDetailViewComponent }
     ]
   }
@@ -58,8 +61,10 @@ const routes: Routes = [
     ShopComponent,
     ShopDetailViewComponent,
     FooterComponent,
+    AuctionComponent,
   ],
   imports: [
+    BadgeModule,
     MessagesModule,
     ToastModule,
     PaginatorModule,

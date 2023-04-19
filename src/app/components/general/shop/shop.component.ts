@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { Favouriteproduct } from 'src/app/class/favouriteproduct';
+import { Item } from 'src/app/class/item';
 import { Product } from 'src/app/class/product';
 import { User } from 'src/app/class/user';
+import { CartService } from 'src/app/service/cart.service';
 import { FavouriteproductService } from 'src/app/service/favouriteproduct.service';
 import { ProductService } from 'src/app/service/product.service';
 @Component({
@@ -26,7 +28,9 @@ export class ShopComponent implements OnInit {
   selectedOption: string
 
   constructor(private productService: ProductService,
-    private favourite: FavouriteproductService) { }
+    private favourite: FavouriteproductService,
+    private cartService:CartService,
+    private messageService:MessageService) { }
 
   ngOnInit(): void {
     this.sidebar()
@@ -36,20 +40,37 @@ export class ShopComponent implements OnInit {
     this.userId = JSON.parse(localStorage.getItem('user'))['userId']
 
   }
+  //! may be change in future versions
+  addToCart(product:Product){
 
+    let item = new Item()
+    item.product = product
+
+    console.log('Item',item)
+    const isAdded :boolean = this.cartService.addInCart(item)
+
+    if(isAdded){
+      //* show message
+     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Item Added to Cart' });
+     return
+    }
+    //* show message
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Already in Cart' });
+
+  }
   addFavourite(product: Product) {
     let user = new User()
     user.userId = this.userId
     let fav  = new Favouriteproduct()
     fav.user = user
     fav.product = product
-    console.log(fav)
+
     this.favourite.saveFavouriteProduct(fav).subscribe({
      next:(data)=>{
-       console.log('Message',data)
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Item Added to Favourite.' });
      },
      error:(err)=>{
-       console.log('Error',err)
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Already in Favourite List.' });
      },
      complete:()=>{
        console.log('Add favourite completed')
@@ -60,7 +81,7 @@ export class ShopComponent implements OnInit {
 
   //* show more products later we will change the number
   showMore() {
-    this.currentSize = this.currentSize + 2
+    this.currentSize = this.currentSize + 4
   }
   //* fetching all products
   fetchAllProducts(): void {
